@@ -1,46 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="rustdoc">
-    <meta name="description" content="Source to the Rust file `/home/hendrik/.multirust/toolchains/stable/cargo/registry/src/github.com-0a35038f75765ae4/dbus-0.2.1/src/lib.rs`.">
-    <meta name="keywords" content="rust, rustlang, rust-lang">
-
-    <title>lib.rs.html -- source</title>
-
-    <link rel="stylesheet" type="text/css" href="../../main.css">
-
-    
-    
-</head>
-<body class="rustdoc">
-    <!--[if lte IE 8]>
-    <div class="warning">
-        This old browser is unsupported and will most likely display funky
-        things.
-    </div>
-    <![endif]-->
-
-    
-
-    <nav class="sidebar">
-        
-        
-    </nav>
-
-    <nav class="sub">
-        <form class="search-form js-only">
-            <div class="search-container">
-                <input class="search-input" name="search"
-                       autocomplete="off"
-                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
-                       type="search">
-            </div>
-        </form>
-    </nav>
-
-    <section id='main' class="content source"><pre class="line-numbers"><span id="1">  1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `/home/hendrik/.cargo/registry/src/github.com-1ecc6299db9ec823/dbus-0.6.3/src/lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form js-only"><div class="search-container"><input class="search-input" name="search" autocomplete="off" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
 <span id="4">  4</span>
@@ -321,918 +279,287 @@
 <span id="279">279</span>
 <span id="280">280</span>
 <span id="281">281</span>
-<span id="282">282</span>
-<span id="283">283</span>
-<span id="284">284</span>
-<span id="285">285</span>
-<span id="286">286</span>
-<span id="287">287</span>
-<span id="288">288</span>
-<span id="289">289</span>
-<span id="290">290</span>
-<span id="291">291</span>
-<span id="292">292</span>
-<span id="293">293</span>
-<span id="294">294</span>
-<span id="295">295</span>
-<span id="296">296</span>
-<span id="297">297</span>
-<span id="298">298</span>
-<span id="299">299</span>
-<span id="300">300</span>
-<span id="301">301</span>
-<span id="302">302</span>
-<span id="303">303</span>
-<span id="304">304</span>
-<span id="305">305</span>
-<span id="306">306</span>
-<span id="307">307</span>
-<span id="308">308</span>
-<span id="309">309</span>
-<span id="310">310</span>
-<span id="311">311</span>
-<span id="312">312</span>
-<span id="313">313</span>
-<span id="314">314</span>
-<span id="315">315</span>
-<span id="316">316</span>
-<span id="317">317</span>
-<span id="318">318</span>
-<span id="319">319</span>
-<span id="320">320</span>
-<span id="321">321</span>
-<span id="322">322</span>
-<span id="323">323</span>
-<span id="324">324</span>
-<span id="325">325</span>
-<span id="326">326</span>
-<span id="327">327</span>
-<span id="328">328</span>
-<span id="329">329</span>
-<span id="330">330</span>
-<span id="331">331</span>
-<span id="332">332</span>
-<span id="333">333</span>
-<span id="334">334</span>
-<span id="335">335</span>
-<span id="336">336</span>
-<span id="337">337</span>
-<span id="338">338</span>
-<span id="339">339</span>
-<span id="340">340</span>
-<span id="341">341</span>
-<span id="342">342</span>
-<span id="343">343</span>
-<span id="344">344</span>
-<span id="345">345</span>
-<span id="346">346</span>
-<span id="347">347</span>
-<span id="348">348</span>
-<span id="349">349</span>
-<span id="350">350</span>
-<span id="351">351</span>
-<span id="352">352</span>
-<span id="353">353</span>
-<span id="354">354</span>
-<span id="355">355</span>
-<span id="356">356</span>
-<span id="357">357</span>
-<span id="358">358</span>
-<span id="359">359</span>
-<span id="360">360</span>
-<span id="361">361</span>
-<span id="362">362</span>
-<span id="363">363</span>
-<span id="364">364</span>
-<span id="365">365</span>
-<span id="366">366</span>
-<span id="367">367</span>
-<span id="368">368</span>
-<span id="369">369</span>
-<span id="370">370</span>
-<span id="371">371</span>
-<span id="372">372</span>
-<span id="373">373</span>
-<span id="374">374</span>
-<span id="375">375</span>
-<span id="376">376</span>
-<span id="377">377</span>
-<span id="378">378</span>
-<span id="379">379</span>
-<span id="380">380</span>
-<span id="381">381</span>
-<span id="382">382</span>
-<span id="383">383</span>
-<span id="384">384</span>
-<span id="385">385</span>
-<span id="386">386</span>
-<span id="387">387</span>
-<span id="388">388</span>
-<span id="389">389</span>
-<span id="390">390</span>
-<span id="391">391</span>
-<span id="392">392</span>
-<span id="393">393</span>
-<span id="394">394</span>
-<span id="395">395</span>
-<span id="396">396</span>
-<span id="397">397</span>
-<span id="398">398</span>
-<span id="399">399</span>
-<span id="400">400</span>
-<span id="401">401</span>
-<span id="402">402</span>
-<span id="403">403</span>
-<span id="404">404</span>
-<span id="405">405</span>
-<span id="406">406</span>
-<span id="407">407</span>
-<span id="408">408</span>
-<span id="409">409</span>
-<span id="410">410</span>
-<span id="411">411</span>
-<span id="412">412</span>
-<span id="413">413</span>
-<span id="414">414</span>
-<span id="415">415</span>
-<span id="416">416</span>
-<span id="417">417</span>
-<span id="418">418</span>
-<span id="419">419</span>
-<span id="420">420</span>
-<span id="421">421</span>
-<span id="422">422</span>
-<span id="423">423</span>
-<span id="424">424</span>
-<span id="425">425</span>
-<span id="426">426</span>
-<span id="427">427</span>
-<span id="428">428</span>
-<span id="429">429</span>
-<span id="430">430</span>
-<span id="431">431</span>
-<span id="432">432</span>
-<span id="433">433</span>
-<span id="434">434</span>
-<span id="435">435</span>
-<span id="436">436</span>
-<span id="437">437</span>
-<span id="438">438</span>
-<span id="439">439</span>
-<span id="440">440</span>
-<span id="441">441</span>
-<span id="442">442</span>
-<span id="443">443</span>
-<span id="444">444</span>
-<span id="445">445</span>
-<span id="446">446</span>
-<span id="447">447</span>
-<span id="448">448</span>
-<span id="449">449</span>
-<span id="450">450</span>
-<span id="451">451</span>
-<span id="452">452</span>
-<span id="453">453</span>
-<span id="454">454</span>
-<span id="455">455</span>
-<span id="456">456</span>
-<span id="457">457</span>
-<span id="458">458</span>
-<span id="459">459</span>
-<span id="460">460</span>
-<span id="461">461</span>
-<span id="462">462</span>
-<span id="463">463</span>
-<span id="464">464</span>
-<span id="465">465</span>
-<span id="466">466</span>
-<span id="467">467</span>
-<span id="468">468</span>
-<span id="469">469</span>
-<span id="470">470</span>
-<span id="471">471</span>
-<span id="472">472</span>
-<span id="473">473</span>
-<span id="474">474</span>
-<span id="475">475</span>
-<span id="476">476</span>
-<span id="477">477</span>
-<span id="478">478</span>
-<span id="479">479</span>
-<span id="480">480</span>
-<span id="481">481</span>
-<span id="482">482</span>
-<span id="483">483</span>
-<span id="484">484</span>
-<span id="485">485</span>
-<span id="486">486</span>
-<span id="487">487</span>
-<span id="488">488</span>
-<span id="489">489</span>
-<span id="490">490</span>
-<span id="491">491</span>
-<span id="492">492</span>
-<span id="493">493</span>
-<span id="494">494</span>
-<span id="495">495</span>
-<span id="496">496</span>
-<span id="497">497</span>
-<span id="498">498</span>
-<span id="499">499</span>
-<span id="500">500</span>
-<span id="501">501</span>
-<span id="502">502</span>
-<span id="503">503</span>
-<span id="504">504</span>
-<span id="505">505</span>
-<span id="506">506</span>
-<span id="507">507</span>
-<span id="508">508</span>
-<span id="509">509</span>
-<span id="510">510</span>
-<span id="511">511</span>
-<span id="512">512</span>
-<span id="513">513</span>
-<span id="514">514</span>
-<span id="515">515</span>
-<span id="516">516</span>
-<span id="517">517</span>
-<span id="518">518</span>
-<span id="519">519</span>
-<span id="520">520</span>
-<span id="521">521</span>
-<span id="522">522</span>
-<span id="523">523</span>
-<span id="524">524</span>
-<span id="525">525</span>
-<span id="526">526</span>
-<span id="527">527</span>
-<span id="528">528</span>
-<span id="529">529</span>
-<span id="530">530</span>
-<span id="531">531</span>
-<span id="532">532</span>
-<span id="533">533</span>
-<span id="534">534</span>
-<span id="535">535</span>
-<span id="536">536</span>
-<span id="537">537</span>
-<span id="538">538</span>
-<span id="539">539</span>
-<span id="540">540</span>
-<span id="541">541</span>
-<span id="542">542</span>
-<span id="543">543</span>
-<span id="544">544</span>
-<span id="545">545</span>
-<span id="546">546</span>
-<span id="547">547</span>
-<span id="548">548</span>
-<span id="549">549</span>
-<span id="550">550</span>
-<span id="551">551</span>
-<span id="552">552</span>
-<span id="553">553</span>
-<span id="554">554</span>
-<span id="555">555</span>
-<span id="556">556</span>
-<span id="557">557</span>
-<span id="558">558</span>
-<span id="559">559</span>
-<span id="560">560</span>
-<span id="561">561</span>
-<span id="562">562</span>
-<span id="563">563</span>
-<span id="564">564</span>
-<span id="565">565</span>
-<span id="566">566</span>
-</pre><pre class='rust '>
-<span class='doccomment'>//! D-Bus bindings for Rust</span>
-<span class='doccomment'>//!</span>
-<span class='doccomment'>//! [D-Bus](http://dbus.freedesktop.org/) is a message bus, and is mainly used in Linux</span>
-<span class='doccomment'>//! for communication between processes. It is present by default on almost every</span>
-<span class='doccomment'>//! Linux distribution out there, and runs in two instances - one per session, and one</span>
-<span class='doccomment'>//! system-wide.</span>
-<span class='doccomment'>//!</span>
-<span class='doccomment'>//! See the examples directory for some examples to get you started.</span>
+</pre><pre class="rust ">
+<span class="doccomment">//! D-Bus bindings for Rust</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! [D-Bus](http://dbus.freedesktop.org/) is a message bus, and is mainly used in Linux</span>
+<span class="doccomment">//! for communication between processes. It is present by default on almost every</span>
+<span class="doccomment">//! Linux distribution out there, and runs in two instances - one per session, and one</span>
+<span class="doccomment">//! system-wide.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! In addition to the API documentation, which you&#39;re currently reading, you might want to</span>
+<span class="doccomment">//! look in the examples directory, which contains many examples and an argument guide.</span>
+<span class="doccomment">//! README.md also contain a few quick &quot;getting started&quot; examples.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! In addition to this crate, there are two companion crates, dbus-codegen for generating Rust</span>
+<span class="doccomment">//! code from D-Bus introspection data, and dbus-tokio for integrating D-Bus with [Tokio](http://tokio.rs).</span>
+<span class="doccomment">//! However, at the time of this writing, these are far less mature than this crate. </span>
 
-<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>libc</span>;
+<span class="attribute">#![<span class="ident">warn</span>(<span class="ident">missing_docs</span>)]</span>
 
-<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>ffi</span>::<span class='ident'>DBusBusType</span> <span class='kw'>as</span> <span class='ident'>BusType</span>;
-<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>ffi</span>::<span class='ident'>DBusNameFlag</span> <span class='kw'>as</span> <span class='ident'>NameFlag</span>;
-<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>ffi</span>::<span class='ident'>DBusRequestNameReply</span> <span class='kw'>as</span> <span class='ident'>RequestNameReply</span>;
-<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>ffi</span>::<span class='ident'>DBusReleaseNameReply</span> <span class='kw'>as</span> <span class='ident'>ReleaseNameReply</span>;
-<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>ffi</span>::<span class='ident'>DBusMessageType</span> <span class='kw'>as</span> <span class='ident'>MessageType</span>;
-<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>ffi</span>::<span class='ident'>DBusWatchEvent</span> <span class='kw'>as</span> <span class='ident'>WatchEvent</span>;
+<span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">libc</span>;
 
-<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>message</span>::{<span class='ident'>Message</span>, <span class='ident'>MessageItem</span>, <span class='ident'>FromMessageItem</span>, <span class='ident'>OwnedFd</span>, <span class='ident'>ArrayError</span>};
-<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>prop</span>::<span class='ident'>PropHandler</span>;
-<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>prop</span>::<span class='ident'>Props</span>;
-<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>watch</span>::<span class='ident'>Watch</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">ffi</span>::<span class="ident">DBusBusType</span> <span class="kw">as</span> <span class="ident">BusType</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">connection</span>::<span class="ident">DBusNameFlag</span> <span class="kw">as</span> <span class="ident">NameFlag</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">ffi</span>::<span class="ident">DBusRequestNameReply</span> <span class="kw">as</span> <span class="ident">RequestNameReply</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">ffi</span>::<span class="ident">DBusReleaseNameReply</span> <span class="kw">as</span> <span class="ident">ReleaseNameReply</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">ffi</span>::<span class="ident">DBusMessageType</span> <span class="kw">as</span> <span class="ident">MessageType</span>;
 
-<span class='doccomment'>/// A TypeSig describes the type of a MessageItem.</span>
-<span class='kw'>pub</span> <span class='kw'>type</span> <span class='ident'>TypeSig</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span> <span class='op'>=</span> <span class='ident'>std</span>::<span class='ident'>borrow</span>::<span class='ident'>Cow</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span>, <span class='ident'>str</span><span class='op'>&gt;</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">message</span>::{<span class="ident">Message</span>, <span class="ident">MessageItem</span>, <span class="ident">MessageItemArray</span>, <span class="ident">FromMessageItem</span>, <span class="ident">OwnedFd</span>, <span class="ident">ArrayError</span>, <span class="ident">ConnPath</span>};
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">connection</span>::{<span class="ident">Connection</span>, <span class="ident">ConnectionItems</span>, <span class="ident">ConnectionItem</span>, <span class="ident">ConnMsgs</span>, <span class="ident">MsgHandler</span>, <span class="ident">MsgHandlerResult</span>, <span class="ident">MsgHandlerType</span>, <span class="ident">MessageCallback</span>};
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">prop</span>::<span class="ident">PropHandler</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">prop</span>::<span class="ident">Props</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">watch</span>::{<span class="ident">Watch</span>, <span class="ident">WatchEvent</span>};
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">signalargs</span>::<span class="ident">SignalArgs</span>;
 
-<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>ffi</span>::{<span class='ident'>CString</span>, <span class='ident'>CStr</span>};
-<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>ptr</span>::{<span class='self'>self</span>};
-<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>collections</span>::<span class='ident'>LinkedList</span>;
-<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>cell</span>::{<span class='ident'>Cell</span>, <span class='ident'>RefCell</span>};
-<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>mem</span>;
-<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>os</span>::<span class='ident'>unix</span>::<span class='ident'>io</span>::<span class='ident'>RawFd</span>;
+<span class="doccomment">/// A TypeSig describes the type of a MessageItem.</span>
+<span class="attribute">#[<span class="ident">deprecated</span>(<span class="ident">note</span><span class="op">=</span><span class="string">&quot;Use Signature instead&quot;</span>)]</span>
+<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">TypeSig</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">std</span>::<span class="ident">borrow</span>::<span class="ident">Cow</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, <span class="ident">str</span><span class="op">&gt;</span>;
 
-<span class='kw'>mod</span> <span class='ident'>ffi</span>;
-<span class='kw'>mod</span> <span class='ident'>message</span>;
-<span class='kw'>mod</span> <span class='ident'>prop</span>;
-<span class='kw'>mod</span> <span class='ident'>objpath</span>;
-<span class='kw'>mod</span> <span class='ident'>watch</span>;
+<span class="kw">use</span> <span class="ident">std</span>::<span class="ident">ffi</span>::{<span class="ident">CString</span>, <span class="ident">CStr</span>};
+<span class="kw">use</span> <span class="ident">std</span>::<span class="ident">ptr</span>;
+<span class="kw">use</span> <span class="ident">std</span>::<span class="ident">os</span>::<span class="ident">raw</span>::<span class="ident">c_char</span>;
 
-<span class='kw'>mod</span> <span class='ident'>strings</span>;
-<span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>strings</span>::{<span class='ident'>Signature</span>, <span class='ident'>Path</span>, <span class='ident'>Interface</span>, <span class='ident'>Member</span>, <span class='ident'>ErrorName</span>, <span class='ident'>BusName</span>};
+<span class="attribute">#[<span class="ident">allow</span>(<span class="ident">missing_docs</span>)]</span>
+<span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">libdbus_sys</span> <span class="kw">as</span> <span class="ident">ffi</span>;
+<span class="kw">mod</span> <span class="ident">message</span>;
+<span class="kw">mod</span> <span class="ident">prop</span>;
+<span class="kw">mod</span> <span class="ident">watch</span>;
+<span class="kw">mod</span> <span class="ident">connection</span>;
+<span class="kw">mod</span> <span class="ident">signalargs</span>;
 
-<span class='doccomment'>/// Contains functionality for the &quot;server&quot; of a D-Bus object. A remote application can</span>
-<span class='doccomment'>/// introspect this object and call methods on it.</span>
-<span class='doccomment'>/// Deprecated - use the `tree` module instead.</span>
-<span class='kw'>pub</span> <span class='kw'>mod</span> <span class='ident'>obj</span> {
-    <span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>objpath</span>::{<span class='ident'>ObjectPath</span>, <span class='ident'>Interface</span>, <span class='ident'>Property</span>, <span class='ident'>Signal</span>, <span class='ident'>Argument</span>};
-    <span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>objpath</span>::{<span class='ident'>Method</span>, <span class='ident'>MethodHandler</span>, <span class='ident'>MethodResult</span>};
-    <span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>objpath</span>::{<span class='ident'>PropertyROHandler</span>, <span class='ident'>PropertyRWHandler</span>, <span class='ident'>PropertyWOHandler</span>, <span class='ident'>PropertyGetResult</span>, <span class='ident'>PropertySetResult</span>};
-}
+<span class="kw">mod</span> <span class="ident">strings</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">strings</span>::{<span class="ident">Signature</span>, <span class="ident">Path</span>, <span class="ident">Interface</span>, <span class="ident">Member</span>, <span class="ident">ErrorName</span>, <span class="ident">BusName</span>};
 
-<span class='kw'>mod</span> <span class='ident'>methoddisp</span>;
+<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">arg</span>;
 
-<span class='doccomment'>/// Contains functionality for dispatching methods on a D-Bus &quot;server&quot;.</span>
-<span class='doccomment'>/// Supersedes the `obj` module. Properties are somewhat still WIP,</span>
-<span class='doccomment'>/// but should in any case be better than `obj` already.</span>
-<span class='doccomment'>///</span>
-<span class='doccomment'>/// # Example</span>
-<span class='doccomment'>/// ```</span>
-<span class='doccomment'>/// use dbus::{tree, Connection, BusType};</span>
-<span class='doccomment'>/// let f = tree::Factory::new_fn();</span>
-<span class='doccomment'>/// /* Add a method returning &quot;Thanks!&quot; on interface &quot;com.example.dbus.rs&quot;</span>
-<span class='doccomment'>///    on object path &quot;/example&quot;. */</span>
-<span class='doccomment'>/// let t = f.tree().add(f.object_path(&quot;/example&quot;).introspectable()</span>
-<span class='doccomment'>///     .add(f.interface(&quot;com.example.dbus.rs&quot;)</span>
-<span class='doccomment'>///         .add_m(f.method(&quot;CallMe&quot;, |m,_,_| {</span>
-<span class='doccomment'>///             Ok(vec!(m.method_return().append(&quot;Thanks!&quot;))) }</span>
-<span class='doccomment'>///         ).out_arg(&quot;s&quot;))</span>
-<span class='doccomment'>/// ));</span>
-<span class='doccomment'>///</span>
-<span class='doccomment'>/// let c = Connection::get_private(BusType::Session).unwrap();</span>
-<span class='doccomment'>/// t.set_registered(&amp;c, true).unwrap();</span>
-<span class='doccomment'>/// /* Run forever */</span>
-<span class='doccomment'>/// // for _ in t.run(&amp;c, c.iter(1000)) {}</span>
-<span class='doccomment'>/// ```</span>
+<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">stdintf</span>;
 
-<span class='kw'>pub</span> <span class='kw'>mod</span> <span class='ident'>tree</span> {
-    <span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>methoddisp</span>::{<span class='ident'>Factory</span>, <span class='ident'>Tree</span>, <span class='ident'>TreeServer</span>, <span class='ident'>ObjectPath</span>, <span class='ident'>Interface</span>, <span class='ident'>Signal</span>};
-    <span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>methoddisp</span>::{<span class='ident'>Property</span>, <span class='ident'>EmitsChangedSignal</span>, <span class='ident'>Access</span>};
-    <span class='kw'>pub</span> <span class='kw'>use</span> <span class='ident'>methoddisp</span>::{<span class='ident'>Method</span>, <span class='ident'>MethodErr</span>, <span class='ident'>MethodResult</span>, <span class='ident'>Argument</span>};
-}
+<span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">tree</span>;
 
-<span class='kw'>static</span> <span class='ident'>INITDBUS</span>: <span class='ident'>std</span>::<span class='ident'>sync</span>::<span class='ident'>Once</span> <span class='op'>=</span> <span class='ident'>std</span>::<span class='ident'>sync</span>::<span class='ident'>ONCE_INIT</span>;
+<span class="kw">static</span> <span class="ident">INITDBUS</span>: <span class="ident">std</span>::<span class="ident">sync</span>::<span class="ident">Once</span> <span class="op">=</span> <span class="ident">std</span>::<span class="ident">sync</span>::<span class="ident">ONCE_INIT</span>;
 
-<span class='kw'>fn</span> <span class='ident'>init_dbus</span>() {
-    <span class='ident'>INITDBUS</span>.<span class='ident'>call_once</span>(<span class='op'>||</span> {
-        <span class='kw'>if</span> <span class='kw'>unsafe</span> { <span class='ident'>ffi</span>::<span class='ident'>dbus_threads_init_default</span>() } <span class='op'>==</span> <span class='number'>0</span> {
-            <span class='macro'>panic</span><span class='macro'>!</span>(<span class='string'>&quot;Out of memory when trying to initialize D-Bus library!&quot;</span>);
+<span class="kw">fn</span> <span class="ident">init_dbus</span>() {
+    <span class="ident">INITDBUS</span>.<span class="ident">call_once</span>(<span class="op">||</span> {
+        <span class="kw">if</span> <span class="kw">unsafe</span> { <span class="ident">ffi</span>::<span class="ident">dbus_threads_init_default</span>() } <span class="op">==</span> <span class="number">0</span> {
+            <span class="macro">panic</span><span class="macro">!</span>(<span class="string">&quot;Out of memory when trying to initialize D-Bus library!&quot;</span>);
         }
     });
 }
 
-<span class='doccomment'>/// D-Bus Error wrapper</span>
-<span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Error</span> {
-    <span class='ident'>e</span>: <span class='ident'>ffi</span>::<span class='ident'>DBusError</span>,
+<span class="doccomment">/// D-Bus Error wrapper.</span>
+<span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Error</span> {
+    <span class="ident">e</span>: <span class="ident">ffi</span>::<span class="ident">DBusError</span>,
 }
 
-<span class='kw'>unsafe</span> <span class='kw'>impl</span> <span class='ident'>Send</span> <span class='kw'>for</span> <span class='ident'>Error</span> {}
+<span class="kw">unsafe</span> <span class="kw">impl</span> <span class="ident">Send</span> <span class="kw">for</span> <span class="ident">Error</span> {}
 
-<span class='kw'>fn</span> <span class='ident'>c_str_to_slice</span>(<span class='ident'>c</span>: <span class='kw-2'>&amp;</span> <span class='op'>*</span><span class='kw'>const</span> <span class='ident'>libc</span>::<span class='ident'>c_char</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='kw-2'>&amp;</span><span class='ident'>str</span><span class='op'>&gt;</span> {
-    <span class='kw'>if</span> <span class='op'>*</span><span class='ident'>c</span> <span class='op'>==</span> <span class='ident'>ptr</span>::<span class='ident'>null</span>() { <span class='prelude-val'>None</span> }
-    <span class='kw'>else</span> { <span class='ident'>std</span>::<span class='ident'>str</span>::<span class='ident'>from_utf8</span>( <span class='kw'>unsafe</span> { <span class='ident'>CStr</span>::<span class='ident'>from_ptr</span>(<span class='op'>*</span><span class='ident'>c</span>).<span class='ident'>to_bytes</span>() }).<span class='ident'>ok</span>() }
+<span class="comment">// Note! For this Sync impl to be safe, it requires that no functions that take &amp;self,</span>
+<span class="comment">// actually calls into FFI. All functions that call into FFI with a ffi::DBusError</span>
+<span class="comment">// must take &amp;mut self.</span>
+
+<span class="kw">unsafe</span> <span class="kw">impl</span> <span class="ident">Sync</span> <span class="kw">for</span> <span class="ident">Error</span> {}
+
+<span class="kw">fn</span> <span class="ident">c_str_to_slice</span>(<span class="ident">c</span>: <span class="op">&amp;</span> <span class="kw-2">*</span><span class="kw">const</span> <span class="ident">c_char</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span> {
+    <span class="kw">if</span> <span class="kw-2">*</span><span class="ident">c</span> <span class="op">==</span> <span class="ident">ptr</span>::<span class="ident">null</span>() { <span class="prelude-val">None</span> }
+    <span class="kw">else</span> { <span class="ident">std</span>::<span class="ident">str</span>::<span class="ident">from_utf8</span>( <span class="kw">unsafe</span> { <span class="ident">CStr</span>::<span class="ident">from_ptr</span>(<span class="kw-2">*</span><span class="ident">c</span>).<span class="ident">to_bytes</span>() }).<span class="ident">ok</span>() }
 }
 
-<span class='kw'>fn</span> <span class='ident'>to_c_str</span>(<span class='ident'>n</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='ident'>CString</span> { <span class='ident'>CString</span>::<span class='ident'>new</span>(<span class='ident'>n</span>.<span class='ident'>as_bytes</span>()).<span class='ident'>unwrap</span>() }
+<span class="kw">fn</span> <span class="ident">to_c_str</span>(<span class="ident">n</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-&gt;</span> <span class="ident">CString</span> { <span class="ident">CString</span>::<span class="ident">new</span>(<span class="ident">n</span>.<span class="ident">as_bytes</span>()).<span class="ident">unwrap</span>() }
 
-<span class='kw'>impl</span> <span class='ident'>Error</span> {
+<span class="kw">impl</span> <span class="ident">Error</span> {
 
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>new_custom</span>(<span class='ident'>name</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>, <span class='ident'>message</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='ident'>Error</span> {
-        <span class='kw'>let</span> <span class='ident'>n</span> <span class='op'>=</span> <span class='ident'>to_c_str</span>(<span class='ident'>name</span>);
-        <span class='kw'>let</span> <span class='ident'>m</span> <span class='op'>=</span> <span class='ident'>to_c_str</span>(<span class='kw-2'>&amp;</span><span class='ident'>message</span>.<span class='ident'>replace</span>(<span class='string'>&quot;%&quot;</span>,<span class='string'>&quot;%%&quot;</span>));
-        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>e</span> <span class='op'>=</span> <span class='ident'>Error</span>::<span class='ident'>empty</span>();
+    <span class="doccomment">/// Create a new custom D-Bus Error.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new_custom</span>(<span class="ident">name</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>, <span class="ident">message</span>: <span class="kw-2">&amp;</span><span class="ident">str</span>) <span class="op">-&gt;</span> <span class="ident">Error</span> {
+        <span class="kw">let</span> <span class="ident">n</span> <span class="op">=</span> <span class="ident">to_c_str</span>(<span class="ident">name</span>);
+        <span class="kw">let</span> <span class="ident">m</span> <span class="op">=</span> <span class="ident">to_c_str</span>(<span class="kw-2">&amp;</span><span class="ident">message</span>.<span class="ident">replace</span>(<span class="string">&quot;%&quot;</span>,<span class="string">&quot;%%&quot;</span>));
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">e</span> <span class="op">=</span> <span class="ident">Error</span>::<span class="ident">empty</span>();
 
-        <span class='kw'>unsafe</span> { <span class='ident'>ffi</span>::<span class='ident'>dbus_set_error</span>(<span class='ident'>e</span>.<span class='ident'>get_mut</span>(), <span class='ident'>n</span>.<span class='ident'>as_ptr</span>(), <span class='ident'>m</span>.<span class='ident'>as_ptr</span>()) };
-        <span class='ident'>e</span>
+        <span class="kw">unsafe</span> { <span class="ident">ffi</span>::<span class="ident">dbus_set_error</span>(<span class="ident">e</span>.<span class="ident">get_mut</span>(), <span class="ident">n</span>.<span class="ident">as_ptr</span>(), <span class="ident">m</span>.<span class="ident">as_ptr</span>()) };
+        <span class="ident">e</span>
     }
 
-    <span class='kw'>fn</span> <span class='ident'>empty</span>() <span class='op'>-&gt;</span> <span class='ident'>Error</span> {
-        <span class='ident'>init_dbus</span>();
-        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>e</span> <span class='op'>=</span> <span class='ident'>ffi</span>::<span class='ident'>DBusError</span> {
-            <span class='ident'>name</span>: <span class='ident'>ptr</span>::<span class='ident'>null</span>(),
-            <span class='ident'>message</span>: <span class='ident'>ptr</span>::<span class='ident'>null</span>(),
-            <span class='ident'>dummy</span>: <span class='number'>0</span>,
-            <span class='ident'>padding1</span>: <span class='ident'>ptr</span>::<span class='ident'>null</span>()
+    <span class="kw">fn</span> <span class="ident">empty</span>() <span class="op">-&gt;</span> <span class="ident">Error</span> {
+        <span class="ident">init_dbus</span>();
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">e</span> <span class="op">=</span> <span class="ident">ffi</span>::<span class="ident">DBusError</span> {
+            <span class="ident">name</span>: <span class="ident">ptr</span>::<span class="ident">null</span>(),
+            <span class="ident">message</span>: <span class="ident">ptr</span>::<span class="ident">null</span>(),
+            <span class="ident">dummy</span>: <span class="number">0</span>,
+            <span class="ident">padding1</span>: <span class="ident">ptr</span>::<span class="ident">null</span>()
         };
-        <span class='kw'>unsafe</span> { <span class='ident'>ffi</span>::<span class='ident'>dbus_error_init</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>e</span>); }
-        <span class='ident'>Error</span>{ <span class='ident'>e</span>: <span class='ident'>e</span> }
+        <span class="kw">unsafe</span> { <span class="ident">ffi</span>::<span class="ident">dbus_error_init</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">e</span>); }
+        <span class="ident">Error</span>{ <span class="ident">e</span>: <span class="ident">e</span> }
     }
 
-    <span class='doccomment'>/// Error name/type, e g &#39;org.freedesktop.DBus.Error.Failed&#39;</span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>name</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='kw-2'>&amp;</span><span class='ident'>str</span><span class='op'>&gt;</span> {
-        <span class='ident'>c_str_to_slice</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>.<span class='ident'>e</span>.<span class='ident'>name</span>)
+    <span class="doccomment">/// Error name/type, e g &#39;org.freedesktop.DBus.Error.Failed&#39;</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">name</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span> {
+        <span class="ident">c_str_to_slice</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">e</span>.<span class="ident">name</span>)
     }
 
-    <span class='doccomment'>/// Custom message, e g &#39;Could not find a matching object path&#39;</span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>message</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='kw-2'>&amp;</span><span class='ident'>str</span><span class='op'>&gt;</span> {
-        <span class='ident'>c_str_to_slice</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>.<span class='ident'>e</span>.<span class='ident'>message</span>)
+    <span class="doccomment">/// Custom message, e g &#39;Could not find a matching object path&#39;</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">message</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span> {
+        <span class="ident">c_str_to_slice</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">e</span>.<span class="ident">message</span>)
     }
 
-    <span class='kw'>fn</span> <span class='ident'>get_mut</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>ffi</span>::<span class='ident'>DBusError</span> { <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>.<span class='ident'>e</span> }
+    <span class="kw">fn</span> <span class="ident">get_mut</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">ffi</span>::<span class="ident">DBusError</span> { <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>.<span class="ident">e</span> }
 }
 
-<span class='kw'>impl</span> <span class='ident'>Drop</span> <span class='kw'>for</span> <span class='ident'>Error</span> {
-    <span class='kw'>fn</span> <span class='ident'>drop</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>) {
-        <span class='kw'>unsafe</span> { <span class='ident'>ffi</span>::<span class='ident'>dbus_error_free</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>.<span class='ident'>e</span>); }
-    }
-}
-
-<span class='kw'>impl</span> <span class='ident'>std</span>::<span class='ident'>fmt</span>::<span class='ident'>Debug</span> <span class='kw'>for</span> <span class='ident'>Error</span> {
-    <span class='kw'>fn</span> <span class='ident'>fmt</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>f</span>: <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>std</span>::<span class='ident'>fmt</span>::<span class='ident'>Formatter</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span>(), <span class='ident'>std</span>::<span class='ident'>fmt</span>::<span class='ident'>Error</span><span class='op'>&gt;</span> {
-        <span class='macro'>write</span><span class='macro'>!</span>(<span class='ident'>f</span>, <span class='string'>&quot;D-Bus error: {} ({})&quot;</span>, <span class='self'>self</span>.<span class='ident'>message</span>().<span class='ident'>unwrap_or</span>(<span class='string'>&quot;&quot;</span>),
-            <span class='self'>self</span>.<span class='ident'>name</span>().<span class='ident'>unwrap_or</span>(<span class='string'>&quot;&quot;</span>))
+<span class="kw">impl</span> <span class="ident">Drop</span> <span class="kw">for</span> <span class="ident">Error</span> {
+    <span class="kw">fn</span> <span class="ident">drop</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {
+        <span class="kw">unsafe</span> { <span class="ident">ffi</span>::<span class="ident">dbus_error_free</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>.<span class="ident">e</span>); }
     }
 }
 
-<span class='kw'>impl</span> <span class='ident'>std</span>::<span class='ident'>error</span>::<span class='ident'>Error</span> <span class='kw'>for</span> <span class='ident'>Error</span> {
-    <span class='kw'>fn</span> <span class='ident'>description</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='kw-2'>&amp;</span><span class='ident'>str</span> { <span class='string'>&quot;D-Bus error&quot;</span> }
-}
-
-<span class='kw'>impl</span> <span class='ident'>std</span>::<span class='ident'>fmt</span>::<span class='ident'>Display</span> <span class='kw'>for</span> <span class='ident'>Error</span> {
-    <span class='kw'>fn</span> <span class='ident'>fmt</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>f</span>: <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>std</span>::<span class='ident'>fmt</span>::<span class='ident'>Formatter</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span>(),<span class='ident'>std</span>::<span class='ident'>fmt</span>::<span class='ident'>Error</span><span class='op'>&gt;</span> {
-        <span class='kw'>if</span> <span class='kw'>let</span> <span class='prelude-val'>Some</span>(<span class='ident'>x</span>) <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>message</span>() {
-             <span class='macro'>write</span><span class='macro'>!</span>(<span class='ident'>f</span>, <span class='string'>&quot;{:?}&quot;</span>, <span class='ident'>x</span>.<span class='ident'>to_string</span>())
-        } <span class='kw'>else</span> { <span class='prelude-val'>Ok</span>(()) }
+<span class="kw">impl</span> <span class="ident">std</span>::<span class="ident">fmt</span>::<span class="ident">Debug</span> <span class="kw">for</span> <span class="ident">Error</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">std</span>::<span class="ident">fmt</span>::<span class="ident">Formatter</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(), <span class="ident">std</span>::<span class="ident">fmt</span>::<span class="ident">Error</span><span class="op">&gt;</span> {
+        <span class="macro">write</span><span class="macro">!</span>(<span class="ident">f</span>, <span class="string">&quot;D-Bus error: {} ({})&quot;</span>, <span class="self">self</span>.<span class="ident">message</span>().<span class="ident">unwrap_or</span>(<span class="string">&quot;&quot;</span>),
+            <span class="self">self</span>.<span class="ident">name</span>().<span class="ident">unwrap_or</span>(<span class="string">&quot;&quot;</span>))
     }
 }
 
-<span class='doccomment'>/// When listening for incoming events on the D-Bus, this enum will tell you what type</span>
-<span class='doccomment'>/// of incoming event has happened.</span>
-<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>)]</span>
-<span class='kw'>pub</span> <span class='kw'>enum</span> <span class='ident'>ConnectionItem</span> {
-    <span class='doccomment'>/// No event between now and timeout</span>
-    <span class='ident'>Nothing</span>,
-    <span class='doccomment'>/// Incoming method call</span>
-    <span class='ident'>MethodCall</span>(<span class='ident'>Message</span>),
-    <span class='doccomment'>/// Incoming signal</span>
-    <span class='ident'>Signal</span>(<span class='ident'>Message</span>),
-    <span class='doccomment'>/// Incoming method return (mostly used for Async I/O)</span>
-    <span class='ident'>MethodReturn</span>(<span class='ident'>Message</span>),
-    <span class='doccomment'>/// Indicates whether a file descriptor should be monitored or not.</span>
-    <span class='doccomment'>/// Unless you&#39;re doing Async I/O, you can simply ignore this variant.</span>
-    <span class='ident'>WatchFd</span>(<span class='ident'>Watch</span>),
+<span class="kw">impl</span> <span class="ident">std</span>::<span class="ident">error</span>::<span class="ident">Error</span> <span class="kw">for</span> <span class="ident">Error</span> {
+    <span class="kw">fn</span> <span class="ident">description</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="ident">str</span> { <span class="string">&quot;D-Bus error&quot;</span> }
 }
 
-<span class='doccomment'>/// ConnectionItem iterator</span>
-<span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>ConnectionItems</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span> {
-    <span class='ident'>c</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;a</span> <span class='ident'>Connection</span>,
-    <span class='ident'>timeout_ms</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>i32</span><span class='op'>&gt;</span>,
-}
-
-<span class='kw'>impl</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span> <span class='ident'>Iterator</span> <span class='kw'>for</span> <span class='ident'>ConnectionItems</span><span class='op'>&lt;</span><span class='lifetime'>&#39;a</span><span class='op'>&gt;</span> {
-    <span class='kw'>type</span> <span class='ident'>Item</span> <span class='op'>=</span> <span class='ident'>ConnectionItem</span>;
-    <span class='kw'>fn</span> <span class='ident'>next</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>ConnectionItem</span><span class='op'>&gt;</span> {
-        <span class='kw'>loop</span> {
-            <span class='kw'>let</span> <span class='ident'>i</span> <span class='op'>=</span> <span class='self'>self</span>.<span class='ident'>c</span>.<span class='ident'>i</span>.<span class='ident'>pending_items</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>pop_front</span>();
-            <span class='kw'>if</span> <span class='ident'>i</span>.<span class='ident'>is_some</span>() { <span class='kw'>return</span> <span class='ident'>i</span>; }
-
-            <span class='kw'>match</span> <span class='self'>self</span>.<span class='ident'>timeout_ms</span> {
-                <span class='prelude-val'>Some</span>(<span class='ident'>t</span>) <span class='op'>=&gt;</span> {
-                    <span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='kw'>unsafe</span> { <span class='ident'>ffi</span>::<span class='ident'>dbus_connection_read_write_dispatch</span>(<span class='self'>self</span>.<span class='ident'>c</span>.<span class='ident'>conn</span>(), <span class='ident'>t</span> <span class='kw'>as</span> <span class='ident'>libc</span>::<span class='ident'>c_int</span>) };
-                    <span class='kw'>if</span> <span class='op'>!</span><span class='self'>self</span>.<span class='ident'>c</span>.<span class='ident'>i</span>.<span class='ident'>pending_items</span>.<span class='ident'>borrow</span>().<span class='ident'>is_empty</span>() { <span class='kw'>continue</span> };
-                    <span class='kw'>if</span> <span class='ident'>r</span> <span class='op'>==</span> <span class='number'>0</span> { <span class='kw'>return</span> <span class='prelude-val'>None</span>; }
-                    <span class='kw'>return</span> <span class='prelude-val'>Some</span>(<span class='ident'>ConnectionItem</span>::<span class='ident'>Nothing</span>);
-                }
-                <span class='prelude-val'>None</span> <span class='op'>=&gt;</span> {
-                    <span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='kw'>unsafe</span> { <span class='ident'>ffi</span>::<span class='ident'>dbus_connection_dispatch</span>(<span class='self'>self</span>.<span class='ident'>c</span>.<span class='ident'>conn</span>()) };
-                    <span class='kw'>if</span> <span class='op'>!</span><span class='self'>self</span>.<span class='ident'>c</span>.<span class='ident'>i</span>.<span class='ident'>pending_items</span>.<span class='ident'>borrow</span>().<span class='ident'>is_empty</span>() { <span class='kw'>continue</span> };
-                    <span class='kw'>if</span> <span class='ident'>r</span> <span class='op'>==</span> <span class='ident'>ffi</span>::<span class='ident'>DBusDispatchStatus</span>::<span class='ident'>DataRemains</span> { <span class='kw'>continue</span> };
-                    <span class='kw'>if</span> <span class='ident'>r</span> <span class='op'>==</span> <span class='ident'>ffi</span>::<span class='ident'>DBusDispatchStatus</span>::<span class='ident'>Complete</span> { <span class='kw'>return</span> <span class='prelude-val'>None</span> };
-                    <span class='macro'>panic</span><span class='macro'>!</span>(<span class='string'>&quot;dbus_connection_dispatch failed&quot;</span>);
-                }
-            }
-        }
+<span class="kw">impl</span> <span class="ident">std</span>::<span class="ident">fmt</span>::<span class="ident">Display</span> <span class="kw">for</span> <span class="ident">Error</span> {
+    <span class="kw">fn</span> <span class="ident">fmt</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">f</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">std</span>::<span class="ident">fmt</span>::<span class="ident">Formatter</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>(),<span class="ident">std</span>::<span class="ident">fmt</span>::<span class="ident">Error</span><span class="op">&gt;</span> {
+        <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">x</span>) <span class="op">=</span> <span class="self">self</span>.<span class="ident">message</span>() {
+             <span class="macro">write</span><span class="macro">!</span>(<span class="ident">f</span>, <span class="string">&quot;{:?}&quot;</span>, <span class="ident">x</span>.<span class="ident">to_string</span>())
+        } <span class="kw">else</span> { <span class="prelude-val">Ok</span>(()) }
     }
 }
 
-<span class='comment'>/* Since we register callbacks with userdata pointers,
-   we need to make sure the connection pointer does not move around.
-   Hence this extra indirection. */</span>
-<span class='kw'>struct</span> <span class='ident'>IConnection</span> {
-    <span class='ident'>conn</span>: <span class='ident'>Cell</span><span class='op'>&lt;</span><span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>ffi</span>::<span class='ident'>DBusConnection</span><span class='op'>&gt;</span>,
-    <span class='ident'>pending_items</span>: <span class='ident'>RefCell</span><span class='op'>&lt;</span><span class='ident'>LinkedList</span><span class='op'>&lt;</span><span class='ident'>ConnectionItem</span><span class='op'>&gt;&gt;</span>,
-    <span class='ident'>watches</span>: <span class='prelude-ty'>Option</span><span class='op'>&lt;</span><span class='ident'>Box</span><span class='op'>&lt;</span><span class='ident'>watch</span>::<span class='ident'>WatchList</span><span class='op'>&gt;&gt;</span>,
-}
-
-<span class='doccomment'>/// A D-Bus connection. Start here if you want to get on the D-Bus!</span>
-<span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Connection</span> {
-    <span class='ident'>i</span>: <span class='ident'>Box</span><span class='op'>&lt;</span><span class='ident'>IConnection</span><span class='op'>&gt;</span>,
-}
-
-<span class='kw'>extern</span> <span class='string'>&quot;C&quot;</span> <span class='kw'>fn</span> <span class='ident'>filter_message_cb</span>(<span class='ident'>conn</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>ffi</span>::<span class='ident'>DBusConnection</span>, <span class='ident'>msg</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>ffi</span>::<span class='ident'>DBusMessage</span>,
-    <span class='ident'>user_data</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>libc</span>::<span class='ident'>c_void</span>) <span class='op'>-&gt;</span> <span class='ident'>ffi</span>::<span class='ident'>DBusHandlerResult</span> {
-
-    <span class='kw'>let</span> <span class='ident'>m</span> <span class='op'>=</span> <span class='ident'>message</span>::<span class='ident'>message_from_ptr</span>(<span class='ident'>msg</span>, <span class='boolval'>true</span>);
-    <span class='kw'>let</span> <span class='ident'>i</span>: <span class='kw-2'>&amp;</span><span class='ident'>IConnection</span> <span class='op'>=</span> <span class='kw'>unsafe</span> { <span class='ident'>mem</span>::<span class='ident'>transmute</span>(<span class='ident'>user_data</span>) };
-    <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>i</span>.<span class='ident'>conn</span>.<span class='ident'>get</span>() <span class='op'>==</span> <span class='ident'>conn</span>);
-
-    <span class='kw'>let</span> <span class='ident'>mtype</span>: <span class='ident'>ffi</span>::<span class='ident'>DBusMessageType</span> <span class='op'>=</span> <span class='kw'>unsafe</span> { <span class='ident'>mem</span>::<span class='ident'>transmute</span>(<span class='ident'>ffi</span>::<span class='ident'>dbus_message_get_type</span>(<span class='ident'>msg</span>)) };
-    <span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='kw'>match</span> <span class='ident'>mtype</span> {
-        <span class='ident'>ffi</span>::<span class='ident'>DBusMessageType</span>::<span class='ident'>Signal</span> <span class='op'>=&gt;</span> {
-            <span class='ident'>i</span>.<span class='ident'>pending_items</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>push_back</span>(<span class='ident'>ConnectionItem</span>::<span class='ident'>Signal</span>(<span class='ident'>m</span>));
-            <span class='ident'>ffi</span>::<span class='ident'>DBusHandlerResult</span>::<span class='ident'>Handled</span>
-        }
-        <span class='ident'>ffi</span>::<span class='ident'>DBusMessageType</span>::<span class='ident'>MethodReturn</span> <span class='op'>=&gt;</span> {
-            <span class='ident'>i</span>.<span class='ident'>pending_items</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>push_back</span>(<span class='ident'>ConnectionItem</span>::<span class='ident'>MethodReturn</span>(<span class='ident'>m</span>));
-            <span class='ident'>ffi</span>::<span class='ident'>DBusHandlerResult</span>::<span class='ident'>NotYetHandled</span>
-        }
-        _ <span class='op'>=&gt;</span> <span class='ident'>ffi</span>::<span class='ident'>DBusHandlerResult</span>::<span class='ident'>NotYetHandled</span>,
-    };
-
-    <span class='ident'>r</span>
-}
-
-<span class='kw'>extern</span> <span class='string'>&quot;C&quot;</span> <span class='kw'>fn</span> <span class='ident'>object_path_message_cb</span>(<span class='ident'>conn</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>ffi</span>::<span class='ident'>DBusConnection</span>, <span class='ident'>msg</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>ffi</span>::<span class='ident'>DBusMessage</span>,
-    <span class='ident'>user_data</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>libc</span>::<span class='ident'>c_void</span>) <span class='op'>-&gt;</span> <span class='ident'>ffi</span>::<span class='ident'>DBusHandlerResult</span> {
-
-    <span class='kw'>let</span> <span class='ident'>m</span> <span class='op'>=</span> <span class='ident'>message</span>::<span class='ident'>message_from_ptr</span>(<span class='ident'>msg</span>, <span class='boolval'>true</span>);
-    <span class='kw'>let</span> <span class='ident'>i</span>: <span class='kw-2'>&amp;</span><span class='ident'>IConnection</span> <span class='op'>=</span> <span class='kw'>unsafe</span> { <span class='ident'>mem</span>::<span class='ident'>transmute</span>(<span class='ident'>user_data</span>) };
-    <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>i</span>.<span class='ident'>conn</span>.<span class='ident'>get</span>() <span class='op'>==</span> <span class='ident'>conn</span>);
-    <span class='ident'>i</span>.<span class='ident'>pending_items</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>push_back</span>(<span class='ident'>ConnectionItem</span>::<span class='ident'>MethodCall</span>(<span class='ident'>m</span>));
-    <span class='ident'>ffi</span>::<span class='ident'>DBusHandlerResult</span>::<span class='ident'>Handled</span>
-}
-
-<span class='kw'>impl</span> <span class='ident'>Connection</span> {
-
-    <span class='attribute'>#[<span class='ident'>inline</span>(<span class='ident'>always</span>)]</span>
-    <span class='kw'>fn</span> <span class='ident'>conn</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>ffi</span>::<span class='ident'>DBusConnection</span> {
-        <span class='self'>self</span>.<span class='ident'>i</span>.<span class='ident'>conn</span>.<span class='ident'>get</span>()
-    }
-
-    <span class='doccomment'>/// Creates a new D-Bus connection.</span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>get_private</span>(<span class='ident'>bus</span>: <span class='ident'>BusType</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>Connection</span>, <span class='ident'>Error</span><span class='op'>&gt;</span> {
-        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>e</span> <span class='op'>=</span> <span class='ident'>Error</span>::<span class='ident'>empty</span>();
-        <span class='kw'>let</span> <span class='ident'>conn</span> <span class='op'>=</span> <span class='kw'>unsafe</span> { <span class='ident'>ffi</span>::<span class='ident'>dbus_bus_get_private</span>(<span class='ident'>bus</span>, <span class='ident'>e</span>.<span class='ident'>get_mut</span>()) };
-        <span class='kw'>if</span> <span class='ident'>conn</span> <span class='op'>==</span> <span class='ident'>ptr</span>::<span class='ident'>null_mut</span>() {
-            <span class='kw'>return</span> <span class='prelude-val'>Err</span>(<span class='ident'>e</span>)
-        }
-        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>c</span> <span class='op'>=</span> <span class='ident'>Connection</span> { <span class='ident'>i</span>: <span class='ident'>Box</span>::<span class='ident'>new</span>(<span class='ident'>IConnection</span> {
-            <span class='ident'>conn</span>: <span class='ident'>Cell</span>::<span class='ident'>new</span>(<span class='ident'>conn</span>),
-            <span class='ident'>pending_items</span>: <span class='ident'>RefCell</span>::<span class='ident'>new</span>(<span class='ident'>LinkedList</span>::<span class='ident'>new</span>()),
-            <span class='ident'>watches</span>: <span class='prelude-val'>None</span>,
-        })};
-
-        <span class='comment'>/* No, we don&#39;t want our app to suddenly quit if dbus goes down */</span>
-        <span class='kw'>unsafe</span> { <span class='ident'>ffi</span>::<span class='ident'>dbus_connection_set_exit_on_disconnect</span>(<span class='ident'>conn</span>, <span class='number'>0</span>) };
-        <span class='macro'>assert</span><span class='macro'>!</span>(<span class='kw'>unsafe</span> {
-            <span class='ident'>ffi</span>::<span class='ident'>dbus_connection_add_filter</span>(<span class='ident'>c</span>.<span class='ident'>conn</span>(), <span class='prelude-val'>Some</span>(<span class='ident'>filter_message_cb</span> <span class='kw'>as</span> <span class='ident'>ffi</span>::<span class='ident'>DBusCallback</span>), <span class='ident'>mem</span>::<span class='ident'>transmute</span>(<span class='kw-2'>&amp;</span><span class='op'>*</span><span class='ident'>c</span>.<span class='ident'>i</span>), <span class='prelude-val'>None</span>)
-        } <span class='op'>!=</span> <span class='number'>0</span>);
-
-        <span class='kw'>let</span> <span class='ident'>iconn</span>: <span class='op'>*</span><span class='kw'>const</span> <span class='ident'>IConnection</span> <span class='op'>=</span> <span class='kw-2'>&amp;</span><span class='op'>*</span><span class='ident'>c</span>.<span class='ident'>i</span>;
-        <span class='ident'>c</span>.<span class='ident'>i</span>.<span class='ident'>watches</span> <span class='op'>=</span> <span class='prelude-val'>Some</span>(<span class='ident'>watch</span>::<span class='ident'>WatchList</span>::<span class='ident'>new</span>(<span class='kw-2'>&amp;</span><span class='ident'>c</span>, <span class='ident'>Box</span>::<span class='ident'>new</span>(<span class='kw'>move</span> <span class='op'>|</span><span class='ident'>w</span><span class='op'>|</span> {
-            <span class='kw'>let</span> <span class='ident'>i</span>: <span class='kw-2'>&amp;</span><span class='ident'>IConnection</span> <span class='op'>=</span> <span class='kw'>unsafe</span> { <span class='ident'>mem</span>::<span class='ident'>transmute</span>(<span class='ident'>iconn</span>) };
-            <span class='ident'>i</span>.<span class='ident'>pending_items</span>.<span class='ident'>borrow_mut</span>().<span class='ident'>push_back</span>(<span class='ident'>ConnectionItem</span>::<span class='ident'>WatchFd</span>(<span class='ident'>w</span>));
-        })));
-
-        <span class='prelude-val'>Ok</span>(<span class='ident'>c</span>)
-    }
-
-    <span class='doccomment'>/// Sends a message over the D-Bus and waits for a reply.</span>
-    <span class='doccomment'>/// This is usually used for method calls.</span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>send_with_reply_and_block</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>msg</span>: <span class='ident'>Message</span>, <span class='ident'>timeout_ms</span>: <span class='ident'>i32</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>Message</span>, <span class='ident'>Error</span><span class='op'>&gt;</span> {
-        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>e</span> <span class='op'>=</span> <span class='ident'>Error</span>::<span class='ident'>empty</span>();
-        <span class='kw'>let</span> <span class='ident'>response</span> <span class='op'>=</span> <span class='kw'>unsafe</span> {
-            <span class='ident'>ffi</span>::<span class='ident'>dbus_connection_send_with_reply_and_block</span>(<span class='self'>self</span>.<span class='ident'>conn</span>(), <span class='ident'>message</span>::<span class='ident'>get_message_ptr</span>(<span class='kw-2'>&amp;</span><span class='ident'>msg</span>),
-                <span class='ident'>timeout_ms</span> <span class='kw'>as</span> <span class='ident'>libc</span>::<span class='ident'>c_int</span>, <span class='ident'>e</span>.<span class='ident'>get_mut</span>())
-        };
-        <span class='kw'>if</span> <span class='ident'>response</span> <span class='op'>==</span> <span class='ident'>ptr</span>::<span class='ident'>null_mut</span>() {
-            <span class='kw'>return</span> <span class='prelude-val'>Err</span>(<span class='ident'>e</span>);
-        }
-        <span class='prelude-val'>Ok</span>(<span class='ident'>message</span>::<span class='ident'>message_from_ptr</span>(<span class='ident'>response</span>, <span class='boolval'>false</span>))
-    }
-
-    <span class='doccomment'>/// Sends a message over the D-Bus without waiting. Useful for sending signals and method call replies.</span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>send</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>msg</span>: <span class='ident'>Message</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>u32</span>,()<span class='op'>&gt;</span> {
-        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>serial</span> <span class='op'>=</span> <span class='number'>0u32</span>;
-        <span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='kw'>unsafe</span> { <span class='ident'>ffi</span>::<span class='ident'>dbus_connection_send</span>(<span class='self'>self</span>.<span class='ident'>conn</span>(), <span class='ident'>message</span>::<span class='ident'>get_message_ptr</span>(<span class='kw-2'>&amp;</span><span class='ident'>msg</span>), <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>serial</span>) };
-        <span class='kw'>if</span> <span class='ident'>r</span> <span class='op'>==</span> <span class='number'>0</span> { <span class='kw'>return</span> <span class='prelude-val'>Err</span>(()); }
-        <span class='kw'>unsafe</span> { <span class='ident'>ffi</span>::<span class='ident'>dbus_connection_flush</span>(<span class='self'>self</span>.<span class='ident'>conn</span>()) };
-        <span class='prelude-val'>Ok</span>(<span class='ident'>serial</span>)
-    }
-
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>unique_name</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>String</span> {
-        <span class='kw'>let</span> <span class='ident'>c</span> <span class='op'>=</span> <span class='kw'>unsafe</span> { <span class='ident'>ffi</span>::<span class='ident'>dbus_bus_get_unique_name</span>(<span class='self'>self</span>.<span class='ident'>conn</span>()) };
-        <span class='ident'>c_str_to_slice</span>(<span class='kw-2'>&amp;</span><span class='ident'>c</span>).<span class='ident'>unwrap_or</span>(<span class='string'>&quot;&quot;</span>).<span class='ident'>to_string</span>()
-    }
-
-    <span class='doccomment'>/// Check if there are new incoming events</span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>iter</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>timeout_ms</span>: <span class='ident'>i32</span>) <span class='op'>-&gt;</span> <span class='ident'>ConnectionItems</span> {
-        <span class='ident'>ConnectionItems</span> {
-            <span class='ident'>c</span>: <span class='self'>self</span>,
-            <span class='ident'>timeout_ms</span>: <span class='prelude-val'>Some</span>(<span class='ident'>timeout_ms</span>),
-        }
-    }
-
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>register_object_path</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>path</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span>(), <span class='ident'>Error</span><span class='op'>&gt;</span> {
-        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>e</span> <span class='op'>=</span> <span class='ident'>Error</span>::<span class='ident'>empty</span>();
-        <span class='kw'>let</span> <span class='ident'>p</span> <span class='op'>=</span> <span class='ident'>to_c_str</span>(<span class='ident'>path</span>);
-        <span class='kw'>let</span> <span class='ident'>vtable</span> <span class='op'>=</span> <span class='ident'>ffi</span>::<span class='ident'>DBusObjectPathVTable</span> {
-            <span class='ident'>unregister_function</span>: <span class='prelude-val'>None</span>,
-            <span class='ident'>message_function</span>: <span class='prelude-val'>Some</span>(<span class='ident'>object_path_message_cb</span> <span class='kw'>as</span> <span class='ident'>ffi</span>::<span class='ident'>DBusCallback</span>),
-            <span class='ident'>dbus_internal_pad1</span>: <span class='prelude-val'>None</span>,
-            <span class='ident'>dbus_internal_pad2</span>: <span class='prelude-val'>None</span>,
-            <span class='ident'>dbus_internal_pad3</span>: <span class='prelude-val'>None</span>,
-            <span class='ident'>dbus_internal_pad4</span>: <span class='prelude-val'>None</span>,
-        };
-        <span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='kw'>unsafe</span> {
-            <span class='kw'>let</span> <span class='ident'>user_data</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>libc</span>::<span class='ident'>c_void</span> <span class='op'>=</span> <span class='ident'>mem</span>::<span class='ident'>transmute</span>(<span class='kw-2'>&amp;</span><span class='op'>*</span><span class='self'>self</span>.<span class='ident'>i</span>);
-            <span class='ident'>ffi</span>::<span class='ident'>dbus_connection_try_register_object_path</span>(<span class='self'>self</span>.<span class='ident'>conn</span>(), <span class='ident'>p</span>.<span class='ident'>as_ptr</span>(), <span class='kw-2'>&amp;</span><span class='ident'>vtable</span>, <span class='ident'>user_data</span>, <span class='ident'>e</span>.<span class='ident'>get_mut</span>())
-        };
-        <span class='kw'>if</span> <span class='ident'>r</span> <span class='op'>==</span> <span class='number'>0</span> { <span class='prelude-val'>Err</span>(<span class='ident'>e</span>) } <span class='kw'>else</span> { <span class='prelude-val'>Ok</span>(()) }
-    }
-
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>unregister_object_path</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>path</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) {
-        <span class='kw'>let</span> <span class='ident'>p</span> <span class='op'>=</span> <span class='ident'>to_c_str</span>(<span class='ident'>path</span>);
-        <span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='kw'>unsafe</span> { <span class='ident'>ffi</span>::<span class='ident'>dbus_connection_unregister_object_path</span>(<span class='self'>self</span>.<span class='ident'>conn</span>(), <span class='ident'>p</span>.<span class='ident'>as_ptr</span>()) };
-        <span class='kw'>if</span> <span class='ident'>r</span> <span class='op'>==</span> <span class='number'>0</span> { <span class='macro'>panic</span><span class='macro'>!</span>(<span class='string'>&quot;Out of memory&quot;</span>); }
-    }
-
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>list_registered_object_paths</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>path</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span> {
-        <span class='kw'>let</span> <span class='ident'>p</span> <span class='op'>=</span> <span class='ident'>to_c_str</span>(<span class='ident'>path</span>);
-        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>clist</span>: <span class='op'>*</span><span class='kw-2'>mut</span> <span class='op'>*</span><span class='kw-2'>mut</span> <span class='ident'>libc</span>::<span class='ident'>c_char</span> <span class='op'>=</span> <span class='ident'>ptr</span>::<span class='ident'>null_mut</span>();
-        <span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='kw'>unsafe</span> { <span class='ident'>ffi</span>::<span class='ident'>dbus_connection_list_registered</span>(<span class='self'>self</span>.<span class='ident'>conn</span>(), <span class='ident'>p</span>.<span class='ident'>as_ptr</span>(), <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>clist</span>) };
-        <span class='kw'>if</span> <span class='ident'>r</span> <span class='op'>==</span> <span class='number'>0</span> { <span class='macro'>panic</span><span class='macro'>!</span>(<span class='string'>&quot;Out of memory&quot;</span>); }
-        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>v</span> <span class='op'>=</span> <span class='ident'>Vec</span>::<span class='ident'>new</span>();
-        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>i</span> <span class='op'>=</span> <span class='number'>0</span>;
-        <span class='kw'>loop</span> {
-            <span class='kw'>let</span> <span class='ident'>s</span> <span class='op'>=</span> <span class='kw'>unsafe</span> {
-                <span class='kw'>let</span> <span class='ident'>citer</span> <span class='op'>=</span> <span class='ident'>clist</span>.<span class='ident'>offset</span>(<span class='ident'>i</span>);
-                <span class='kw'>if</span> <span class='op'>*</span><span class='ident'>citer</span> <span class='op'>==</span> <span class='ident'>ptr</span>::<span class='ident'>null_mut</span>() { <span class='kw'>break</span> };
-                <span class='ident'>mem</span>::<span class='ident'>transmute</span>(<span class='ident'>citer</span>)
-            };
-            <span class='ident'>v</span>.<span class='ident'>push</span>(<span class='macro'>format</span><span class='macro'>!</span>(<span class='string'>&quot;{}&quot;</span>, <span class='ident'>c_str_to_slice</span>(<span class='ident'>s</span>).<span class='ident'>unwrap</span>()));
-            <span class='ident'>i</span> <span class='op'>+=</span> <span class='number'>1</span>;
-        }
-        <span class='kw'>unsafe</span> { <span class='ident'>ffi</span>::<span class='ident'>dbus_free_string_array</span>(<span class='ident'>clist</span>) };
-        <span class='ident'>v</span>
-    }
-
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>register_name</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>name</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>, <span class='ident'>flags</span>: <span class='ident'>u32</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>RequestNameReply</span>, <span class='ident'>Error</span><span class='op'>&gt;</span> {
-        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>e</span> <span class='op'>=</span> <span class='ident'>Error</span>::<span class='ident'>empty</span>();
-        <span class='kw'>let</span> <span class='ident'>n</span> <span class='op'>=</span> <span class='ident'>to_c_str</span>(<span class='ident'>name</span>);
-        <span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='kw'>unsafe</span> { <span class='ident'>ffi</span>::<span class='ident'>dbus_bus_request_name</span>(<span class='self'>self</span>.<span class='ident'>conn</span>(), <span class='ident'>n</span>.<span class='ident'>as_ptr</span>(), <span class='ident'>flags</span>, <span class='ident'>e</span>.<span class='ident'>get_mut</span>()) };
-        <span class='kw'>if</span> <span class='ident'>r</span> <span class='op'>==</span> <span class='op'>-</span><span class='number'>1</span> { <span class='prelude-val'>Err</span>(<span class='ident'>e</span>) } <span class='kw'>else</span> { <span class='prelude-val'>Ok</span>(<span class='kw'>unsafe</span> { <span class='ident'>mem</span>::<span class='ident'>transmute</span>(<span class='ident'>r</span>) }) }
-    }
-
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>release_name</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>name</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span><span class='ident'>ReleaseNameReply</span>, <span class='ident'>Error</span><span class='op'>&gt;</span> {
-        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>e</span> <span class='op'>=</span> <span class='ident'>Error</span>::<span class='ident'>empty</span>();
-        <span class='kw'>let</span> <span class='ident'>n</span> <span class='op'>=</span> <span class='ident'>to_c_str</span>(<span class='ident'>name</span>);
-        <span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='kw'>unsafe</span> { <span class='ident'>ffi</span>::<span class='ident'>dbus_bus_release_name</span>(<span class='self'>self</span>.<span class='ident'>conn</span>(), <span class='ident'>n</span>.<span class='ident'>as_ptr</span>(), <span class='ident'>e</span>.<span class='ident'>get_mut</span>()) };
-        <span class='kw'>if</span> <span class='ident'>r</span> <span class='op'>==</span> <span class='op'>-</span><span class='number'>1</span> { <span class='prelude-val'>Err</span>(<span class='ident'>e</span>) } <span class='kw'>else</span> { <span class='prelude-val'>Ok</span>(<span class='kw'>unsafe</span> { <span class='ident'>mem</span>::<span class='ident'>transmute</span>(<span class='ident'>r</span>) }) }
-    }
-
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>add_match</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>rule</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span>(), <span class='ident'>Error</span><span class='op'>&gt;</span> {
-        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>e</span> <span class='op'>=</span> <span class='ident'>Error</span>::<span class='ident'>empty</span>();
-        <span class='kw'>let</span> <span class='ident'>n</span> <span class='op'>=</span> <span class='ident'>to_c_str</span>(<span class='ident'>rule</span>);
-        <span class='kw'>unsafe</span> { <span class='ident'>ffi</span>::<span class='ident'>dbus_bus_add_match</span>(<span class='self'>self</span>.<span class='ident'>conn</span>(), <span class='ident'>n</span>.<span class='ident'>as_ptr</span>(), <span class='ident'>e</span>.<span class='ident'>get_mut</span>()) };
-        <span class='kw'>if</span> <span class='ident'>e</span>.<span class='ident'>name</span>().<span class='ident'>is_some</span>() { <span class='prelude-val'>Err</span>(<span class='ident'>e</span>) } <span class='kw'>else</span> { <span class='prelude-val'>Ok</span>(()) }
-    }
-
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>remove_match</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>rule</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span>(), <span class='ident'>Error</span><span class='op'>&gt;</span> {
-        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>e</span> <span class='op'>=</span> <span class='ident'>Error</span>::<span class='ident'>empty</span>();
-        <span class='kw'>let</span> <span class='ident'>n</span> <span class='op'>=</span> <span class='ident'>to_c_str</span>(<span class='ident'>rule</span>);
-        <span class='kw'>unsafe</span> { <span class='ident'>ffi</span>::<span class='ident'>dbus_bus_remove_match</span>(<span class='self'>self</span>.<span class='ident'>conn</span>(), <span class='ident'>n</span>.<span class='ident'>as_ptr</span>(), <span class='ident'>e</span>.<span class='ident'>get_mut</span>()) };
-        <span class='kw'>if</span> <span class='ident'>e</span>.<span class='ident'>name</span>().<span class='ident'>is_some</span>() { <span class='prelude-val'>Err</span>(<span class='ident'>e</span>) } <span class='kw'>else</span> { <span class='prelude-val'>Ok</span>(()) }
-    }
-
-    <span class='doccomment'>/// Async I/O: Get an up-to-date list of file descriptors to watch.</span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>watch_fds</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>Watch</span><span class='op'>&gt;</span> {
-        <span class='self'>self</span>.<span class='ident'>i</span>.<span class='ident'>watches</span>.<span class='ident'>as_ref</span>().<span class='ident'>unwrap</span>().<span class='ident'>get_enabled_fds</span>()
-    }
-
-    <span class='doccomment'>/// Async I/O: Call this function whenever you detected an event on the Fd,</span>
-    <span class='doccomment'>/// Flags are a set of WatchEvent bits.</span>
-    <span class='doccomment'>/// The returned iterator will return pending items only, never block for new events.</span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>watch_handle</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>fd</span>: <span class='ident'>RawFd</span>, <span class='ident'>flags</span>: <span class='ident'>libc</span>::<span class='ident'>c_uint</span>) <span class='op'>-&gt;</span> <span class='ident'>ConnectionItems</span> {
-        <span class='self'>self</span>.<span class='ident'>i</span>.<span class='ident'>watches</span>.<span class='ident'>as_ref</span>().<span class='ident'>unwrap</span>().<span class='ident'>watch_handle</span>(<span class='ident'>fd</span>, <span class='ident'>flags</span>);
-        <span class='ident'>ConnectionItems</span> { <span class='ident'>c</span>: <span class='self'>self</span>, <span class='ident'>timeout_ms</span>: <span class='prelude-val'>None</span> }
-    }
-
-}
-
-<span class='kw'>impl</span> <span class='ident'>Drop</span> <span class='kw'>for</span> <span class='ident'>Connection</span> {
-    <span class='kw'>fn</span> <span class='ident'>drop</span>(<span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='self'>self</span>) {
-        <span class='kw'>unsafe</span> {
-            <span class='ident'>ffi</span>::<span class='ident'>dbus_connection_close</span>(<span class='self'>self</span>.<span class='ident'>conn</span>());
-            <span class='ident'>ffi</span>::<span class='ident'>dbus_connection_unref</span>(<span class='self'>self</span>.<span class='ident'>conn</span>());
-        }
+<span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">arg</span>::<span class="ident">TypeMismatchError</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Error</span> {
+    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">t</span>: <span class="ident">arg</span>::<span class="ident">TypeMismatchError</span>) <span class="op">-&gt;</span> <span class="ident">Error</span> {
+        <span class="ident">Error</span>::<span class="ident">new_custom</span>(<span class="string">&quot;org.freedesktop.DBus.Error.Failed&quot;</span>, <span class="kw-2">&amp;</span><span class="macro">format</span><span class="macro">!</span>(<span class="string">&quot;{}&quot;</span>, <span class="ident">t</span>))
     }
 }
 
-<span class='kw'>impl</span> <span class='ident'>std</span>::<span class='ident'>fmt</span>::<span class='ident'>Debug</span> <span class='kw'>for</span> <span class='ident'>Connection</span> {
-    <span class='kw'>fn</span> <span class='ident'>fmt</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>f</span>: <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>std</span>::<span class='ident'>fmt</span>::<span class='ident'>Formatter</span>) <span class='op'>-&gt;</span> <span class='prelude-ty'>Result</span><span class='op'>&lt;</span>(), <span class='ident'>std</span>::<span class='ident'>fmt</span>::<span class='ident'>Error</span><span class='op'>&gt;</span> {
-        <span class='macro'>write</span><span class='macro'>!</span>(<span class='ident'>f</span>, <span class='string'>&quot;D-Bus Connection({})&quot;</span>, <span class='self'>self</span>.<span class='ident'>unique_name</span>())
+<span class="kw">impl</span> <span class="ident">From</span><span class="op">&lt;</span><span class="ident">tree</span>::<span class="ident">MethodErr</span><span class="op">&gt;</span> <span class="kw">for</span> <span class="ident">Error</span> {
+    <span class="kw">fn</span> <span class="ident">from</span>(<span class="ident">t</span>: <span class="ident">tree</span>::<span class="ident">MethodErr</span>) <span class="op">-&gt;</span> <span class="ident">Error</span> {
+        <span class="ident">Error</span>::<span class="ident">new_custom</span>(<span class="ident">t</span>.<span class="ident">errorname</span>(), <span class="ident">t</span>.<span class="ident">description</span>())
     }
 }
 
-<span class='attribute'>#[<span class='ident'>cfg</span>(<span class='ident'>test</span>)]</span>
-<span class='kw'>mod</span> <span class='ident'>test</span> {
-    <span class='kw'>use</span> <span class='ident'>super</span>::{<span class='ident'>Connection</span>, <span class='ident'>Message</span>, <span class='ident'>BusType</span>, <span class='ident'>MessageItem</span>, <span class='ident'>ConnectionItem</span>, <span class='ident'>NameFlag</span>,
-        <span class='ident'>RequestNameReply</span>, <span class='ident'>ReleaseNameReply</span>};
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">test</span>)]</span>
+<span class="kw">mod</span> <span class="ident">test</span> {
+    <span class="kw">use</span> <span class="kw">super</span>::{<span class="ident">Connection</span>, <span class="ident">Message</span>, <span class="ident">BusType</span>, <span class="ident">MessageItem</span>, <span class="ident">ConnectionItem</span>, <span class="ident">NameFlag</span>,
+        <span class="ident">RequestNameReply</span>, <span class="ident">ReleaseNameReply</span>};
 
-    <span class='attribute'>#[<span class='ident'>test</span>]</span>
-    <span class='kw'>fn</span> <span class='ident'>connection</span>() {
-        <span class='kw'>let</span> <span class='ident'>c</span> <span class='op'>=</span> <span class='ident'>Connection</span>::<span class='ident'>get_private</span>(<span class='ident'>BusType</span>::<span class='ident'>Session</span>).<span class='ident'>unwrap</span>();
-        <span class='kw'>let</span> <span class='ident'>n</span> <span class='op'>=</span> <span class='ident'>c</span>.<span class='ident'>unique_name</span>();
-        <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>n</span>.<span class='ident'>starts_with</span>(<span class='string'>&quot;:1.&quot;</span>));
-        <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Connected to DBus, unique name: {}&quot;</span>, <span class='ident'>n</span>);
+    <span class="attribute">#[<span class="ident">test</span>]</span>
+    <span class="kw">fn</span> <span class="ident">connection</span>() {
+        <span class="kw">let</span> <span class="ident">c</span> <span class="op">=</span> <span class="ident">Connection</span>::<span class="ident">get_private</span>(<span class="ident">BusType</span>::<span class="ident">Session</span>).<span class="ident">unwrap</span>();
+        <span class="kw">let</span> <span class="ident">n</span> <span class="op">=</span> <span class="ident">c</span>.<span class="ident">unique_name</span>();
+        <span class="macro">assert</span><span class="macro">!</span>(<span class="ident">n</span>.<span class="ident">starts_with</span>(<span class="string">&quot;:1.&quot;</span>));
+        <span class="macro">println</span><span class="macro">!</span>(<span class="string">&quot;Connected to DBus, unique name: {}&quot;</span>, <span class="ident">n</span>);
     }
 
-    <span class='attribute'>#[<span class='ident'>test</span>]</span>
-    <span class='kw'>fn</span> <span class='ident'>invalid_message</span>() {
-        <span class='kw'>let</span> <span class='ident'>c</span> <span class='op'>=</span> <span class='ident'>Connection</span>::<span class='ident'>get_private</span>(<span class='ident'>BusType</span>::<span class='ident'>Session</span>).<span class='ident'>unwrap</span>();
-        <span class='kw'>let</span> <span class='ident'>m</span> <span class='op'>=</span> <span class='ident'>Message</span>::<span class='ident'>new_method_call</span>(<span class='string'>&quot;foo.bar&quot;</span>, <span class='string'>&quot;/&quot;</span>, <span class='string'>&quot;foo.bar&quot;</span>, <span class='string'>&quot;FooBar&quot;</span>).<span class='ident'>unwrap</span>();
-        <span class='kw'>let</span> <span class='ident'>e</span> <span class='op'>=</span> <span class='ident'>c</span>.<span class='ident'>send_with_reply_and_block</span>(<span class='ident'>m</span>, <span class='number'>2000</span>).<span class='ident'>err</span>().<span class='ident'>unwrap</span>();
-        <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>e</span>.<span class='ident'>name</span>().<span class='ident'>unwrap</span>() <span class='op'>==</span> <span class='string'>&quot;org.freedesktop.DBus.Error.ServiceUnknown&quot;</span>);
+    <span class="attribute">#[<span class="ident">test</span>]</span>
+    <span class="kw">fn</span> <span class="ident">invalid_message</span>() {
+        <span class="kw">let</span> <span class="ident">c</span> <span class="op">=</span> <span class="ident">Connection</span>::<span class="ident">get_private</span>(<span class="ident">BusType</span>::<span class="ident">Session</span>).<span class="ident">unwrap</span>();
+        <span class="kw">let</span> <span class="ident">m</span> <span class="op">=</span> <span class="ident">Message</span>::<span class="ident">new_method_call</span>(<span class="string">&quot;foo.bar&quot;</span>, <span class="string">&quot;/&quot;</span>, <span class="string">&quot;foo.bar&quot;</span>, <span class="string">&quot;FooBar&quot;</span>).<span class="ident">unwrap</span>();
+        <span class="kw">let</span> <span class="ident">e</span> <span class="op">=</span> <span class="ident">c</span>.<span class="ident">send_with_reply_and_block</span>(<span class="ident">m</span>, <span class="number">2000</span>).<span class="ident">err</span>().<span class="ident">unwrap</span>();
+        <span class="macro">assert</span><span class="macro">!</span>(<span class="ident">e</span>.<span class="ident">name</span>().<span class="ident">unwrap</span>() <span class="op">==</span> <span class="string">&quot;org.freedesktop.DBus.Error.ServiceUnknown&quot;</span>);
     }
 
-    <span class='attribute'>#[<span class='ident'>test</span>]</span>
-    <span class='kw'>fn</span> <span class='ident'>message_listnames</span>() {
-        <span class='kw'>let</span> <span class='ident'>c</span> <span class='op'>=</span> <span class='ident'>Connection</span>::<span class='ident'>get_private</span>(<span class='ident'>BusType</span>::<span class='ident'>Session</span>).<span class='ident'>unwrap</span>();
-        <span class='kw'>let</span> <span class='ident'>m</span> <span class='op'>=</span> <span class='ident'>Message</span>::<span class='ident'>method_call</span>(<span class='kw-2'>&amp;</span><span class='string'>&quot;org.freedesktop.DBus&quot;</span>.<span class='ident'>into</span>(), <span class='kw-2'>&amp;</span><span class='string'>&quot;/&quot;</span>.<span class='ident'>into</span>(),
-            <span class='kw-2'>&amp;</span><span class='string'>&quot;org.freedesktop.DBus&quot;</span>.<span class='ident'>into</span>(), <span class='kw-2'>&amp;</span><span class='string'>&quot;ListNames&quot;</span>.<span class='ident'>into</span>());
-        <span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>c</span>.<span class='ident'>send_with_reply_and_block</span>(<span class='ident'>m</span>, <span class='number'>2000</span>).<span class='ident'>unwrap</span>();
-        <span class='kw'>let</span> <span class='ident'>reply</span> <span class='op'>=</span> <span class='ident'>r</span>.<span class='ident'>get_items</span>();
-        <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;{:?}&quot;</span>, <span class='ident'>reply</span>);
+    <span class="attribute">#[<span class="ident">test</span>]</span>
+    <span class="kw">fn</span> <span class="ident">message_listnames</span>() {
+        <span class="kw">let</span> <span class="ident">c</span> <span class="op">=</span> <span class="ident">Connection</span>::<span class="ident">get_private</span>(<span class="ident">BusType</span>::<span class="ident">Session</span>).<span class="ident">unwrap</span>();
+        <span class="kw">let</span> <span class="ident">m</span> <span class="op">=</span> <span class="ident">Message</span>::<span class="ident">method_call</span>(<span class="kw-2">&amp;</span><span class="string">&quot;org.freedesktop.DBus&quot;</span>.<span class="ident">into</span>(), <span class="kw-2">&amp;</span><span class="string">&quot;/&quot;</span>.<span class="ident">into</span>(),
+            <span class="kw-2">&amp;</span><span class="string">&quot;org.freedesktop.DBus&quot;</span>.<span class="ident">into</span>(), <span class="kw-2">&amp;</span><span class="string">&quot;ListNames&quot;</span>.<span class="ident">into</span>());
+        <span class="kw">let</span> <span class="ident">r</span> <span class="op">=</span> <span class="ident">c</span>.<span class="ident">send_with_reply_and_block</span>(<span class="ident">m</span>, <span class="number">2000</span>).<span class="ident">unwrap</span>();
+        <span class="kw">let</span> <span class="ident">reply</span> <span class="op">=</span> <span class="ident">r</span>.<span class="ident">get_items</span>();
+        <span class="macro">println</span><span class="macro">!</span>(<span class="string">&quot;{:?}&quot;</span>, <span class="ident">reply</span>);
     }
 
-    <span class='attribute'>#[<span class='ident'>test</span>]</span>
-    <span class='kw'>fn</span> <span class='ident'>message_namehasowner</span>() {
-        <span class='kw'>let</span> <span class='ident'>c</span> <span class='op'>=</span> <span class='ident'>Connection</span>::<span class='ident'>get_private</span>(<span class='ident'>BusType</span>::<span class='ident'>Session</span>).<span class='ident'>unwrap</span>();
-        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>m</span> <span class='op'>=</span> <span class='ident'>Message</span>::<span class='ident'>new_method_call</span>(<span class='string'>&quot;org.freedesktop.DBus&quot;</span>, <span class='string'>&quot;/&quot;</span>, <span class='string'>&quot;org.freedesktop.DBus&quot;</span>, <span class='string'>&quot;NameHasOwner&quot;</span>).<span class='ident'>unwrap</span>();
-        <span class='ident'>m</span>.<span class='ident'>append_items</span>(<span class='kw-2'>&amp;</span>[<span class='ident'>MessageItem</span>::<span class='ident'>Str</span>(<span class='string'>&quot;org.freedesktop.DBus&quot;</span>.<span class='ident'>to_string</span>())]);
-        <span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>c</span>.<span class='ident'>send_with_reply_and_block</span>(<span class='ident'>m</span>, <span class='number'>2000</span>).<span class='ident'>unwrap</span>();
-        <span class='kw'>let</span> <span class='ident'>reply</span> <span class='op'>=</span> <span class='ident'>r</span>.<span class='ident'>get_items</span>();
-        <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;{:?}&quot;</span>, <span class='ident'>reply</span>);
-        <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>reply</span>, <span class='macro'>vec</span><span class='macro'>!</span>(<span class='ident'>MessageItem</span>::<span class='ident'>Bool</span>(<span class='boolval'>true</span>)));
+    <span class="attribute">#[<span class="ident">test</span>]</span>
+    <span class="kw">fn</span> <span class="ident">message_namehasowner</span>() {
+        <span class="kw">let</span> <span class="ident">c</span> <span class="op">=</span> <span class="ident">Connection</span>::<span class="ident">get_private</span>(<span class="ident">BusType</span>::<span class="ident">Session</span>).<span class="ident">unwrap</span>();
+        <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">m</span> <span class="op">=</span> <span class="ident">Message</span>::<span class="ident">new_method_call</span>(<span class="string">&quot;org.freedesktop.DBus&quot;</span>, <span class="string">&quot;/&quot;</span>, <span class="string">&quot;org.freedesktop.DBus&quot;</span>, <span class="string">&quot;NameHasOwner&quot;</span>).<span class="ident">unwrap</span>();
+        <span class="ident">m</span>.<span class="ident">append_items</span>(<span class="kw-2">&amp;</span>[<span class="ident">MessageItem</span>::<span class="ident">Str</span>(<span class="string">&quot;org.freedesktop.DBus&quot;</span>.<span class="ident">to_string</span>())]);
+        <span class="kw">let</span> <span class="ident">r</span> <span class="op">=</span> <span class="ident">c</span>.<span class="ident">send_with_reply_and_block</span>(<span class="ident">m</span>, <span class="number">2000</span>).<span class="ident">unwrap</span>();
+        <span class="kw">let</span> <span class="ident">reply</span> <span class="op">=</span> <span class="ident">r</span>.<span class="ident">get_items</span>();
+        <span class="macro">println</span><span class="macro">!</span>(<span class="string">&quot;{:?}&quot;</span>, <span class="ident">reply</span>);
+        <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">reply</span>, <span class="macro">vec</span><span class="macro">!</span>(<span class="ident">MessageItem</span>::<span class="ident">Bool</span>(<span class="bool-val">true</span>)));
     }
 
-    <span class='attribute'>#[<span class='ident'>test</span>]</span>
-    <span class='kw'>fn</span> <span class='ident'>object_path</span>() {
-        <span class='kw'>use</span>  <span class='ident'>std</span>::<span class='ident'>sync</span>::<span class='ident'>mpsc</span>;
-        <span class='kw'>let</span> (<span class='ident'>tx</span>, <span class='ident'>rx</span>) <span class='op'>=</span> <span class='ident'>mpsc</span>::<span class='ident'>channel</span>();
-        <span class='kw'>let</span> <span class='ident'>thread</span> <span class='op'>=</span> ::<span class='ident'>std</span>::<span class='ident'>thread</span>::<span class='ident'>spawn</span>(<span class='kw'>move</span> <span class='op'>||</span> {
-            <span class='kw'>let</span> <span class='ident'>c</span> <span class='op'>=</span> <span class='ident'>Connection</span>::<span class='ident'>get_private</span>(<span class='ident'>BusType</span>::<span class='ident'>Session</span>).<span class='ident'>unwrap</span>();
-            <span class='ident'>c</span>.<span class='ident'>register_object_path</span>(<span class='string'>&quot;/hello&quot;</span>).<span class='ident'>unwrap</span>();
-            <span class='comment'>// println!(&quot;Waiting...&quot;);</span>
-            <span class='ident'>tx</span>.<span class='ident'>send</span>(<span class='ident'>c</span>.<span class='ident'>unique_name</span>()).<span class='ident'>unwrap</span>();
-            <span class='kw'>for</span> <span class='ident'>n</span> <span class='kw'>in</span> <span class='ident'>c</span>.<span class='ident'>iter</span>(<span class='number'>1000</span>) {
-                <span class='comment'>// println!(&quot;Found message... ({})&quot;, n);</span>
-                <span class='kw'>match</span> <span class='ident'>n</span> {
-                    <span class='ident'>ConnectionItem</span>::<span class='ident'>MethodCall</span>(<span class='kw-2'>ref</span> <span class='ident'>m</span>) <span class='op'>=&gt;</span> {
-                        <span class='kw'>let</span> <span class='ident'>reply</span> <span class='op'>=</span> <span class='ident'>Message</span>::<span class='ident'>new_method_return</span>(<span class='ident'>m</span>).<span class='ident'>unwrap</span>();
-                        <span class='ident'>c</span>.<span class='ident'>send</span>(<span class='ident'>reply</span>).<span class='ident'>unwrap</span>();
-                        <span class='kw'>break</span>;
+    <span class="attribute">#[<span class="ident">test</span>]</span>
+    <span class="kw">fn</span> <span class="ident">object_path</span>() {
+        <span class="kw">use</span>  <span class="ident">std</span>::<span class="ident">sync</span>::<span class="ident">mpsc</span>;
+        <span class="kw">let</span> (<span class="ident">tx</span>, <span class="ident">rx</span>) <span class="op">=</span> <span class="ident">mpsc</span>::<span class="ident">channel</span>();
+        <span class="kw">let</span> <span class="ident">thread</span> <span class="op">=</span> ::<span class="ident">std</span>::<span class="ident">thread</span>::<span class="ident">spawn</span>(<span class="kw">move</span> <span class="op">||</span> {
+            <span class="kw">let</span> <span class="ident">c</span> <span class="op">=</span> <span class="ident">Connection</span>::<span class="ident">get_private</span>(<span class="ident">BusType</span>::<span class="ident">Session</span>).<span class="ident">unwrap</span>();
+            <span class="ident">c</span>.<span class="ident">register_object_path</span>(<span class="string">&quot;/hello&quot;</span>).<span class="ident">unwrap</span>();
+            <span class="comment">// println!(&quot;Waiting...&quot;);</span>
+            <span class="ident">tx</span>.<span class="ident">send</span>(<span class="ident">c</span>.<span class="ident">unique_name</span>()).<span class="ident">unwrap</span>();
+            <span class="kw">for</span> <span class="ident">n</span> <span class="kw">in</span> <span class="ident">c</span>.<span class="ident">iter</span>(<span class="number">1000</span>) {
+                <span class="comment">// println!(&quot;Found message... ({})&quot;, n);</span>
+                <span class="kw">match</span> <span class="ident">n</span> {
+                    <span class="ident">ConnectionItem</span>::<span class="ident">MethodCall</span>(<span class="kw-2">ref</span> <span class="ident">m</span>) <span class="op">=&gt;</span> {
+                        <span class="kw">let</span> <span class="ident">reply</span> <span class="op">=</span> <span class="ident">Message</span>::<span class="ident">new_method_return</span>(<span class="ident">m</span>).<span class="ident">unwrap</span>();
+                        <span class="ident">c</span>.<span class="ident">send</span>(<span class="ident">reply</span>).<span class="ident">unwrap</span>();
+                        <span class="kw">break</span>;
                     }
-                    _ <span class='op'>=&gt;</span> {}
+                    <span class="kw">_</span> <span class="op">=&gt;</span> {}
                 }
             }
-            <span class='ident'>c</span>.<span class='ident'>unregister_object_path</span>(<span class='string'>&quot;/hello&quot;</span>);
+            <span class="ident">c</span>.<span class="ident">unregister_object_path</span>(<span class="string">&quot;/hello&quot;</span>);
         });
 
-        <span class='kw'>let</span> <span class='ident'>c</span> <span class='op'>=</span> <span class='ident'>Connection</span>::<span class='ident'>get_private</span>(<span class='ident'>BusType</span>::<span class='ident'>Session</span>).<span class='ident'>unwrap</span>();
-        <span class='kw'>let</span> <span class='ident'>n</span> <span class='op'>=</span> <span class='ident'>rx</span>.<span class='ident'>recv</span>().<span class='ident'>unwrap</span>();
-        <span class='kw'>let</span> <span class='ident'>m</span> <span class='op'>=</span> <span class='ident'>Message</span>::<span class='ident'>new_method_call</span>(<span class='kw-2'>&amp;</span><span class='ident'>n</span>, <span class='string'>&quot;/hello&quot;</span>, <span class='string'>&quot;com.example.hello&quot;</span>, <span class='string'>&quot;Hello&quot;</span>).<span class='ident'>unwrap</span>();
-        <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Sending...&quot;</span>);
-        <span class='kw'>let</span> <span class='ident'>r</span> <span class='op'>=</span> <span class='ident'>c</span>.<span class='ident'>send_with_reply_and_block</span>(<span class='ident'>m</span>, <span class='number'>8000</span>).<span class='ident'>unwrap</span>();
-        <span class='kw'>let</span> <span class='ident'>reply</span> <span class='op'>=</span> <span class='ident'>r</span>.<span class='ident'>get_items</span>();
-        <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;{:?}&quot;</span>, <span class='ident'>reply</span>);
-        <span class='ident'>thread</span>.<span class='ident'>join</span>().<span class='ident'>unwrap</span>();
+        <span class="kw">let</span> <span class="ident">c</span> <span class="op">=</span> <span class="ident">Connection</span>::<span class="ident">get_private</span>(<span class="ident">BusType</span>::<span class="ident">Session</span>).<span class="ident">unwrap</span>();
+        <span class="kw">let</span> <span class="ident">n</span> <span class="op">=</span> <span class="ident">rx</span>.<span class="ident">recv</span>().<span class="ident">unwrap</span>();
+        <span class="kw">let</span> <span class="ident">m</span> <span class="op">=</span> <span class="ident">Message</span>::<span class="ident">new_method_call</span>(<span class="kw-2">&amp;</span><span class="ident">n</span>, <span class="string">&quot;/hello&quot;</span>, <span class="string">&quot;com.example.hello&quot;</span>, <span class="string">&quot;Hello&quot;</span>).<span class="ident">unwrap</span>();
+        <span class="macro">println</span><span class="macro">!</span>(<span class="string">&quot;Sending...&quot;</span>);
+        <span class="kw">let</span> <span class="ident">r</span> <span class="op">=</span> <span class="ident">c</span>.<span class="ident">send_with_reply_and_block</span>(<span class="ident">m</span>, <span class="number">8000</span>).<span class="ident">unwrap</span>();
+        <span class="kw">let</span> <span class="ident">reply</span> <span class="op">=</span> <span class="ident">r</span>.<span class="ident">get_items</span>();
+        <span class="macro">println</span><span class="macro">!</span>(<span class="string">&quot;{:?}&quot;</span>, <span class="ident">reply</span>);
+        <span class="ident">thread</span>.<span class="ident">join</span>().<span class="ident">unwrap</span>();
 
     }
 
-    <span class='attribute'>#[<span class='ident'>test</span>]</span>
-    <span class='kw'>fn</span> <span class='ident'>register_name</span>() {
-        <span class='kw'>let</span> <span class='ident'>c</span> <span class='op'>=</span> <span class='ident'>Connection</span>::<span class='ident'>get_private</span>(<span class='ident'>BusType</span>::<span class='ident'>Session</span>).<span class='ident'>unwrap</span>();
-        <span class='kw'>let</span> <span class='ident'>n</span> <span class='op'>=</span> <span class='macro'>format</span><span class='macro'>!</span>(<span class='string'>&quot;com.example.hello.test.register_name&quot;</span>);
-        <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>c</span>.<span class='ident'>register_name</span>(<span class='kw-2'>&amp;</span><span class='ident'>n</span>, <span class='ident'>NameFlag</span>::<span class='ident'>ReplaceExisting</span> <span class='kw'>as</span> <span class='ident'>u32</span>).<span class='ident'>unwrap</span>(), <span class='ident'>RequestNameReply</span>::<span class='ident'>PrimaryOwner</span>);
-        <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>c</span>.<span class='ident'>release_name</span>(<span class='kw-2'>&amp;</span><span class='ident'>n</span>).<span class='ident'>unwrap</span>(), <span class='ident'>ReleaseNameReply</span>::<span class='ident'>Released</span>);
+    <span class="attribute">#[<span class="ident">test</span>]</span>
+    <span class="kw">fn</span> <span class="ident">register_name</span>() {
+        <span class="kw">let</span> <span class="ident">c</span> <span class="op">=</span> <span class="ident">Connection</span>::<span class="ident">get_private</span>(<span class="ident">BusType</span>::<span class="ident">Session</span>).<span class="ident">unwrap</span>();
+        <span class="kw">let</span> <span class="ident">n</span> <span class="op">=</span> <span class="macro">format</span><span class="macro">!</span>(<span class="string">&quot;com.example.hello.test.register_name&quot;</span>);
+        <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">c</span>.<span class="ident">register_name</span>(<span class="kw-2">&amp;</span><span class="ident">n</span>, <span class="ident">NameFlag</span>::<span class="ident">ReplaceExisting</span> <span class="kw">as</span> <span class="ident">u32</span>).<span class="ident">unwrap</span>(), <span class="ident">RequestNameReply</span>::<span class="ident">PrimaryOwner</span>);
+        <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="ident">c</span>.<span class="ident">release_name</span>(<span class="kw-2">&amp;</span><span class="ident">n</span>).<span class="ident">unwrap</span>(), <span class="ident">ReleaseNameReply</span>::<span class="ident">Released</span>);
     }
 
-    <span class='attribute'>#[<span class='ident'>test</span>]</span>
-    <span class='kw'>fn</span> <span class='ident'>signal</span>() {
-        <span class='kw'>let</span> <span class='ident'>c</span> <span class='op'>=</span> <span class='ident'>Connection</span>::<span class='ident'>get_private</span>(<span class='ident'>BusType</span>::<span class='ident'>Session</span>).<span class='ident'>unwrap</span>();
-        <span class='kw'>let</span> <span class='ident'>iface</span> <span class='op'>=</span> <span class='string'>&quot;com.example.signaltest&quot;</span>;
-        <span class='kw'>let</span> <span class='ident'>mstr</span> <span class='op'>=</span> <span class='macro'>format</span><span class='macro'>!</span>(<span class='string'>&quot;interface=&#39;{}&#39;,member=&#39;ThisIsASignal&#39;&quot;</span>, <span class='ident'>iface</span>);
-        <span class='ident'>c</span>.<span class='ident'>add_match</span>(<span class='kw-2'>&amp;</span><span class='ident'>mstr</span>).<span class='ident'>unwrap</span>();
-        <span class='kw'>let</span> <span class='ident'>m</span> <span class='op'>=</span> <span class='ident'>Message</span>::<span class='ident'>new_signal</span>(<span class='string'>&quot;/mysignal&quot;</span>, <span class='ident'>iface</span>, <span class='string'>&quot;ThisIsASignal&quot;</span>).<span class='ident'>unwrap</span>();
-        <span class='kw'>let</span> <span class='ident'>uname</span> <span class='op'>=</span> <span class='ident'>c</span>.<span class='ident'>unique_name</span>();
-        <span class='ident'>c</span>.<span class='ident'>send</span>(<span class='ident'>m</span>).<span class='ident'>unwrap</span>();
-        <span class='kw'>for</span> <span class='ident'>n</span> <span class='kw'>in</span> <span class='ident'>c</span>.<span class='ident'>iter</span>(<span class='number'>1000</span>) {
-            <span class='kw'>match</span> <span class='ident'>n</span> {
-                <span class='ident'>ConnectionItem</span>::<span class='ident'>Signal</span>(<span class='ident'>s</span>) <span class='op'>=&gt;</span> {
-                    <span class='kw'>let</span> (_, <span class='ident'>p</span>, <span class='ident'>i</span>, <span class='ident'>m</span>) <span class='op'>=</span> <span class='ident'>s</span>.<span class='ident'>headers</span>();
-                    <span class='kw'>match</span> (<span class='kw-2'>&amp;</span><span class='op'>*</span><span class='ident'>p</span>.<span class='ident'>unwrap</span>(), <span class='kw-2'>&amp;</span><span class='op'>*</span><span class='ident'>i</span>.<span class='ident'>unwrap</span>(), <span class='kw-2'>&amp;</span><span class='op'>*</span><span class='ident'>m</span>.<span class='ident'>unwrap</span>()) {
-                        (<span class='string'>&quot;/mysignal&quot;</span>, <span class='string'>&quot;com.example.signaltest&quot;</span>, <span class='string'>&quot;ThisIsASignal&quot;</span>) <span class='op'>=&gt;</span> {
-                            <span class='macro'>assert_eq</span><span class='macro'>!</span>(<span class='ident'>s</span>.<span class='ident'>sender</span>().<span class='ident'>unwrap</span>(), <span class='ident'>uname</span>);
-                            <span class='kw'>break</span>;
+    <span class="attribute">#[<span class="ident">test</span>]</span>
+    <span class="kw">fn</span> <span class="ident">signal</span>() {
+        <span class="kw">let</span> <span class="ident">c</span> <span class="op">=</span> <span class="ident">Connection</span>::<span class="ident">get_private</span>(<span class="ident">BusType</span>::<span class="ident">Session</span>).<span class="ident">unwrap</span>();
+        <span class="kw">let</span> <span class="ident">iface</span> <span class="op">=</span> <span class="string">&quot;com.example.signaltest&quot;</span>;
+        <span class="kw">let</span> <span class="ident">mstr</span> <span class="op">=</span> <span class="macro">format</span><span class="macro">!</span>(<span class="string">&quot;interface=&#39;{}&#39;,member=&#39;ThisIsASignal&#39;&quot;</span>, <span class="ident">iface</span>);
+        <span class="ident">c</span>.<span class="ident">add_match</span>(<span class="kw-2">&amp;</span><span class="ident">mstr</span>).<span class="ident">unwrap</span>();
+        <span class="kw">let</span> <span class="ident">m</span> <span class="op">=</span> <span class="ident">Message</span>::<span class="ident">new_signal</span>(<span class="string">&quot;/mysignal&quot;</span>, <span class="ident">iface</span>, <span class="string">&quot;ThisIsASignal&quot;</span>).<span class="ident">unwrap</span>();
+        <span class="kw">let</span> <span class="ident">uname</span> <span class="op">=</span> <span class="ident">c</span>.<span class="ident">unique_name</span>();
+        <span class="ident">c</span>.<span class="ident">send</span>(<span class="ident">m</span>).<span class="ident">unwrap</span>();
+        <span class="kw">for</span> <span class="ident">n</span> <span class="kw">in</span> <span class="ident">c</span>.<span class="ident">iter</span>(<span class="number">1000</span>) {
+            <span class="kw">match</span> <span class="ident">n</span> {
+                <span class="ident">ConnectionItem</span>::<span class="ident">Signal</span>(<span class="ident">s</span>) <span class="op">=&gt;</span> {
+                    <span class="kw">let</span> (<span class="kw">_</span>, <span class="ident">p</span>, <span class="ident">i</span>, <span class="ident">m</span>) <span class="op">=</span> <span class="ident">s</span>.<span class="ident">headers</span>();
+                    <span class="kw">match</span> (<span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="ident">p</span>.<span class="ident">unwrap</span>(), <span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="ident">i</span>.<span class="ident">unwrap</span>(), <span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="ident">m</span>.<span class="ident">unwrap</span>()) {
+                        (<span class="string">&quot;/mysignal&quot;</span>, <span class="string">&quot;com.example.signaltest&quot;</span>, <span class="string">&quot;ThisIsASignal&quot;</span>) <span class="op">=&gt;</span> {
+                            <span class="macro">assert_eq</span><span class="macro">!</span>(<span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="ident">s</span>.<span class="ident">sender</span>().<span class="ident">unwrap</span>(), <span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="ident">uname</span>);
+                            <span class="kw">break</span>;
                         },
-                        (_, _, _) <span class='op'>=&gt;</span> <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Other signal: {:?}&quot;</span>, <span class='ident'>s</span>.<span class='ident'>headers</span>()),
+                        (<span class="kw">_</span>, <span class="kw">_</span>, <span class="kw">_</span>) <span class="op">=&gt;</span> <span class="macro">println</span><span class="macro">!</span>(<span class="string">&quot;Other signal: {:?}&quot;</span>, <span class="ident">s</span>.<span class="ident">headers</span>()),
                     }
                 }
-                _ <span class='op'>=&gt;</span> {},
+                <span class="kw">_</span> <span class="op">=&gt;</span> {},
             }
         }
-        <span class='ident'>c</span>.<span class='ident'>remove_match</span>(<span class='kw-2'>&amp;</span><span class='ident'>mstr</span>).<span class='ident'>unwrap</span>();
+        <span class="ident">c</span>.<span class="ident">remove_match</span>(<span class="kw-2">&amp;</span><span class="ident">mstr</span>).<span class="ident">unwrap</span>();
     }
 
-    <span class='attribute'>#[<span class='ident'>test</span>]</span>
-    <span class='kw'>fn</span> <span class='ident'>watch</span>() {
-        <span class='kw'>let</span> <span class='ident'>c</span> <span class='op'>=</span> <span class='ident'>Connection</span>::<span class='ident'>get_private</span>(<span class='ident'>BusType</span>::<span class='ident'>Session</span>).<span class='ident'>unwrap</span>();
-        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>d</span> <span class='op'>=</span> <span class='ident'>c</span>.<span class='ident'>watch_fds</span>();
-        <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>d</span>.<span class='ident'>len</span>() <span class='op'>&gt;</span> <span class='number'>0</span>);
-        <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;Fds to watch: {:?}&quot;</span>, <span class='ident'>d</span>);
-        <span class='kw'>for</span> <span class='ident'>n</span> <span class='kw'>in</span> <span class='ident'>c</span>.<span class='ident'>iter</span>(<span class='number'>1000</span>) {
-            <span class='kw'>match</span> <span class='ident'>n</span> {
-                <span class='ident'>ConnectionItem</span>::<span class='ident'>WatchFd</span>(<span class='ident'>w</span>) <span class='op'>=&gt;</span> {
-                    <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>w</span>.<span class='ident'>readable</span>() <span class='op'>||</span> <span class='ident'>w</span>.<span class='ident'>writable</span>());
-                    <span class='macro'>assert</span><span class='macro'>!</span>(<span class='ident'>d</span>.<span class='ident'>contains</span>(<span class='kw-2'>&amp;</span><span class='ident'>w</span>));
-                    <span class='ident'>d</span>.<span class='ident'>retain</span>(<span class='op'>|</span><span class='ident'>x</span><span class='op'>|</span> <span class='op'>*</span><span class='ident'>x</span> <span class='op'>!=</span> <span class='ident'>w</span>);
-                    <span class='kw'>if</span> <span class='ident'>d</span>.<span class='ident'>len</span>() <span class='op'>==</span> <span class='number'>0</span> { <span class='kw'>break</span> };
-                }
-                _ <span class='op'>=&gt;</span> {},
-            }
-        }
+
+    <span class="attribute">#[<span class="ident">test</span>]</span>
+    <span class="kw">fn</span> <span class="ident">watch</span>() {
+        <span class="kw">let</span> <span class="ident">c</span> <span class="op">=</span> <span class="ident">Connection</span>::<span class="ident">get_private</span>(<span class="ident">BusType</span>::<span class="ident">Session</span>).<span class="ident">unwrap</span>();
+        <span class="kw">let</span> <span class="ident">d</span> <span class="op">=</span> <span class="ident">c</span>.<span class="ident">watch_fds</span>();
+        <span class="macro">assert</span><span class="macro">!</span>(<span class="ident">d</span>.<span class="ident">len</span>() <span class="op">&gt;</span> <span class="number">0</span>);
+        <span class="macro">println</span><span class="macro">!</span>(<span class="string">&quot;Fds to watch: {:?}&quot;</span>, <span class="ident">d</span>);
     }
 }
 </pre>
-</section>
-    <section id='search' class="content hidden"></section>
-
-    <section class="footer"></section>
-
-    <aside id="help" class="hidden">
-        <div>
-            <h1 class="hidden">Help</h1>
-
-            <div class="shortcuts">
-                <h2>Keyboard Shortcuts</h2>
-
-                <dl>
-                    <dt>?</dt>
-                    <dd>Show this help dialog</dd>
-                    <dt>S</dt>
-                    <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
-                    <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
-                    <dd>Move down in search results</dd>
-                    <dt>&#9166;</dt>
-                    <dd>Go to active search result</dd>
-                </dl>
-            </div>
-
-            <div class="infos">
-                <h2>Search Tricks</h2>
-
-                <p>
-                    Prefix searches with a type followed by a colon (e.g.
-                    <code>fn:</code>) to restrict the search to a given type.
-                </p>
-
-                <p>
-                    Accepted types are: <code>fn</code>, <code>mod</code>,
-                    <code>struct</code>, <code>enum</code>,
-                    <code>trait</code>, <code>type</code>, <code>macro</code>,
-                    and <code>const</code>.
-                </p>
-
-                <p>
-                    Search functions by type signature (e.g.
-                    <code>vec -> usize</code>)
-                </p>
-            </div>
-        </div>
-    </aside>
-
-    
-
-    <script>
-        window.rootPath = "../../";
-        window.currentCrate = "dbus";
-        window.playgroundUrl = "";
-    </script>
-    <script src="../../jquery.js"></script>
-    <script src="../../main.js"></script>
-    
-    <script async src="../../search-index.js"></script>
-</body>
-</html>
+</section><section id="search" class="content hidden"></section><section class="footer"></section><aside id="help" class="hidden"><div><h1 class="hidden">Help</h1><div class="shortcuts"><h2>Keyboard Shortcuts</h2><dl><dt><kbd>?</kbd></dt><dd>Show this help dialog</dd><dt><kbd>S</kbd></dt><dd>Focus the search field</dd><dt><kbd>↑</kbd></dt><dd>Move up in search results</dd><dt><kbd>↓</kbd></dt><dd>Move down in search results</dd><dt><kbd>↹</kbd></dt><dd>Switch tab</dd><dt><kbd>&#9166;</kbd></dt><dd>Go to active search result</dd><dt><kbd>+</kbd></dt><dd>Expand all sections</dd><dt><kbd>-</kbd></dt><dd>Collapse all sections</dd></dl></div><div class="infos"><h2>Search Tricks</h2><p>Prefix searches with a type followed by a colon (e.g. <code>fn:</code>) to restrict the search to a given type.</p><p>Accepted types are: <code>fn</code>, <code>mod</code>, <code>struct</code>, <code>enum</code>, <code>trait</code>, <code>type</code>, <code>macro</code>, and <code>const</code>.</p><p>Search functions by type signature (e.g. <code>vec -> usize</code> or <code>* -> vec</code>)</p><p>Search multiple things at once by splitting your query with comma (e.g. <code>str,u8</code> or <code>String,struct:Vec,test</code>)</p></div></div></aside><script>window.rootPath = "../../";window.currentCrate = "dbus";</script><script src="../../aliases.js"></script><script src="../../main.js"></script><script defer src="../../search-index.js"></script></body></html>

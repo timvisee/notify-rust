@@ -1,132 +1,181 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="rustdoc">
-    <meta name="description" content="API documentation for the Rust `hints` mod in crate `notify_rust`.">
-    <meta name="keywords" content="rust, rustlang, rust-lang, hints">
-
-    <title>notify_rust::hints - Rust</title>
-
-    <link rel="stylesheet" type="text/css" href="../../main.css">
-
-    
-    
-</head>
-<body class="rustdoc">
-    <!--[if lte IE 8]>
-    <div class="warning">
-        This old browser is unsupported and will most likely display funky
-        things.
-    </div>
-    <![endif]-->
-
-    
-
-    <nav class="sidebar">
-        
-        <p class='location'><a href='../index.html'>notify_rust</a></p><script>window.sidebarCurrent = {name: 'hints', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
-    </nav>
-
-    <nav class="sub">
-        <form class="search-form js-only">
-            <div class="search-container">
-                <input class="search-input" name="search"
-                       autocomplete="off"
-                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
-                       type="search">
-            </div>
-        </form>
-    </nav>
-
-    <section id='main' class="content mod">
-<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>notify_rust</a>::<wbr><a class='mod' href=''>hints</a></span><span class='out-of-band'><span id='render-detail'>
-            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
-                [<span class='inner'>&#x2212;</span>]
-            </a>
-        </span><a id='src-92' class='srclink' href='../../src/notify_rust/hints.rs.html#1-216' title='goto source code'>[src]</a></span></h1>
-<div class='docblock'><p>NotificationHints allow to pass extra information to the server.</p>
-
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="API documentation for the Rust `hints` mod in crate `notify_rust`."><meta name="keywords" content="rust, rustlang, rust-lang, hints"><title>notify_rust::hints - Rust</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script></head><body class="rustdoc mod"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><p class='location'>Module hints</p><div class="sidebar-elems"><div class="block items"><ul><li><a href="#structs">Structs</a></li><li><a href="#enums">Enums</a></li><li><a href="#constants">Constants</a></li><li><a href="#functions">Functions</a></li></ul></div><p class='location'><a href='../index.html'>notify_rust</a></p><script>window.sidebarCurrent = {name: 'hints', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form js-only"><div class="search-container"><input class="search-input" name="search" autocomplete="off" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class='fqn'><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../../src/notify_rust/hints.rs.html#1-441' title='goto source code'>[src]</a></span><span class='in-band'>Module <a href='../index.html'>notify_rust</a>::<wbr><a class="mod" href=''>hints</a></span></h1><div class='docblock'><p><code>NotificationHints</code> allow to pass extra information to the server.</p>
 <p>Many of these are standardized by either:</p>
-
 <ul>
-<li><a href="http://www.galago-project.org/specs/notification/0.9/x344.html">http://www.galago-project.org/specs/notification/0.9/x344.html</a></li>
-<li><a href="https://developer.gnome.org/notification-spec/#hints">https://developer.gnome.org/notification-spec/#hints</a></li>
+<li>http://www.galago-project.org/specs/notification/0.9/x344.html</li>
+<li>https://developer.gnome.org/notification-spec/#hints</li>
 </ul>
-
 <p>Which of these are actually implemented depends strongly on the Notification server you talk to.
 Usually the <code>get_capabilities()</code> gives some clues, but the standards usually mention much more
 than is actually available.</p>
-</div><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+</div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
-                    <tr class=' module-item'>
-                        <td><a class='enum' href='enum.NotificationHint.html'
-                               title='notify_rust::hints::NotificationHint'>NotificationHint</a></td>
-                        <td class='docblock short'>
-                             <p>All currently implemented NotificationHints that can be send.</p>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.NotificationImage.html"
+                                  title='struct notify_rust::hints::NotificationImage'>NotificationImage</a></td>
+                           <td class='docblock-short'>
+                                <p>Raw image data as represented on dbus</p>
 
-                        </td>
-                    </tr>
-                </table></section>
-    <section id='search' class="content hidden"></section>
+                           </td>
+                       </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.ImageError.html"
+                                  title='enum notify_rust::hints::ImageError'>ImageError</a></td>
+                           <td class='docblock-short'>
+                                <p>Errors that can occour when creating an Image</p>
 
-    <section class="footer"></section>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.NotificationHint.html"
+                                  title='enum notify_rust::hints::NotificationHint'>NotificationHint</a></td>
+                           <td class='docblock-short'>
+                                <p>All currently implemented <code>NotificationHints</code> that can be send.</p>
 
-    <aside id="help" class="hidden">
-        <div>
-            <h1 class="hidden">Help</h1>
+                           </td>
+                       </tr></table><h2 id='constants' class='section-header'><a href="#constants">Constants</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.ACTION_ICONS.html"
+                                  title='constant notify_rust::hints::ACTION_ICONS'>ACTION_ICONS</a></td>
+                           <td class='docblock-short'>
+                                <p>&quot;action-icons&quot;</p>
 
-            <div class="shortcuts">
-                <h2>Keyboard Shortcuts</h2>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.CATEGORY.html"
+                                  title='constant notify_rust::hints::CATEGORY'>CATEGORY</a></td>
+                           <td class='docblock-short'>
+                                <p>&quot;category&quot;</p>
 
-                <dl>
-                    <dt>?</dt>
-                    <dd>Show this help dialog</dd>
-                    <dt>S</dt>
-                    <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
-                    <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
-                    <dd>Move down in search results</dd>
-                    <dt>&#9166;</dt>
-                    <dd>Go to active search result</dd>
-                </dl>
-            </div>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.DESKTOP_ENTRY.html"
+                                  title='constant notify_rust::hints::DESKTOP_ENTRY'>DESKTOP_ENTRY</a></td>
+                           <td class='docblock-short'>
+                                <p>&quot;desktop-entry&quot;</p>
 
-            <div class="infos">
-                <h2>Search Tricks</h2>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.IMAGE_DATA.html"
+                                  title='constant notify_rust::hints::IMAGE_DATA'>IMAGE_DATA</a></td>
+                           <td class='docblock-short'>
+                                <p>&quot;image-data&quot; if spec_version &gt; 1.1;</p>
 
-                <p>
-                    Prefix searches with a type followed by a colon (e.g.
-                    <code>fn:</code>) to restrict the search to a given type.
-                </p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.IMAGE_DATA_1_0.html"
+                                  title='constant notify_rust::hints::IMAGE_DATA_1_0'>IMAGE_DATA_1_0</a></td>
+                           <td class='docblock-short'>
+                                <p>&quot;image-data&quot; if spec_version &lt; 1.1;</p>
 
-                <p>
-                    Accepted types are: <code>fn</code>, <code>mod</code>,
-                    <code>struct</code>, <code>enum</code>,
-                    <code>trait</code>, <code>type</code>, <code>macro</code>,
-                    and <code>const</code>.
-                </p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.IMAGE_DATA_1_1.html"
+                                  title='constant notify_rust::hints::IMAGE_DATA_1_1'>IMAGE_DATA_1_1</a></td>
+                           <td class='docblock-short'>
+                                <p>&quot;image_data&quot; if spec_version == 1.1</p>
 
-                <p>
-                    Search functions by type signature (e.g.
-                    <code>vec -> usize</code>)
-                </p>
-            </div>
-        </div>
-    </aside>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.IMAGE_PATH.html"
+                                  title='constant notify_rust::hints::IMAGE_PATH'>IMAGE_PATH</a></td>
+                           <td class='docblock-short'>
+                                <p>&quot;image-path&quot;</p>
 
-    
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.RESIDENT.html"
+                                  title='constant notify_rust::hints::RESIDENT'>RESIDENT</a></td>
+                           <td class='docblock-short'>
+                                <p>&quot;resident&quot;</p>
 
-    <script>
-        window.rootPath = "../../";
-        window.currentCrate = "notify_rust";
-        window.playgroundUrl = "";
-    </script>
-    <script src="../../jquery.js"></script>
-    <script src="../../main.js"></script>
-    
-    <script async src="../../search-index.js"></script>
-</body>
-</html>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.SOUND_FILE.html"
+                                  title='constant notify_rust::hints::SOUND_FILE'>SOUND_FILE</a></td>
+                           <td class='docblock-short'>
+                                <p>&quot;sound-file&quot;</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.SOUND_NAME.html"
+                                  title='constant notify_rust::hints::SOUND_NAME'>SOUND_NAME</a></td>
+                           <td class='docblock-short'>
+                                <p>&quot;sound-name&quot;</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.SUPPRESS_SOUND.html"
+                                  title='constant notify_rust::hints::SUPPRESS_SOUND'>SUPPRESS_SOUND</a></td>
+                           <td class='docblock-short'>
+                                <p>&quot;suppress-sound&quot;</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.TRANSIENT.html"
+                                  title='constant notify_rust::hints::TRANSIENT'>TRANSIENT</a></td>
+                           <td class='docblock-short'>
+                                <p>&quot;transient&quot;</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.URGENCY.html"
+                                  title='constant notify_rust::hints::URGENCY'>URGENCY</a></td>
+                           <td class='docblock-short'>
+                                <p>&quot;urgency&quot;</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.X.html"
+                                  title='constant notify_rust::hints::X'>X</a></td>
+                           <td class='docblock-short'>
+                                <p>&quot;x&quot;</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="constant" href="constant.Y.html"
+                                  title='constant notify_rust::hints::Y'>Y</a></td>
+                           <td class='docblock-short'>
+                                <p>&quot;y&quot;</p>
+
+                           </td>
+                       </tr></table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.hint_from_key_val.html"
+                                  title='fn notify_rust::hints::hint_from_key_val'>hint_from_key_val</a></td>
+                           <td class='docblock-short'>
+                                <p>convinience converting a name and value into a hint</p>
+
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.hints_from_variants.html"
+                                  title='fn notify_rust::hints::hints_from_variants'>hints_from_variants</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.image_spec.html"
+                                  title='fn notify_rust::hints::image_spec'>image_spec</a></td>
+                           <td class='docblock-short'>
+                                <p>matching image data key for each spec version</p>
+
+                           </td>
+                       </tr></table></section><section id="search" class="content hidden"></section><section class="footer"></section><aside id="help" class="hidden"><div><h1 class="hidden">Help</h1><div class="shortcuts"><h2>Keyboard Shortcuts</h2><dl><dt><kbd>?</kbd></dt><dd>Show this help dialog</dd><dt><kbd>S</kbd></dt><dd>Focus the search field</dd><dt><kbd>↑</kbd></dt><dd>Move up in search results</dd><dt><kbd>↓</kbd></dt><dd>Move down in search results</dd><dt><kbd>↹</kbd></dt><dd>Switch tab</dd><dt><kbd>&#9166;</kbd></dt><dd>Go to active search result</dd><dt><kbd>+</kbd></dt><dd>Expand all sections</dd><dt><kbd>-</kbd></dt><dd>Collapse all sections</dd></dl></div><div class="infos"><h2>Search Tricks</h2><p>Prefix searches with a type followed by a colon (e.g. <code>fn:</code>) to restrict the search to a given type.</p><p>Accepted types are: <code>fn</code>, <code>mod</code>, <code>struct</code>, <code>enum</code>, <code>trait</code>, <code>type</code>, <code>macro</code>, and <code>const</code>.</p><p>Search functions by type signature (e.g. <code>vec -> usize</code> or <code>* -> vec</code>)</p><p>Search multiple things at once by splitting your query with comma (e.g. <code>str,u8</code> or <code>String,struct:Vec,test</code>)</p></div></div></aside><script>window.rootPath = "../../";window.currentCrate = "notify_rust";</script><script src="../../aliases.js"></script><script src="../../main.js"></script><script defer src="../../search-index.js"></script></body></html>

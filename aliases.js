@@ -1,0 +1,11 @@
+var ALIASES = {};
+ALIASES['backtrace'] = {};
+ALIASES['backtrace_sys'] = {};
+ALIASES['cfg_if'] = {};
+ALIASES['dbus'] = {};
+ALIASES['error_chain'] = {};
+ALIASES['libc'] = {};
+ALIASES['libdbus_sys'] = {};
+ALIASES['notify_rust'] = {};
+ALIASES['notify_rust'] = {};
+ALIASES['rustc_demangle'] = {};

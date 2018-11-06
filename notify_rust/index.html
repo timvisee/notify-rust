@@ -1,254 +1,210 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="rustdoc">
-    <meta name="description" content="API documentation for the Rust `notify_rust` crate.">
-    <meta name="keywords" content="rust, rustlang, rust-lang, notify_rust">
-
-    <title>notify_rust - Rust</title>
-
-    <link rel="stylesheet" type="text/css" href="../main.css">
-
-    
-    
-</head>
-<body class="rustdoc">
-    <!--[if lte IE 8]>
-    <div class="warning">
-        This old browser is unsupported and will most likely display funky
-        things.
-    </div>
-    <![endif]-->
-
-    
-
-    <nav class="sidebar">
-        
-        <p class='location'></p><script>window.sidebarCurrent = {name: 'notify_rust', ty: 'mod', relpath: '../'};</script>
-    </nav>
-
-    <nav class="sub">
-        <form class="search-form js-only">
-            <div class="search-container">
-                <input class="search-input" name="search"
-                       autocomplete="off"
-                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
-                       type="search">
-            </div>
-        </form>
-    </nav>
-
-    <section id='main' class="content mod">
-<h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>notify_rust</a></span><span class='out-of-band'><span id='render-detail'>
-            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
-                [<span class='inner'>&#x2212;</span>]
-            </a>
-        </span><a id='src-0' class='srclink' href='../src/notify_rust/lib.rs.html#1-568' title='goto source code'>[src]</a></span></h1>
-<div class='docblock'><p>Desktop Notifications for Rust.</p>
-
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="API documentation for the Rust `notify_rust` crate."><meta name="keywords" content="rust, rustlang, rust-lang, notify_rust"><title>notify_rust - Rust</title><link rel="stylesheet" type="text/css" href="../normalize.css"><link rel="stylesheet" type="text/css" href="../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../dark.css"><link rel="stylesheet" type="text/css" href="../light.css" id="themeStyle"><script src="../storage.js"></script></head><body class="rustdoc mod"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><p class='location'>Crate notify_rust</p><div class="sidebar-elems"><div class="block items"><ul><li><a href="#reexports">Re-exports</a></li><li><a href="#modules">Modules</a></li><li><a href="#structs">Structs</a></li><li><a href="#enums">Enums</a></li><li><a href="#functions">Functions</a></li></ul></div><p class='location'></p><script>window.sidebarCurrent = {name: 'notify_rust', ty: 'mod', relpath: '../'};</script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../theme.js"></script><nav class="sub"><form class="search-form js-only"><div class="search-container"><input class="search-input" name="search" autocomplete="off" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><a id="settings-menu" href="../settings.html"><img src="../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class='fqn'><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../src/notify_rust/lib.rs.html#1-683' title='goto source code'>[src]</a></span><span class='in-band'>Crate <a class="mod" href=''>notify_rust</a></span></h1><div class='docblock'><p>Desktop Notifications for Rust.</p>
 <p>Desktop notifications are popup messages generated to notify the user of certain events.</p>
-
-<h1 id='examples' class='section-header'><a href='#examples'>Examples</a></h1>
-<h2 id='example-1-simple-notification' class='section-header'><a href='#example-1-simple-notification'>Example 1 (Simple Notification)</a></h2><pre class='rust rust-example-rendered'>
-<span class='ident'>Notification</span>::<span class='ident'>new</span>()
-    .<span class='ident'>summary</span>(<span class='string'>&quot;Firefox News&quot;</span>)
-    .<span class='ident'>body</span>(<span class='string'>&quot;This will almost look like a real firefox notification.&quot;</span>)
-    .<span class='ident'>icon</span>(<span class='string'>&quot;firefox&quot;</span>)
-    .<span class='ident'>timeout</span>(<span class='number'>6000</span>) <span class='comment'>//milliseconds</span>
-    .<span class='ident'>show</span>().<span class='ident'>unwrap</span>();</pre>
-
-<h2 id='example-2-persistent-notification' class='section-header'><a href='#example-2-persistent-notification'>Example 2 (Persistent Notification)</a></h2><pre class='rust rust-example-rendered'>
-<span class='ident'>Notification</span>::<span class='ident'>new</span>()
-    .<span class='ident'>summary</span>(<span class='string'>&quot;Category:email&quot;</span>)
-    .<span class='ident'>body</span>(<span class='string'>&quot;This has nothing to do with emails.\nIt should not go away untill you acknoledge it.&quot;</span>)
-    .<span class='ident'>icon</span>(<span class='string'>&quot;thunderbird&quot;</span>)
-    .<span class='ident'>appname</span>(<span class='string'>&quot;thunderbird&quot;</span>)
-    .<span class='ident'>hint</span>(<span class='ident'>Hint</span>::<span class='ident'>Category</span>(<span class='string'>&quot;email&quot;</span>.<span class='ident'>to_owned</span>()))
-    .<span class='ident'>hint</span>(<span class='ident'>Hint</span>::<span class='ident'>Resident</span>(<span class='boolval'>true</span>)) <span class='comment'>// this is not supported by all implementations</span>
-    .<span class='ident'>timeout</span>(<span class='number'>0</span>) <span class='comment'>// this however is</span>
-    .<span class='ident'>show</span>().<span class='ident'>unwrap</span>();</pre>
-
+<h2 id="platform-support" class="section-header"><a href="#platform-support">Platform Support</a></h2>
+<p>This library was originally conceived with the <a href="https://en.wikipedia.org/wiki/XDG">XDG</a> notification specification in mind.
+Since version 3.3 this crate also builds on macOS, however the semantics of the <a href="https://en.wikipedia.org/wiki/XDG">XDG</a> specification and macOS NSNotifications
+are quite different.
+Therefore only the a very small subset of functions is supported on macOS.
+Certain methods don't have any effect there, others will explicitly fail to compile,
+in these cases you will have to add platform specific toggles to your code.
+For more see <a href="#platform-differences">platform differences</a></p>
+<h1 id="examples" class="section-header"><a href="#examples">Examples</a></h1><h2 id="example-1-simple-notification" class="section-header"><a href="#example-1-simple-notification">Example 1: Simple Notification</a></h2>
+<pre class="rust rust-example-rendered">
+<span class="ident">Notification</span>::<span class="ident">new</span>()
+    .<span class="ident">summary</span>(<span class="string">&quot;Firefox News&quot;</span>)
+    .<span class="ident">body</span>(<span class="string">&quot;This will almost look like a real firefox notification.&quot;</span>)
+    .<span class="ident">icon</span>(<span class="string">&quot;firefox&quot;</span>)
+    .<span class="ident">timeout</span>(<span class="ident">Timeout</span>::<span class="ident">Milliseconds</span>(<span class="number">6000</span>)) <span class="comment">//milliseconds</span>
+    .<span class="ident">show</span>().<span class="ident">unwrap</span>();</pre>
+<h2 id="example-2-persistent-notification" class="section-header"><a href="#example-2-persistent-notification">Example 2: Persistent Notification</a></h2>
+<pre class="rust rust-example-rendered">
+<span class="ident">Notification</span>::<span class="ident">new</span>()
+    .<span class="ident">summary</span>(<span class="string">&quot;Category:email&quot;</span>)
+    .<span class="ident">body</span>(<span class="string">&quot;This has nothing to do with emails.\nIt should not go away until you acknoledge it.&quot;</span>)
+    .<span class="ident">icon</span>(<span class="string">&quot;thunderbird&quot;</span>)
+    .<span class="ident">appname</span>(<span class="string">&quot;thunderbird&quot;</span>)
+    .<span class="ident">hint</span>(<span class="ident">NotificationHint</span>::<span class="ident">Category</span>(<span class="string">&quot;email&quot;</span>.<span class="ident">to_owned</span>()))
+    .<span class="ident">hint</span>(<span class="ident">NotificationHint</span>::<span class="ident">Resident</span>(<span class="bool-val">true</span>)) <span class="comment">// this is not supported by all implementations</span>
+    .<span class="ident">timeout</span>(<span class="ident">Timeout</span>::<span class="ident">Never</span>) <span class="comment">// this however is</span>
+    .<span class="ident">show</span>().<span class="ident">unwrap</span>();</pre>
 <p>Careful! There are no checks whether you use hints twice.
 It is possible to set <code>urgency=Low</code> AND <code>urgency=Critical</code>, in which case the behavior of the server is undefined.</p>
+<h2 id="example-3-ask-the-user-to-do-something" class="section-header"><a href="#example-3-ask-the-user-to-do-something">Example 3: Ask the user to do something</a></h2>
+<pre class="rust rust-example-rendered">
+<span class="ident">Notification</span>::<span class="ident">new</span>().<span class="ident">summary</span>(<span class="string">&quot;click me&quot;</span>)
+                   .<span class="ident">action</span>(<span class="string">&quot;default&quot;</span>, <span class="string">&quot;default&quot;</span>)
+                   .<span class="ident">action</span>(<span class="string">&quot;clicked&quot;</span>, <span class="string">&quot;click here&quot;</span>)
+                   .<span class="ident">hint</span>(<span class="ident">NotificationHint</span>::<span class="ident">Resident</span>(<span class="bool-val">true</span>))
+                   .<span class="ident">show</span>()
+                   .<span class="ident">unwrap</span>()
+                   .<span class="ident">wait_for_action</span>(<span class="op">|</span><span class="ident">action</span><span class="op">|</span> <span class="kw">match</span> <span class="ident">action</span> {
+                                        <span class="string">&quot;default&quot;</span> <span class="op">=&gt;</span> <span class="macro">println</span><span class="macro">!</span>(<span class="string">&quot;you clicked \&quot;default\&quot;&quot;</span>),
+                                        <span class="string">&quot;clicked&quot;</span> <span class="op">=&gt;</span> <span class="macro">println</span><span class="macro">!</span>(<span class="string">&quot;that was correct&quot;</span>),
+                                        <span class="comment">// here &quot;__closed&quot; is a hardcoded keyword</span>
+                                        <span class="string">&quot;__closed&quot;</span> <span class="op">=&gt;</span> <span class="macro">println</span><span class="macro">!</span>(<span class="string">&quot;the notification was closed&quot;</span>),
+                                        <span class="kw">_</span> <span class="op">=&gt;</span> ()
+                                    });</pre>
+<h2 id="minimal-example" class="section-header"><a href="#minimal-example">Minimal Example</a></h2>
+<p>You can ommit almost everything</p>
 
-<h2 id='example-3-ask-the-user-to-do-something' class='section-header'><a href='#example-3-ask-the-user-to-do-something'>Example 3 (Ask the user to do something)</a></h2><pre class='rust rust-example-rendered'>
-<span class='ident'>Notification</span>::<span class='ident'>new</span>()
-    .<span class='ident'>summary</span>(<span class='string'>&quot;click me&quot;</span>)
-    .<span class='ident'>action</span>(<span class='string'>&quot;default&quot;</span>, <span class='string'>&quot;default&quot;</span>)
-    .<span class='ident'>action</span>(<span class='string'>&quot;clicked&quot;</span>, <span class='string'>&quot;click here&quot;</span>)
-    .<span class='ident'>hint</span>(<span class='ident'>Hint</span>::<span class='ident'>Resident</span>(<span class='boolval'>true</span>))
-    .<span class='ident'>show</span>()
-    .<span class='ident'>unwrap</span>()
-    .<span class='ident'>wait_for_action</span>({<span class='op'>|</span><span class='ident'>action</span><span class='op'>|</span>
-        <span class='kw'>match</span> <span class='ident'>action</span> {
-            <span class='string'>&quot;default&quot;</span> <span class='op'>=&gt;</span> {<span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;you clicked \&quot;default\&quot;&quot;</span>)},
-            <span class='string'>&quot;clicked&quot;</span> <span class='op'>=&gt;</span> {<span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;that was correct&quot;</span>)},
-            <span class='comment'>// here &quot;__closed&quot; is a hardcoded keyword</span>
-            <span class='string'>&quot;__closed&quot;</span> <span class='op'>=&gt;</span> {<span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;the notification was closed&quot;</span>)},
-            _ <span class='op'>=&gt;</span> ()
-        }
-    });
-</pre>
-
+<pre class="rust rust-example-rendered">
+<span class="ident">Notification</span>::<span class="ident">new</span>().<span class="ident">show</span>();</pre>
 <p>more <a href="https://github.com/hoodie/notify-rust/tree/master/examples">examples</a> in the repository.</p>
-</div><h2 id='reexports' class='section-header'><a href="#reexports">Reexports</a></h2>
-<table><tr><td><code>pub use hints::<a class='enum' href='../notify_rust/hints/enum.NotificationHint.html' title='notify_rust::hints::NotificationHint'>NotificationHint</a>;</code></td></tr></table><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+<h1 id="platform-differences" class="section-header"><a href="#platform-differences">Platform Differences</a></h1>
+<p>✔︎ = works <br/>
+❌ = will not compile</p>
+<h2 id="notification" class="section-header"><a href="#notification"><code>Notification</code></a></h2><table>
+<thead>
+<tr> <td>method</td> <td>XDG</td> <td>macOS</td> </tr>
+</thead>
+ <tr> <td> fn appname(...)  </td>  <td> ✔︎ </td>  <td>   </td>  </tr>
+ <tr> <td> fn summary(...)  </td>  <td> ✔︎ </td>  <td> ✔︎ </td>  </tr>
+ <tr> <td> fn subtitle(...) </td>  <td>   </td>  <td> ✔︎ </td>  </tr>
+ <tr> <td> fn body(...)     </td>  <td> ✔︎ </td>  <td> ✔︎ </td>  </tr>
+ <tr> <td> fn icon(...)     </td>  <td> ✔︎ </td>  <td>   </td>  </tr>
+ <tr> <td> fn auto_icon(...)</td>  <td> ✔︎ </td>  <td>   </td>  </tr>
+ <tr> <td> fn hint(...)     </td>  <td> ✔︎ </td>  <td>   </td>  </tr>
+ <tr> <td> fn timeout(...)  </td>  <td> ✔︎ </td>  <td>   </td>  </tr>
+ <tr> <td> fn urgency(...)  </td>  <td> ✔︎ </td>  <td>   </td>  </tr>
+ <tr> <td> fn action(...)   </td>  <td> ✔︎ </td>  <td>   </td>  </tr>
+ <tr> <td> fn id(...)       </td>  <td> ✔︎ </td>  <td>   </td>  </tr>
+ <tr> <td> fn finalize(...) </td>  <td> ✔︎ </td>  <td> ✔︎ </td>  </tr>
+ <tr> <td> fn show(...)     </td>  <td> ✔︎ </td>  <td> ✔︎ </td>  </tr>
+</table>
+<h2 id="notificationhandle" class="section-header"><a href="#notificationhandle"><code>NotificationHandle</code></a></h2><table>
+<thead>
+<tr> <td>method</td> <td>XDG</td> <td>macOS</td> </tr>
+</thead>
+<tr> <td> fn wait_for_action(...)</td>  <td>  ✔︎  </td>  <td> ❌ </td>    </tr>
+<tr> <td> fn close(...)          </td>  <td>  ✔︎  </td>  <td> ❌ </td>    </tr>
+<tr> <td> fn on_close(...)       </td>  <td>  ✔︎  </td>  <td> ❌ </td>    </tr>
+<tr> <td> fn update(...)         </td>  <td>  ✔︎  </td>  <td> ❌ </td>    </tr>
+<tr> <td> fn id(...)             </td>  <td>  ✔︎  </td>  <td> ❌ </td>    </tr>
+</table>
+<h2 id="functions" class="section-header"><a href="#functions">Functions</a></h2><table>
+<thead>
+<tr> <td></td> <td>XDG</td> <td>macOS</td> </tr>
+</thead>
+<tr> <td> fn get_capabilities(...)</td>                 <td> ✔︎ </td>  <td> ❌ </td> </tr>
+<tr> <td> fn get_server_information(...)</td>           <td> ✔︎ </td>  <td> ❌ </td> </tr>
+<tr> <td> fn set_application(...)</td>                  <td> ❌ </td>  <td> ✔︎ </td> </tr>
+<tr> <td> fn get_bundle_identifier_or_default(...)</td> <td> ❌ </td>  <td> ✔︎ </td> </tr>
+</table>
+<h3 id="toggles" class="section-header"><a href="#toggles">Toggles</a></h3>
+<p>Please use <code>target_os</code> toggles if you plan on using methods labeled with ❌.</p>
+
+<div class='information'><div class='tooltip ignore'>ⓘ<span class='tooltiptext'>This example is not tested</span></div></div><pre class="rust rust-example-rendered ignore">
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;macos&quot;</span>)]</span>
+<span class="comment">// or</span>
+<span class="comment">// #### #[cfg(all(unix, not(target_os = &quot;macos&quot;)))]</span></pre>
+</div><h2 id='reexports' class='section-header'><a href="#reexports">Re-exports</a></h2>
+<table><tr><td><code>pub use hints::<a class="enum" href="../notify_rust/hints/enum.NotificationHint.html" title="enum notify_rust::hints::NotificationHint">NotificationHint</a>;</code></td></tr><tr><td><code>pub use hints::<a class="struct" href="../notify_rust/hints/struct.NotificationImage.html" title="struct notify_rust::hints::NotificationImage">NotificationImage</a>;</code></td></tr><tr><td><code>pub use error::<a class="struct" href="../notify_rust/error/struct.Error.html" title="struct notify_rust::error::Error">Error</a>;</code></td></tr></table><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
 <table>
-                    <tr class=' module-item'>
-                        <td><a class='mod' href='hints/index.html'
-                               title='notify_rust::hints'>hints</a></td>
-                        <td class='docblock short'>
-                             <p>NotificationHints allow to pass extra information to the server.</p>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="error/index.html"
+                                  title='mod notify_rust::error'>error</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="hints/index.html"
+                                  title='mod notify_rust::hints'>hints</a></td>
+                           <td class='docblock-short'>
+                                <p><code>NotificationHints</code> allow to pass extra information to the server.</p>
 
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='mod' href='server/index.html'
-                               title='notify_rust::server'>server</a></td>
-                        <td class='docblock short'>
-                             <p><strong>Experimental</strong> server taking the place of your Desktop Environments Notification Server.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="mod" href="server/index.html"
+                                  title='mod notify_rust::server'>server</a></td>
+                           <td class='docblock-short'>
+                                <p><strong>Experimental</strong> server taking the place of your Desktop Environments Notification Server.</p>
 
-                        </td>
-                    </tr>
-                </table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+                           </td>
+                       </tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.Notification.html'
-                               title='notify_rust::Notification'>Notification</a></td>
-                        <td class='docblock short'>
-                             <p>Desktop notification.</p>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.Notification.html"
+                                  title='struct notify_rust::Notification'>Notification</a></td>
+                           <td class='docblock-short'>
+                                <p>Desktop notification.</p>
 
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.NotificationHandle.html'
-                               title='notify_rust::NotificationHandle'>NotificationHandle</a></td>
-                        <td class='docblock short'>
-                             <p>A handle to a shown notification.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.NotificationHandle.html"
+                                  title='struct notify_rust::NotificationHandle'>NotificationHandle</a></td>
+                           <td class='docblock-short'>
+                                <p>A handle to a shown notification.</p>
 
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='struct' href='struct.ServerInformation.html'
-                               title='notify_rust::ServerInformation'>ServerInformation</a></td>
-                        <td class='docblock short'>
-                             <p>Return value of <code>get_server_information()</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.SPEC_VERSION.html"
+                                  title='struct notify_rust::SPEC_VERSION'>SPEC_VERSION</a></td>
+                           <td class='docblock-short'>
+                                <p>Read once at runtime. Needed for Images</p>
 
-                        </td>
-                    </tr>
-                </table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="struct" href="struct.ServerInformation.html"
+                                  title='struct notify_rust::ServerInformation'>ServerInformation</a></td>
+                           <td class='docblock-short'>
+                                <p>Return value of <code>get_server_information()</code>.</p>
+
+                           </td>
+                       </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
 <table>
-                    <tr class=' module-item'>
-                        <td><a class='enum' href='enum.NotificationUrgency.html'
-                               title='notify_rust::NotificationUrgency'>NotificationUrgency</a></td>
-                        <td class='docblock short'>
-                             <p>Levels of Urgency.</p>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.NotificationUrgency.html"
+                                  title='enum notify_rust::NotificationUrgency'>NotificationUrgency</a></td>
+                           <td class='docblock-short'>
+                                <p>Levels of Urgency.</p>
 
-                        </td>
-                    </tr>
-                </table><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="enum" href="enum.Timeout.html"
+                                  title='enum notify_rust::Timeout'>Timeout</a></td>
+                           <td class='docblock-short'>
+                                <p>Describes the timeout of a notification</p>
+
+                           </td>
+                       </tr></table><h2 id='functions-1' class='section-header'><a href="#functions-1">Functions</a></h2>
 <table>
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.get_capabilities.html'
-                               title='notify_rust::get_capabilities'>get_capabilities</a></td>
-                        <td class='docblock short'>
-                             <p>Get list of all capabilities of the running notification server.</p>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.get_capabilities.html"
+                                  title='fn notify_rust::get_capabilities'>get_capabilities</a></td>
+                           <td class='docblock-short'>
+                                <p>Get list of all capabilities of the running notification server.</p>
 
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.get_server_information.html'
-                               title='notify_rust::get_server_information'>get_server_information</a></td>
-                        <td class='docblock short'>
-                             <p>Returns a struct containing ServerInformation.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.get_server_information.html"
+                                  title='fn notify_rust::get_server_information'>get_server_information</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns a struct containing <code>ServerInformation</code>.</p>
 
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.handle_actions.html'
-                               title='notify_rust::handle_actions'>handle_actions</a></td>
-                        <td class='docblock short'>
-                             <p>Listens for the <code>ActionInvoked(UInt32, String)</code> Signal.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.handle_actions.html"
+                                  title='fn notify_rust::handle_actions'>handle_actions</a></td>
+                           <td class='docblock-short'>
+                                <p>Listens for the <code>ActionInvoked(UInt32, String)</code> Signal.</p>
 
-                        </td>
-                    </tr>
-                
-                    <tr class=' module-item'>
-                        <td><a class='fn' href='fn.stop_server.html'
-                               title='notify_rust::stop_server'>stop_server</a></td>
-                        <td class='docblock short'>
-                             <p>Strictly internal.
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class="fn" href="fn.stop_server.html"
+                                  title='fn notify_rust::stop_server'>stop_server</a></td>
+                           <td class='docblock-short'>
+                                <p>Strictly internal.
 The Notificationserver implemented here exposes a &quot;Stop&quot; function.
 stops the notification server</p>
 
-                        </td>
-                    </tr>
-                </table></section>
-    <section id='search' class="content hidden"></section>
-
-    <section class="footer"></section>
-
-    <aside id="help" class="hidden">
-        <div>
-            <h1 class="hidden">Help</h1>
-
-            <div class="shortcuts">
-                <h2>Keyboard Shortcuts</h2>
-
-                <dl>
-                    <dt>?</dt>
-                    <dd>Show this help dialog</dd>
-                    <dt>S</dt>
-                    <dd>Focus the search field</dd>
-                    <dt>&larrb;</dt>
-                    <dd>Move up in search results</dd>
-                    <dt>&rarrb;</dt>
-                    <dd>Move down in search results</dd>
-                    <dt>&#9166;</dt>
-                    <dd>Go to active search result</dd>
-                </dl>
-            </div>
-
-            <div class="infos">
-                <h2>Search Tricks</h2>
-
-                <p>
-                    Prefix searches with a type followed by a colon (e.g.
-                    <code>fn:</code>) to restrict the search to a given type.
-                </p>
-
-                <p>
-                    Accepted types are: <code>fn</code>, <code>mod</code>,
-                    <code>struct</code>, <code>enum</code>,
-                    <code>trait</code>, <code>type</code>, <code>macro</code>,
-                    and <code>const</code>.
-                </p>
-
-                <p>
-                    Search functions by type signature (e.g.
-                    <code>vec -> usize</code>)
-                </p>
-            </div>
-        </div>
-    </aside>
-
-    
-
-    <script>
-        window.rootPath = "../";
-        window.currentCrate = "notify_rust";
-        window.playgroundUrl = "";
-    </script>
-    <script src="../jquery.js"></script>
-    <script src="../main.js"></script>
-    
-    <script async src="../search-index.js"></script>
-</body>
-</html>
+                           </td>
+                       </tr></table></section><section id="search" class="content hidden"></section><section class="footer"></section><aside id="help" class="hidden"><div><h1 class="hidden">Help</h1><div class="shortcuts"><h2>Keyboard Shortcuts</h2><dl><dt><kbd>?</kbd></dt><dd>Show this help dialog</dd><dt><kbd>S</kbd></dt><dd>Focus the search field</dd><dt><kbd>↑</kbd></dt><dd>Move up in search results</dd><dt><kbd>↓</kbd></dt><dd>Move down in search results</dd><dt><kbd>↹</kbd></dt><dd>Switch tab</dd><dt><kbd>&#9166;</kbd></dt><dd>Go to active search result</dd><dt><kbd>+</kbd></dt><dd>Expand all sections</dd><dt><kbd>-</kbd></dt><dd>Collapse all sections</dd></dl></div><div class="infos"><h2>Search Tricks</h2><p>Prefix searches with a type followed by a colon (e.g. <code>fn:</code>) to restrict the search to a given type.</p><p>Accepted types are: <code>fn</code>, <code>mod</code>, <code>struct</code>, <code>enum</code>, <code>trait</code>, <code>type</code>, <code>macro</code>, and <code>const</code>.</p><p>Search functions by type signature (e.g. <code>vec -> usize</code> or <code>* -> vec</code>)</p><p>Search multiple things at once by splitting your query with comma (e.g. <code>str,u8</code> or <code>String,struct:Vec,test</code>)</p></div></div></aside><script>window.rootPath = "../";window.currentCrate = "notify_rust";</script><script src="../aliases.js"></script><script src="../main.js"></script><script defer src="../search-index.js"></script></body></html>
