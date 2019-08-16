@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `src/lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form js-only"><div class="search-container"><input class="search-input" name="search" autocomplete="off" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `src/lib.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>lib.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="shortcut icon" href="../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../notify_rust/index.html'><div class='logo-container'><img src='../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form js-only"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
 <span id="4">  4</span>
@@ -673,15 +673,7 @@
 <span id="673">673</span>
 <span id="674">674</span>
 <span id="675">675</span>
-<span id="676">676</span>
-<span id="677">677</span>
-<span id="678">678</span>
-<span id="679">679</span>
-<span id="680">680</span>
-<span id="681">681</span>
-<span id="682">682</span>
-<span id="683">683</span>
-</pre><pre class="rust ">
+</pre><div class="example-wrap"><pre class="rust ">
 <span class="doccomment">//! Desktop Notifications for Rust.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! Desktop notifications are popup messages generated to notify the user of certain events.</span>
@@ -716,7 +708,7 @@
 <span class="doccomment">//! # use notify_rust::*;</span>
 <span class="doccomment">//! Notification::new()</span>
 <span class="doccomment">//!     .summary(&quot;Category:email&quot;)</span>
-<span class="doccomment">//!     .body(&quot;This has nothing to do with emails.\nIt should not go away until you acknoledge it.&quot;)</span>
+<span class="doccomment">//!     .body(&quot;This has nothing to do with emails.\nIt should not go away until you acknowledge it.&quot;)</span>
 <span class="doccomment">//!     .icon(&quot;thunderbird&quot;)</span>
 <span class="doccomment">//!     .appname(&quot;thunderbird&quot;)</span>
 <span class="doccomment">//!     .hint(NotificationHint::Category(&quot;email&quot;.to_owned()))</span>
@@ -750,7 +742,7 @@
 <span class="doccomment">//!</span>
 <span class="doccomment">//! ## Minimal Example</span>
 <span class="doccomment">//!</span>
-<span class="doccomment">//! You can ommit almost everything</span>
+<span class="doccomment">//! You can omit almost everything</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! ```no_run</span>
 <span class="doccomment">//! # use notify_rust::Notification;</span>
@@ -764,48 +756,40 @@
 <span class="doccomment">//! ❌ = will not compile</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! ## `Notification`</span>
-<span class="doccomment">//! &lt;table&gt;</span>
-<span class="doccomment">//! &lt;thead&gt;</span>
-<span class="doccomment">//! &lt;tr&gt; &lt;td&gt;method&lt;/td&gt; &lt;td&gt;XDG&lt;/td&gt; &lt;td&gt;macOS&lt;/td&gt; &lt;/tr&gt;</span>
-<span class="doccomment">//! &lt;/thead&gt;</span>
-<span class="doccomment">//!</span>
-<span class="doccomment">//!  &lt;tr&gt; &lt;td&gt; fn appname(...)  &lt;/td&gt;  &lt;td&gt; ✔︎ &lt;/td&gt;  &lt;td&gt;   &lt;/td&gt;  &lt;/tr&gt;</span>
-<span class="doccomment">//!  &lt;tr&gt; &lt;td&gt; fn summary(...)  &lt;/td&gt;  &lt;td&gt; ✔︎ &lt;/td&gt;  &lt;td&gt; ✔︎ &lt;/td&gt;  &lt;/tr&gt;</span>
-<span class="doccomment">//!  &lt;tr&gt; &lt;td&gt; fn subtitle(...) &lt;/td&gt;  &lt;td&gt;   &lt;/td&gt;  &lt;td&gt; ✔︎ &lt;/td&gt;  &lt;/tr&gt;</span>
-<span class="doccomment">//!  &lt;tr&gt; &lt;td&gt; fn body(...)     &lt;/td&gt;  &lt;td&gt; ✔︎ &lt;/td&gt;  &lt;td&gt; ✔︎ &lt;/td&gt;  &lt;/tr&gt;</span>
-<span class="doccomment">//!  &lt;tr&gt; &lt;td&gt; fn icon(...)     &lt;/td&gt;  &lt;td&gt; ✔︎ &lt;/td&gt;  &lt;td&gt;   &lt;/td&gt;  &lt;/tr&gt;</span>
-<span class="doccomment">//!  &lt;tr&gt; &lt;td&gt; fn auto_icon(...)&lt;/td&gt;  &lt;td&gt; ✔︎ &lt;/td&gt;  &lt;td&gt;   &lt;/td&gt;  &lt;/tr&gt;</span>
-<span class="doccomment">//!  &lt;tr&gt; &lt;td&gt; fn hint(...)     &lt;/td&gt;  &lt;td&gt; ✔︎ &lt;/td&gt;  &lt;td&gt;   &lt;/td&gt;  &lt;/tr&gt;</span>
-<span class="doccomment">//!  &lt;tr&gt; &lt;td&gt; fn timeout(...)  &lt;/td&gt;  &lt;td&gt; ✔︎ &lt;/td&gt;  &lt;td&gt;   &lt;/td&gt;  &lt;/tr&gt;</span>
-<span class="doccomment">//!  &lt;tr&gt; &lt;td&gt; fn urgency(...)  &lt;/td&gt;  &lt;td&gt; ✔︎ &lt;/td&gt;  &lt;td&gt;   &lt;/td&gt;  &lt;/tr&gt;</span>
-<span class="doccomment">//!  &lt;tr&gt; &lt;td&gt; fn action(...)   &lt;/td&gt;  &lt;td&gt; ✔︎ &lt;/td&gt;  &lt;td&gt;   &lt;/td&gt;  &lt;/tr&gt;</span>
-<span class="doccomment">//!  &lt;tr&gt; &lt;td&gt; fn id(...)       &lt;/td&gt;  &lt;td&gt; ✔︎ &lt;/td&gt;  &lt;td&gt;   &lt;/td&gt;  &lt;/tr&gt;</span>
-<span class="doccomment">//!  &lt;tr&gt; &lt;td&gt; fn finalize(...) &lt;/td&gt;  &lt;td&gt; ✔︎ &lt;/td&gt;  &lt;td&gt; ✔︎ &lt;/td&gt;  &lt;/tr&gt;</span>
-<span class="doccomment">//!  &lt;tr&gt; &lt;td&gt; fn show(...)     &lt;/td&gt;  &lt;td&gt; ✔︎ &lt;/td&gt;  &lt;td&gt; ✔︎ &lt;/td&gt;  &lt;/tr&gt;</span>
-<span class="doccomment">//! &lt;/table&gt;</span>
+<span class="doccomment">//! | method              | XDG   | macOS |</span>
+<span class="doccomment">//! |---------------------|-------|-------|</span>
+<span class="doccomment">//! |  `fn appname(...)`  |  ✔︎    |       |</span>
+<span class="doccomment">//! |  `fn summary(...)`  |  ✔︎    | ✔︎     |</span>
+<span class="doccomment">//! |  `fn subtitle(...)` |       | ✔︎     |</span>
+<span class="doccomment">//! |  `fn body(...)`     |  ✔︎    | ✔︎     |</span>
+<span class="doccomment">//! |  `fn icon(...)`     |  ✔︎    |       |</span>
+<span class="doccomment">//! |  `fn auto_icon(...)`|  ✔︎    |       |</span>
+<span class="doccomment">//! |  `fn hint(...)`     |  ✔︎    |       |</span>
+<span class="doccomment">//! |  `fn timeout(...)`  |  ✔︎    |       |</span>
+<span class="doccomment">//! |  `fn urgency(...)`  |  ✔︎    |       |</span>
+<span class="doccomment">//! |  `fn action(...)`   |  ✔︎    |       |</span>
+<span class="doccomment">//! |  `fn id(...)`       |  ✔︎    |       |</span>
+<span class="doccomment">//! |  `fn finalize(...)` |  ✔︎    | ✔︎     |</span>
+<span class="doccomment">//! |  `fn show(...)`     |  ✔︎    | ✔︎     |</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! ## `NotificationHandle`</span>
-<span class="doccomment">//! &lt;table&gt;</span>
-<span class="doccomment">//! &lt;thead&gt;</span>
-<span class="doccomment">//! &lt;tr&gt; &lt;td&gt;method&lt;/td&gt; &lt;td&gt;XDG&lt;/td&gt; &lt;td&gt;macOS&lt;/td&gt; &lt;/tr&gt;</span>
-<span class="doccomment">//! &lt;/thead&gt;</span>
-<span class="doccomment">//! &lt;tr&gt; &lt;td&gt; fn wait_for_action(...)&lt;/td&gt;  &lt;td&gt;  ✔︎  &lt;/td&gt;  &lt;td&gt; ❌ &lt;/td&gt;    &lt;/tr&gt;</span>
-<span class="doccomment">//! &lt;tr&gt; &lt;td&gt; fn close(...)          &lt;/td&gt;  &lt;td&gt;  ✔︎  &lt;/td&gt;  &lt;td&gt; ❌ &lt;/td&gt;    &lt;/tr&gt;</span>
-<span class="doccomment">//! &lt;tr&gt; &lt;td&gt; fn on_close(...)       &lt;/td&gt;  &lt;td&gt;  ✔︎  &lt;/td&gt;  &lt;td&gt; ❌ &lt;/td&gt;    &lt;/tr&gt;</span>
-<span class="doccomment">//! &lt;tr&gt; &lt;td&gt; fn update(...)         &lt;/td&gt;  &lt;td&gt;  ✔︎  &lt;/td&gt;  &lt;td&gt; ❌ &lt;/td&gt;    &lt;/tr&gt;</span>
-<span class="doccomment">//! &lt;tr&gt; &lt;td&gt; fn id(...)             &lt;/td&gt;  &lt;td&gt;  ✔︎  &lt;/td&gt;  &lt;td&gt; ❌ &lt;/td&gt;    &lt;/tr&gt;</span>
-<span class="doccomment">//! &lt;/table&gt;</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! | method                   | XDG | macOS |</span>
+<span class="doccomment">//! |--------------------------|-----|-------|</span>
+<span class="doccomment">//! | `fn wait_for_action(...)`|  ✔︎  |  ❌   |</span>
+<span class="doccomment">//! | `fn close(...)`          |  ✔︎  |  ❌   |</span>
+<span class="doccomment">//! | `fn on_close(...)`       |  ✔︎  |  ❌   |</span>
+<span class="doccomment">//! | `fn update(...)`         |  ✔︎  |  ❌   |</span>
+<span class="doccomment">//! | `fn id(...)`             |  ✔︎  |  ❌   |</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! ## Functions</span>
-<span class="doccomment">//! &lt;table&gt;</span>
-<span class="doccomment">//! &lt;thead&gt;</span>
-<span class="doccomment">//! &lt;tr&gt; &lt;td&gt;&lt;/td&gt; &lt;td&gt;XDG&lt;/td&gt; &lt;td&gt;macOS&lt;/td&gt; &lt;/tr&gt;</span>
-<span class="doccomment">//! &lt;/thead&gt;</span>
 <span class="doccomment">//!</span>
-<span class="doccomment">//! &lt;tr&gt; &lt;td&gt; fn get_capabilities(...)&lt;/td&gt;                 &lt;td&gt; ✔︎ &lt;/td&gt;  &lt;td&gt; ❌ &lt;/td&gt; &lt;/tr&gt;</span>
-<span class="doccomment">//! &lt;tr&gt; &lt;td&gt; fn get_server_information(...)&lt;/td&gt;           &lt;td&gt; ✔︎ &lt;/td&gt;  &lt;td&gt; ❌ &lt;/td&gt; &lt;/tr&gt;</span>
-<span class="doccomment">//! &lt;tr&gt; &lt;td&gt; fn set_application(...)&lt;/td&gt;                  &lt;td&gt; ❌ &lt;/td&gt;  &lt;td&gt; ✔︎ &lt;/td&gt; &lt;/tr&gt;</span>
-<span class="doccomment">//! &lt;tr&gt; &lt;td&gt; fn get_bundle_identifier_or_default(...)&lt;/td&gt; &lt;td&gt; ❌ &lt;/td&gt;  &lt;td&gt; ✔︎ &lt;/td&gt; &lt;/tr&gt;</span>
+<span class="doccomment">//! |                                            | XDG | macOS |</span>
+<span class="doccomment">//! |--------------------------------------------|-----|-------|</span>
+<span class="doccomment">//! | `fn get_capabilities(...)`                 | ✔︎   |    ❌ |</span>
+<span class="doccomment">//! | `fn get_server_information(...)`           | ✔︎   |    ❌ |</span>
+<span class="doccomment">//! | `fn set_application(...)`                  | ❌  |    ✔︎  |</span>
+<span class="doccomment">//! | `fn get_bundle_identifier_or_default(...)` | ❌  |    ✔︎  |</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! &lt;/table&gt;</span>
 <span class="doccomment">//!</span>
@@ -845,26 +829,24 @@
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;macos&quot;</span>)]</span> <span class="kw">mod</span> <span class="ident">macos</span>;
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;macos&quot;</span>)]</span> <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">macos</span>::<span class="kw-2">*</span>;
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">all</span>(<span class="ident">unix</span>, <span class="ident">not</span>(<span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;macos&quot;</span>)))]</span> <span class="kw">mod</span> <span class="ident">xdg</span>;
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">all</span>(<span class="ident">unix</span>, <span class="ident">not</span>(<span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;macos&quot;</span>)))]</span> <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">xdg</span>::<span class="ident">NotificationHandle</span>;
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">all</span>(<span class="ident">unix</span>, <span class="ident">not</span>(<span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;macos&quot;</span>)))]</span> <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">xdg</span>::{ <span class="ident">get_capabilities</span>, <span class="ident">get_server_information</span>, <span class="ident">handle_actions</span>, <span class="ident">stop_server</span> };
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">all</span>(<span class="ident">unix</span>, <span class="ident">not</span>(<span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;macos&quot;</span>)))]</span> <span class="kw">pub</span> <span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">xdg</span>::<span class="ident">NotificationHandle</span>;
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">all</span>(<span class="ident">unix</span>, <span class="ident">not</span>(<span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;macos&quot;</span>)))]</span> <span class="kw">pub</span> <span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">xdg</span>::{ <span class="ident">get_capabilities</span>, <span class="ident">get_server_information</span>, <span class="ident">handle_actions</span>, <span class="ident">stop_server</span> };
 
-<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">all</span>(<span class="ident">unix</span>, <span class="ident">not</span>(<span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;macos&quot;</span>)))]</span> <span class="kw">use</span> <span class="ident">xdg</span>::<span class="ident">build_message</span>;
-
-<span class="attribute">#[<span class="ident">macro_use</span>]</span>
-<span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">error_chain</span>;
+<span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">all</span>(<span class="ident">unix</span>, <span class="ident">not</span>(<span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;macos&quot;</span>)))]</span> <span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">xdg</span>::<span class="ident">build_message</span>;
 
 <span class="attribute">#[<span class="ident">macro_use</span>]</span>
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">all</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;images&quot;</span>, <span class="ident">unix</span>, <span class="ident">not</span>(<span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;macos&quot;</span>)))]</span>
 <span class="kw">extern</span> <span class="kw">crate</span> <span class="ident">lazy_static</span>;
 
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">hints</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">hints</span>::<span class="ident">NotificationHint</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">hints</span>::<span class="ident">NotificationHint</span>;
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;images&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">use</span> <span class="ident">hints</span>::<span class="ident">NotificationImage</span>;
 
 <span class="kw">pub</span> <span class="kw">mod</span> <span class="ident">error</span>;
-<span class="kw">pub</span> <span class="kw">use</span> <span class="ident">error</span>::<span class="ident">Error</span>;
-<span class="kw">use</span> <span class="ident">error</span>::<span class="kw-2">*</span>;
+<span class="kw">pub</span> <span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">error</span>::{<span class="ident">Error</span>, <span class="ident">ErrorKind</span>};
+
+<span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">error</span>::<span class="kw-2">*</span>;
 
 <span class="kw">mod</span> <span class="ident">miniver</span>;
 
@@ -893,11 +875,11 @@
     <span class="doccomment">/// Subtitle for macOS</span>
     <span class="kw">pub</span> <span class="ident">subtitle</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>,
     <span class="doccomment">/// Multiple lines possible, may support simple markup,</span>
-    <span class="doccomment">/// checkout `get_capabilities()` -&gt; `body-markup` and `body-hyperlinks`.</span>
+    <span class="doccomment">/// check out `get_capabilities()` -&gt; `body-markup` and `body-hyperlinks`.</span>
     <span class="kw">pub</span> <span class="ident">body</span>:    <span class="ident">String</span>,
     <span class="doccomment">/// Use a file:// URI or a name in an icon theme, must be compliant freedesktop.org.</span>
     <span class="kw">pub</span> <span class="ident">icon</span>:    <span class="ident">String</span>,
-    <span class="doccomment">/// Checkout `NotificationHint`</span>
+    <span class="doccomment">/// Check out `NotificationHint`</span>
     <span class="kw">pub</span> <span class="ident">hints</span>:   <span class="ident">HashSet</span><span class="op">&lt;</span><span class="ident">NotificationHint</span><span class="op">&gt;</span>,
     <span class="doccomment">/// See `Notification::actions()` and `Notification::action()`</span>
     <span class="kw">pub</span> <span class="ident">actions</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span>,
@@ -1019,10 +1001,10 @@
 
     <span class="doccomment">/// Set the `icon` field automatically.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// This looks at your binaries name and uses it to set the icon.t</span>
+    <span class="doccomment">/// This looks at your binary&#39;s name and uses it to set the icon.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Platform support</span>
-    <span class="doccomment">/// macOS does not have support manually setting the icon. However you can pretend to be another app using [`set_application()`](fn.set_application.html)</span>
+    <span class="doccomment">/// macOS does not support manually setting the icon. However you can pretend to be another app using [`set_application()`](fn.set_application.html)</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">auto_icon</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Notification</span> {
         <span class="self">self</span>.<span class="ident">icon</span> <span class="op">=</span> <span class="ident">exe_name</span>();
         <span class="self">self</span>
@@ -1031,7 +1013,7 @@
     <span class="doccomment">/// Adds a hint.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// This method will add a hint to the internal hint hashset.</span>
-    <span class="doccomment">/// Hints must be of type NotificationHint.</span>
+    <span class="doccomment">/// Hints must be of type `NotificationHint`.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Many of these are again wrapped by more convenient functions such as:</span>
     <span class="doccomment">///</span>
@@ -1080,7 +1062,7 @@
     <span class="doccomment">/// Pick between Medium, Low and High.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// # Platform support</span>
-    <span class="doccomment">/// Most Desktops on linux and bsd are far too relaxed to pay any attention to this. macOS it to cool to even have something like this in it&#39;s spec 😊.</span>
+    <span class="doccomment">/// Most Desktops on linux and bsd are far too relaxed to pay any attention to this. macOS is too cool to even have something like this in its spec 😊.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">urgency</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>, <span class="ident">urgency</span>: <span class="ident">NotificationUrgency</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Notification</span> {
         <span class="self">self</span>.<span class="ident">hint</span>(<span class="ident">NotificationHint</span>::<span class="ident">Urgency</span>(<span class="ident">urgency</span>)); <span class="comment">// TODO impl as T where T: Into&lt;NotificationUrgency&gt;</span>
         <span class="self">self</span>
@@ -1095,7 +1077,7 @@
     <span class="doccomment">/// &gt;  Each odd element in the list is the localized string that will be displayed to the user.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// There is nothing fancy going on here yet.</span>
-    <span class="doccomment">/// **Carefull! This replaces the internal list of actions!**</span>
+    <span class="doccomment">/// **Careful! This replaces the internal list of actions!**</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// (xdg only)</span>
     <span class="attribute">#[<span class="ident">deprecated</span>(<span class="ident">note</span> <span class="op">=</span> <span class="string">&quot;please use .action() only&quot;</span>)]</span>
@@ -1179,12 +1161,14 @@
     <span class="doccomment">/// the notification.</span>
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;macos&quot;</span>)]</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">show</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">NotificationHandle</span><span class="op">&gt;</span> {
-        <span class="prelude-val">Ok</span>(<span class="ident">mac_notification_sys</span>::<span class="ident">send_notification</span>(
+        <span class="ident">mac_notification_sys</span>::<span class="ident">send_notification</span>(
             <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">summary</span>, <span class="comment">//title</span>
             <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">subtitle</span>.<span class="ident">as_ref</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="kw-2">*</span><span class="ident">s</span>), <span class="comment">// subtitle</span>
             <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">body</span>, <span class="comment">//message</span>
             <span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">sound_name</span>.<span class="ident">as_ref</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="kw-2">&amp;</span><span class="kw-2">*</span><span class="kw-2">*</span><span class="ident">s</span>) <span class="comment">// sound</span>
-        ).<span class="ident">map</span>(<span class="op">|</span><span class="kw">_</span><span class="op">|</span> <span class="ident">NotificationHandle</span>::<span class="ident">new</span>(<span class="self">self</span>.<span class="ident">clone</span>()))<span class="question-mark">?</span>)
+        )<span class="question-mark">?</span>;
+
+        <span class="prelude-val">Ok</span>(<span class="ident">NotificationHandle</span>::<span class="ident">new</span>(<span class="self">self</span>.<span class="ident">clone</span>()))
     }
 
     <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">all</span>(<span class="ident">unix</span>, <span class="ident">not</span>(<span class="ident">target_os</span> <span class="op">=</span> <span class="string">&quot;macos&quot;</span>)))]</span>
@@ -1365,5 +1349,5 @@
     <span class="ident">env</span>::<span class="ident">current_exe</span>().<span class="ident">unwrap</span>()
     .<span class="ident">file_name</span>().<span class="ident">unwrap</span>().<span class="ident">to_str</span>().<span class="ident">unwrap</span>().<span class="ident">to_owned</span>()
 }
-</pre>
-</section><section id="search" class="content hidden"></section><section class="footer"></section><aside id="help" class="hidden"><div><h1 class="hidden">Help</h1><div class="shortcuts"><h2>Keyboard Shortcuts</h2><dl><dt><kbd>?</kbd></dt><dd>Show this help dialog</dd><dt><kbd>S</kbd></dt><dd>Focus the search field</dd><dt><kbd>↑</kbd></dt><dd>Move up in search results</dd><dt><kbd>↓</kbd></dt><dd>Move down in search results</dd><dt><kbd>↹</kbd></dt><dd>Switch tab</dd><dt><kbd>&#9166;</kbd></dt><dd>Go to active search result</dd><dt><kbd>+</kbd></dt><dd>Expand all sections</dd><dt><kbd>-</kbd></dt><dd>Collapse all sections</dd></dl></div><div class="infos"><h2>Search Tricks</h2><p>Prefix searches with a type followed by a colon (e.g. <code>fn:</code>) to restrict the search to a given type.</p><p>Accepted types are: <code>fn</code>, <code>mod</code>, <code>struct</code>, <code>enum</code>, <code>trait</code>, <code>type</code>, <code>macro</code>, and <code>const</code>.</p><p>Search functions by type signature (e.g. <code>vec -> usize</code> or <code>* -> vec</code>)</p><p>Search multiple things at once by splitting your query with comma (e.g. <code>str,u8</code> or <code>String,struct:Vec,test</code>)</p></div></div></aside><script>window.rootPath = "../../";window.currentCrate = "notify_rust";</script><script src="../../aliases.js"></script><script src="../../main.js"></script><script defer src="../../search-index.js"></script></body></html>
+</pre></div>
+</section><section id="search" class="content hidden"></section><section class="footer"></section><aside id="help" class="hidden"><div><h1 class="hidden">Help</h1><div class="shortcuts"><h2>Keyboard Shortcuts</h2><dl><dt><kbd>?</kbd></dt><dd>Show this help dialog</dd><dt><kbd>S</kbd></dt><dd>Focus the search field</dd><dt><kbd>↑</kbd></dt><dd>Move up in search results</dd><dt><kbd>↓</kbd></dt><dd>Move down in search results</dd><dt><kbd>↹</kbd></dt><dd>Switch tab</dd><dt><kbd>&#9166;</kbd></dt><dd>Go to active search result</dd><dt><kbd>+</kbd></dt><dd>Expand all sections</dd><dt><kbd>-</kbd></dt><dd>Collapse all sections</dd></dl></div><div class="infos"><h2>Search Tricks</h2><p>Prefix searches with a type followed by a colon (e.g., <code>fn:</code>) to restrict the search to a given type.</p><p>Accepted types are: <code>fn</code>, <code>mod</code>, <code>struct</code>, <code>enum</code>, <code>trait</code>, <code>type</code>, <code>macro</code>, and <code>const</code>.</p><p>Search functions by type signature (e.g., <code>vec -> usize</code> or <code>* -> vec</code>)</p><p>Search multiple things at once by splitting your query with comma (e.g., <code>str,u8</code> or <code>String,struct:Vec,test</code>)</p></div></div></aside><script>window.rootPath = "../../";window.currentCrate = "notify_rust";</script><script src="../../aliases.js"></script><script src="../../main.js"></script><script src="../../source-script.js"></script><script src="../../source-files.js"></script><script defer src="../../search-index.js"></script></body></html>

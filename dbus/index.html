@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="API documentation for the Rust `dbus` crate."><meta name="keywords" content="rust, rustlang, rust-lang, dbus"><title>dbus - Rust</title><link rel="stylesheet" type="text/css" href="../normalize.css"><link rel="stylesheet" type="text/css" href="../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../dark.css"><link rel="stylesheet" type="text/css" href="../light.css" id="themeStyle"><script src="../storage.js"></script></head><body class="rustdoc mod"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><p class='location'>Crate dbus</p><div class="sidebar-elems"><div class="block items"><ul><li><a href="#modules">Modules</a></li><li><a href="#structs">Structs</a></li><li><a href="#enums">Enums</a></li><li><a href="#traits">Traits</a></li><li><a href="#types">Type Definitions</a></li></ul></div><p class='location'></p><script>window.sidebarCurrent = {name: 'dbus', ty: 'mod', relpath: '../'};</script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../theme.js"></script><nav class="sub"><form class="search-form js-only"><div class="search-container"><input class="search-input" name="search" autocomplete="off" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><a id="settings-menu" href="../settings.html"><img src="../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class='fqn'><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../src/dbus/lib.rs.html#1-281' title='goto source code'>[src]</a></span><span class='in-band'>Crate <a class="mod" href=''>dbus</a></span></h1><div class='docblock'><p>D-Bus bindings for Rust</p>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="API documentation for the Rust `dbus` crate."><meta name="keywords" content="rust, rustlang, rust-lang, dbus"><title>dbus - Rust</title><link rel="stylesheet" type="text/css" href="../normalize.css"><link rel="stylesheet" type="text/css" href="../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../dark.css"><link rel="stylesheet" type="text/css" href="../light.css" id="themeStyle"><script src="../storage.js"></script><noscript><link rel="stylesheet" href="../noscript.css"></noscript><link rel="shortcut icon" href="../favicon.ico"><style type="text/css">#crate-search{background-image:url("../down-arrow.svg");}</style></head><body class="rustdoc mod"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../dbus/index.html'><div class='logo-container'><img src='../rust-logo.png' alt='logo'></div></a><p class='location'>Crate dbus</p><div class="sidebar-elems"><a id='all-types' href='all.html'><p>See all dbus's items</p></a><div class="block items"><ul><li><a href="#modules">Modules</a></li><li><a href="#structs">Structs</a></li><li><a href="#enums">Enums</a></li><li><a href="#traits">Traits</a></li><li><a href="#types">Type Definitions</a></li></ul></div><p class='location'></p><script>window.sidebarCurrent = {name: 'dbus', ty: 'mod', relpath: '../'};</script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../theme.js"></script><nav class="sub"><form class="search-form js-only"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../settings.html"><img src="../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class='fqn'><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../src/dbus/lib.rs.html#1-284' title='goto source code'>[src]</a></span><span class='in-band'>Crate <a class="mod" href=''>dbus</a></span></h1><div class='docblock'><p>D-Bus bindings for Rust</p>
 <p><a href="http://dbus.freedesktop.org/">D-Bus</a> is a message bus, and is mainly used in Linux
 for communication between processes. It is present by default on almost every
 Linux distribution out there, and runs in two instances - one per session, and one
@@ -10,302 +10,51 @@ README.md also contain a few quick &quot;getting started&quot; examples.</p>
 code from D-Bus introspection data, and dbus-tokio for integrating D-Bus with <a href="http://tokio.rs">Tokio</a>.
 However, at the time of this writing, these are far less mature than this crate. </p>
 </div><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
-<table>
-                       <tr class=' module-item'>
-                           <td><a class="mod" href="arg/index.html"
-                                  title='mod dbus::arg'>arg</a></td>
-                           <td class='docblock-short'>
-                                <p>Types and traits for easily getting a message's arguments, or appening a message with arguments.</p>
-
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="mod" href="stdintf/index.html"
-                                  title='mod dbus::stdintf'>stdintf</a></td>
-                           <td class='docblock-short'>
-                                <p>This module contains some standard interfaces and an easy way to call them.</p>
-
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="mod" href="tree/index.html"
-                                  title='mod dbus::tree'>tree</a></td>
-                           <td class='docblock-short'>
-                                <p>Contains functionality for dispatching methods on a D-Bus &quot;server&quot;.</p>
-
-                           </td>
-                       </tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
-<table>
-                       <tr class=' module-item'>
-                           <td><a class="struct" href="struct.BusName.html"
-                                  title='struct dbus::BusName'>BusName</a></td>
-                           <td class='docblock-short'>
-                                <p>A wrapper around a string that is guaranteed to be
+<table><tr class='module-item'><td><a class="mod" href="arg/index.html" title='dbus::arg mod'>arg</a></td><td class='docblock-short'><p>Types and traits for easily getting a message's arguments, or appening a message with arguments.</p>
+</td></tr><tr class='module-item'><td><a class="mod" href="stdintf/index.html" title='dbus::stdintf mod'>stdintf</a></td><td class='docblock-short'><p>This module contains some standard interfaces and an easy way to call them.</p>
+</td></tr><tr class='module-item'><td><a class="mod" href="tree/index.html" title='dbus::tree mod'>tree</a></td><td class='docblock-short'><p>Contains functionality for dispatching methods on a D-Bus &quot;server&quot;.</p>
+</td></tr></table><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
+<table><tr class='module-item'><td><a class="struct" href="struct.BusName.html" title='dbus::BusName struct'>BusName</a></td><td class='docblock-short'><p>A wrapper around a string that is guaranteed to be
 a valid D-Bus bus name.</p>
-
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="struct" href="struct.ConnMsgs.html"
-                                  title='struct dbus::ConnMsgs'>ConnMsgs</a></td>
-                           <td class='docblock-short'>
-                                <p>Iterator over incoming messages on a connection.</p>
-
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="struct" href="struct.ConnPath.html"
-                                  title='struct dbus::ConnPath'>ConnPath</a></td>
-                           <td class='docblock-short'>
-                                <p>A convenience struct that wraps connection, destination and path.</p>
-
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="struct" href="struct.Connection.html"
-                                  title='struct dbus::Connection'>Connection</a></td>
-                           <td class='docblock-short'>
-                                <p>A D-Bus connection. Start here if you want to get on the D-Bus!</p>
-
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="struct" href="struct.ConnectionItems.html"
-                                  title='struct dbus::ConnectionItems'>ConnectionItems</a></td>
-                           <td class='docblock-short'>
-                                <p>ConnectionItem iterator</p>
-
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="struct" href="struct.Error.html"
-                                  title='struct dbus::Error'>Error</a></td>
-                           <td class='docblock-short'>
-                                <p>D-Bus Error wrapper.</p>
-
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="struct" href="struct.ErrorName.html"
-                                  title='struct dbus::ErrorName'>ErrorName</a></td>
-                           <td class='docblock-short'>
-                                <p>A wrapper around a string that is guaranteed to be
+</td></tr><tr class='module-item'><td><a class="struct" href="struct.ConnMsgs.html" title='dbus::ConnMsgs struct'>ConnMsgs</a></td><td class='docblock-short'><p>Iterator over incoming messages on a connection.</p>
+</td></tr><tr class='module-item'><td><a class="struct" href="struct.ConnPath.html" title='dbus::ConnPath struct'>ConnPath</a></td><td class='docblock-short'><p>A convenience struct that wraps connection, destination and path.</p>
+</td></tr><tr class='module-item'><td><a class="struct" href="struct.Connection.html" title='dbus::Connection struct'>Connection</a></td><td class='docblock-short'><p>A D-Bus connection. Start here if you want to get on the D-Bus!</p>
+</td></tr><tr class='module-item'><td><a class="struct" href="struct.ConnectionItems.html" title='dbus::ConnectionItems struct'>ConnectionItems</a></td><td class='docblock-short'><p>ConnectionItem iterator</p>
+</td></tr><tr class='module-item'><td><a class="struct" href="struct.Error.html" title='dbus::Error struct'>Error</a></td><td class='docblock-short'><p>D-Bus Error wrapper.</p>
+</td></tr><tr class='module-item'><td><a class="struct" href="struct.ErrorName.html" title='dbus::ErrorName struct'>ErrorName</a></td><td class='docblock-short'><p>A wrapper around a string that is guaranteed to be
 a valid D-Bus bus name.</p>
-
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="struct" href="struct.Interface.html"
-                                  title='struct dbus::Interface'>Interface</a></td>
-                           <td class='docblock-short'>
-                                <p>A wrapper around a string that is guaranteed to be
+</td></tr><tr class='module-item'><td><a class="struct" href="struct.Interface.html" title='dbus::Interface struct'>Interface</a></td><td class='docblock-short'><p>A wrapper around a string that is guaranteed to be
 a valid D-Bus interface name.</p>
-
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="struct" href="struct.Member.html"
-                                  title='struct dbus::Member'>Member</a></td>
-                           <td class='docblock-short'>
-                                <p>A wrapper around a string that is guaranteed to be
+</td></tr><tr class='module-item'><td><a class="struct" href="struct.MatchRule.html" title='dbus::MatchRule struct'>MatchRule</a></td><td class='docblock-short'><p>A &quot;match rule&quot;, that can match Messages on its headers.</p>
+</td></tr><tr class='module-item'><td><a class="struct" href="struct.Member.html" title='dbus::Member struct'>Member</a></td><td class='docblock-short'><p>A wrapper around a string that is guaranteed to be
 a valid D-Bus member, i e, a signal or method name.</p>
-
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="struct" href="struct.Message.html"
-                                  title='struct dbus::Message'>Message</a></td>
-                           <td class='docblock-short'>
-                                <p>A D-Bus message. A message contains some headers (e g sender and destination address)
+</td></tr><tr class='module-item'><td><a class="struct" href="struct.Message.html" title='dbus::Message struct'>Message</a></td><td class='docblock-short'><p>A D-Bus message. A message contains some headers (e g sender and destination address)
 and a list of MessageItems.</p>
-
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="struct" href="struct.MessageItemArray.html"
-                                  title='struct dbus::MessageItemArray'>MessageItemArray</a></td>
-                           <td class='docblock-short'>
-                                <p>An array of MessageItem where every MessageItem is of the same type.</p>
-
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="struct" href="struct.MsgHandlerResult.html"
-                                  title='struct dbus::MsgHandlerResult'>MsgHandlerResult</a></td>
-                           <td class='docblock-short'>
-                                <p>The result from MsgHandler::handle.</p>
-
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="struct" href="struct.OwnedFd.html"
-                                  title='struct dbus::OwnedFd'>OwnedFd</a></td>
-                           <td class='docblock-short'>
-                                <p>An RAII wrapper around Fd to ensure that file descriptor is closed
+</td></tr><tr class='module-item'><td><a class="struct" href="struct.MessageItemArray.html" title='dbus::MessageItemArray struct'>MessageItemArray</a></td><td class='docblock-short'><p>An array of MessageItem where every MessageItem is of the same type.</p>
+</td></tr><tr class='module-item'><td><a class="struct" href="struct.MsgHandlerResult.html" title='dbus::MsgHandlerResult struct'>MsgHandlerResult</a></td><td class='docblock-short'><p>The result from MsgHandler::handle.</p>
+</td></tr><tr class='module-item'><td><a class="struct" href="struct.OwnedFd.html" title='dbus::OwnedFd struct'>OwnedFd</a></td><td class='docblock-short'><p>An RAII wrapper around Fd to ensure that file descriptor is closed
 when the scope ends.</p>
-
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="struct" href="struct.Path.html"
-                                  title='struct dbus::Path'>Path</a></td>
-                           <td class='docblock-short'>
-                                <p>A wrapper around a string that is guaranteed to be
+</td></tr><tr class='module-item'><td><a class="struct" href="struct.Path.html" title='dbus::Path struct'>Path</a></td><td class='docblock-short'><p>A wrapper around a string that is guaranteed to be
 a valid D-Bus object path.</p>
-
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="struct" href="struct.PropHandler.html"
-                                  title='struct dbus::PropHandler'>PropHandler</a></td>
-                           <td class='docblock-short'>
-                                <p>Wrapper around Props that keeps a map of fetched properties.</p>
-
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="struct" href="struct.Props.html"
-                                  title='struct dbus::Props'>Props</a></td>
-                           <td class='docblock-short'>
-                                <p>Client side properties - get and set properties on a remote application.</p>
-
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="struct" href="struct.Signature.html"
-                                  title='struct dbus::Signature'>Signature</a></td>
-                           <td class='docblock-short'>
-                                <p>A wrapper around a string that is guaranteed to be
+</td></tr><tr class='module-item'><td><a class="struct" href="struct.PropHandler.html" title='dbus::PropHandler struct'>PropHandler</a></td><td class='docblock-short'><p>Wrapper around Props that keeps a map of fetched properties.</p>
+</td></tr><tr class='module-item'><td><a class="struct" href="struct.Props.html" title='dbus::Props struct'>Props</a></td><td class='docblock-short'><p>Client side properties - get and set properties on a remote application.</p>
+</td></tr><tr class='module-item'><td><a class="struct" href="struct.Signature.html" title='dbus::Signature struct'>Signature</a></td><td class='docblock-short'><p>A wrapper around a string that is guaranteed to be
 a valid (single) D-Bus type signature. Supersedes TypeSig.</p>
-
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="struct" href="struct.Watch.html"
-                                  title='struct dbus::Watch'>Watch</a></td>
-                           <td class='docblock-short'>
-                                <p>A file descriptor, and an indication whether it should be read from, written to, or both.</p>
-
-                           </td>
-                       </tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
-<table>
-                       <tr class=' module-item'>
-                           <td><a class="enum" href="enum.ArrayError.html"
-                                  title='enum dbus::ArrayError'>ArrayError</a></td>
-                           <td class='docblock-short'>
-                                <p>Errors that can happen when creating a MessageItem::Array.</p>
-
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="enum" href="enum.BusType.html"
-                                  title='enum dbus::BusType'>BusType</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="enum" href="enum.ConnectionItem.html"
-                                  title='enum dbus::ConnectionItem'>ConnectionItem</a></td>
-                           <td class='docblock-short'>
-                                <p>When listening for incoming events on the D-Bus, this enum will tell you what type
+</td></tr><tr class='module-item'><td><a class="struct" href="struct.Watch.html" title='dbus::Watch struct'>Watch</a></td><td class='docblock-short'><p>A file descriptor, and an indication whether it should be read from, written to, or both.</p>
+</td></tr></table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
+<table><tr class='module-item'><td><a class="enum" href="enum.ArrayError.html" title='dbus::ArrayError enum'>ArrayError</a></td><td class='docblock-short'><p>Errors that can happen when creating a MessageItem::Array.</p>
+</td></tr><tr class='module-item'><td><a class="enum" href="enum.BusType.html" title='dbus::BusType enum'>BusType</a></td><td class='docblock-short'></td></tr><tr class='module-item'><td><a class="enum" href="enum.ConnectionItem.html" title='dbus::ConnectionItem enum'>ConnectionItem</a></td><td class='docblock-short'><p>When listening for incoming events on the D-Bus, this enum will tell you what type
 of incoming event has happened.</p>
-
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="enum" href="enum.MessageItem.html"
-                                  title='enum dbus::MessageItem'>MessageItem</a></td>
-                           <td class='docblock-short'>
-                                <p>MessageItem - used as parameters and return values from
+</td></tr><tr class='module-item'><td><a class="enum" href="enum.MessageItem.html" title='dbus::MessageItem enum'>MessageItem</a></td><td class='docblock-short'><p>MessageItem - used as parameters and return values from
 method calls, or as data added to a signal (old, enum version).</p>
-
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="enum" href="enum.MessageType.html"
-                                  title='enum dbus::MessageType'>MessageType</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="enum" href="enum.MsgHandlerType.html"
-                                  title='enum dbus::MsgHandlerType'>MsgHandlerType</a></td>
-                           <td class='docblock-short'>
-                                <p>Type of messages to be handled by a MsgHandler.</p>
-
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="enum" href="enum.NameFlag.html"
-                                  title='enum dbus::NameFlag'>NameFlag</a></td>
-                           <td class='docblock-short'>
-                                <p>Flags to use for Connection::register_name.</p>
-
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="enum" href="enum.ReleaseNameReply.html"
-                                  title='enum dbus::ReleaseNameReply'>ReleaseNameReply</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="enum" href="enum.RequestNameReply.html"
-                                  title='enum dbus::RequestNameReply'>RequestNameReply</a></td>
-                           <td class='docblock-short'>
-                                
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="enum" href="enum.WatchEvent.html"
-                                  title='enum dbus::WatchEvent'>WatchEvent</a></td>
-                           <td class='docblock-short'>
-                                <p>A file descriptor to watch for incoming events (for async I/O).</p>
-
-                           </td>
-                       </tr></table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
-<table>
-                       <tr class=' module-item'>
-                           <td><a class="trait" href="trait.FromMessageItem.html"
-                                  title='trait dbus::FromMessageItem'>FromMessageItem</a></td>
-                           <td class='docblock-short'>
-                                <p>Helper trait for <code>MessageItem::inner()</code></p>
-
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="trait" href="trait.MsgHandler.html"
-                                  title='trait dbus::MsgHandler'>MsgHandler</a></td>
-                           <td class='docblock-short'>
-                                <p>A trait for handling incoming messages.</p>
-
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="trait" href="trait.SignalArgs.html"
-                                  title='trait dbus::SignalArgs'>SignalArgs</a></td>
-                           <td class='docblock-short'>
-                                <p>Helper methods for structs representing a Signal</p>
-
-                           </td>
-                       </tr></table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
-<table>
-                       <tr class=' module-item'>
-                           <td><a class="type" href="type.MessageCallback.html"
-                                  title='type dbus::MessageCallback'>MessageCallback</a></td>
-                           <td class='docblock-short'>
-                                <p>The type of function to use for replacing the message callback.</p>
-
-                           </td>
-                       </tr>
-                       <tr class=' module-item'>
-                           <td><a class="type" href="type.TypeSig.html"
-                                  title='type dbus::TypeSig'>TypeSig</a></td>
-                           <td class='docblock-short'>
-                               [<div class='stab deprecated'>Deprecated</div>] <p>A TypeSig describes the type of a MessageItem.</p>
-
-                           </td>
-                       </tr></table></section><section id="search" class="content hidden"></section><section class="footer"></section><aside id="help" class="hidden"><div><h1 class="hidden">Help</h1><div class="shortcuts"><h2>Keyboard Shortcuts</h2><dl><dt><kbd>?</kbd></dt><dd>Show this help dialog</dd><dt><kbd>S</kbd></dt><dd>Focus the search field</dd><dt><kbd>↑</kbd></dt><dd>Move up in search results</dd><dt><kbd>↓</kbd></dt><dd>Move down in search results</dd><dt><kbd>↹</kbd></dt><dd>Switch tab</dd><dt><kbd>&#9166;</kbd></dt><dd>Go to active search result</dd><dt><kbd>+</kbd></dt><dd>Expand all sections</dd><dt><kbd>-</kbd></dt><dd>Collapse all sections</dd></dl></div><div class="infos"><h2>Search Tricks</h2><p>Prefix searches with a type followed by a colon (e.g. <code>fn:</code>) to restrict the search to a given type.</p><p>Accepted types are: <code>fn</code>, <code>mod</code>, <code>struct</code>, <code>enum</code>, <code>trait</code>, <code>type</code>, <code>macro</code>, and <code>const</code>.</p><p>Search functions by type signature (e.g. <code>vec -> usize</code> or <code>* -> vec</code>)</p><p>Search multiple things at once by splitting your query with comma (e.g. <code>str,u8</code> or <code>String,struct:Vec,test</code>)</p></div></div></aside><script>window.rootPath = "../";window.currentCrate = "dbus";</script><script src="../aliases.js"></script><script src="../main.js"></script><script defer src="../search-index.js"></script></body></html>
+</td></tr><tr class='module-item'><td><a class="enum" href="enum.MessageType.html" title='dbus::MessageType enum'>MessageType</a></td><td class='docblock-short'></td></tr><tr class='module-item'><td><a class="enum" href="enum.MsgHandlerType.html" title='dbus::MsgHandlerType enum'>MsgHandlerType</a></td><td class='docblock-short'><p>Type of messages to be handled by a MsgHandler.</p>
+</td></tr><tr class='module-item'><td><a class="enum" href="enum.NameFlag.html" title='dbus::NameFlag enum'>NameFlag</a></td><td class='docblock-short'><p>Flags to use for Connection::register_name.</p>
+</td></tr><tr class='module-item'><td><a class="enum" href="enum.ReleaseNameReply.html" title='dbus::ReleaseNameReply enum'>ReleaseNameReply</a></td><td class='docblock-short'></td></tr><tr class='module-item'><td><a class="enum" href="enum.RequestNameReply.html" title='dbus::RequestNameReply enum'>RequestNameReply</a></td><td class='docblock-short'></td></tr><tr class='module-item'><td><a class="enum" href="enum.WatchEvent.html" title='dbus::WatchEvent enum'>WatchEvent</a></td><td class='docblock-short'><p>A file descriptor to watch for incoming events (for async I/O).</p>
+</td></tr></table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table><tr class='module-item'><td><a class="trait" href="trait.FromMessageItem.html" title='dbus::FromMessageItem trait'>FromMessageItem</a></td><td class='docblock-short'><p>Helper trait for <code>MessageItem::inner()</code></p>
+</td></tr><tr class='module-item'><td><a class="trait" href="trait.MsgHandler.html" title='dbus::MsgHandler trait'>MsgHandler</a></td><td class='docblock-short'><p>A trait for handling incoming messages.</p>
+</td></tr><tr class='module-item'><td><a class="trait" href="trait.SignalArgs.html" title='dbus::SignalArgs trait'>SignalArgs</a></td><td class='docblock-short'><p>Helper methods for structs representing a Signal</p>
+</td></tr></table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
+<table><tr class='module-item'><td><a class="type" href="type.MessageCallback.html" title='dbus::MessageCallback type'>MessageCallback</a></td><td class='docblock-short'><p>The type of function to use for replacing the message callback.</p>
+</td></tr><tr class='module-item'><td><a class="type" href="type.TypeSig.html" title='dbus::TypeSig type'>TypeSig</a></td><td class='docblock-short'><span class="stab deprecated">Deprecated</span><p>A TypeSig describes the type of a MessageItem.</p>
+</td></tr></table></section><section id="search" class="content hidden"></section><section class="footer"></section><aside id="help" class="hidden"><div><h1 class="hidden">Help</h1><div class="shortcuts"><h2>Keyboard Shortcuts</h2><dl><dt><kbd>?</kbd></dt><dd>Show this help dialog</dd><dt><kbd>S</kbd></dt><dd>Focus the search field</dd><dt><kbd>↑</kbd></dt><dd>Move up in search results</dd><dt><kbd>↓</kbd></dt><dd>Move down in search results</dd><dt><kbd>↹</kbd></dt><dd>Switch tab</dd><dt><kbd>&#9166;</kbd></dt><dd>Go to active search result</dd><dt><kbd>+</kbd></dt><dd>Expand all sections</dd><dt><kbd>-</kbd></dt><dd>Collapse all sections</dd></dl></div><div class="infos"><h2>Search Tricks</h2><p>Prefix searches with a type followed by a colon (e.g., <code>fn:</code>) to restrict the search to a given type.</p><p>Accepted types are: <code>fn</code>, <code>mod</code>, <code>struct</code>, <code>enum</code>, <code>trait</code>, <code>type</code>, <code>macro</code>, and <code>const</code>.</p><p>Search functions by type signature (e.g., <code>vec -> usize</code> or <code>* -> vec</code>)</p><p>Search multiple things at once by splitting your query with comma (e.g., <code>str,u8</code> or <code>String,struct:Vec,test</code>)</p></div></div></aside><script>window.rootPath = "../";window.currentCrate = "dbus";</script><script src="../aliases.js"></script><script src="../main.js"></script><script defer src="../search-index.js"></script></body></html>

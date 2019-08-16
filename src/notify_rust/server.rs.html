@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `src/server.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>server.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form js-only"><div class="search-container"><input class="search-input" name="search" autocomplete="off" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `src/server.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>server.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="shortcut icon" href="../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../notify_rust/index.html'><div class='logo-container'><img src='../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form js-only"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
 <span id="4">  4</span>
@@ -206,9 +206,8 @@
 <span id="206">206</span>
 <span id="207">207</span>
 <span id="208">208</span>
-<span id="209">209</span>
-</pre><pre class="rust ">
-<span class="doccomment">//! **Experimental** server taking the place of your Desktop Environments Notification Server.</span>
+</pre><div class="example-wrap"><pre class="rust ">
+<span class="doccomment">//! **Experimental** server taking the place of your Desktop Environment&#39;s Notification Server.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! This is not nearly meant for anything but testing, as it only prints notifications to stdout.</span>
 <span class="doccomment">//! It does not respond properly either yet.</span>
@@ -227,9 +226,9 @@
 <span class="kw">use</span> <span class="ident">dbus</span>::{<span class="ident">arg</span>, <span class="ident">BusType</span>, <span class="ident">Connection</span>, <span class="ident">NameFlag</span>, <span class="ident">Path</span>};
 
 <span class="kw">use</span> <span class="kw">super</span>::{<span class="ident">Notification</span>, <span class="ident">NotificationHint</span>, <span class="ident">Timeout</span>};
-<span class="kw">use</span> <span class="ident">util</span>::<span class="kw-2">*</span>;
-<span class="kw">use</span> <span class="ident">xdg</span>::{<span class="ident">NOTIFICATION_NAMESPACE</span>, <span class="ident">NOTIFICATION_OBJECTPATH</span>};
-<span class="kw">use</span> <span class="ident">hints</span>::<span class="ident">hints_from_variants</span>;
+<span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">util</span>::<span class="kw-2">*</span>;
+<span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">xdg</span>::{<span class="ident">NOTIFICATION_NAMESPACE</span>, <span class="ident">NOTIFICATION_OBJECTPATH</span>};
+<span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">hints</span>::<span class="ident">hints_from_variants</span>;
 
 <span class="kw">static</span> <span class="ident">DBUS_ERROR_FAILED</span>: <span class="kw-2">&amp;</span><span class="ident">str</span> <span class="op">=</span> <span class="string">&quot;org.freedesktop.DBus.Error.Failed&quot;</span>;
 <span class="doccomment">/// Version of the crate equals the version server.</span>
@@ -268,10 +267,9 @@
     }
 
     <span class="doccomment">/// Create a new `NotificationServer` instance.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">new</span>() <span class="op">-&gt;</span> <span class="ident">Arc</span><span class="op">&lt;</span><span class="ident">NotificationServer</span><span class="op">&gt;</span> {
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">create</span>() <span class="op">-&gt;</span> <span class="ident">Arc</span><span class="op">&lt;</span><span class="ident">NotificationServer</span><span class="op">&gt;</span> {
         <span class="ident">Arc</span>::<span class="ident">new</span>(<span class="ident">NotificationServer</span>::<span class="ident">default</span>())
     }
-
     <span class="comment">// pub fn notify_mothod&lt;F&gt;(&amp;mut self, closure: F)</span>
     <span class="comment">//    -&gt; Method</span>
     <span class="comment">//    where F: Fn(&amp;Notification)</span>
@@ -297,7 +295,7 @@
                 .<span class="ident">introspectable</span>()
                 .<span class="ident">add</span>(<span class="ident">factory</span>
                     .<span class="ident">interface</span>(<span class="ident">NOTIFICATION_NAMESPACE</span>, ())
-                    .<span class="ident">add_m</span>(<span class="ident">method_notify</span>(<span class="kw-2">&amp;</span><span class="ident">factory</span>, <span class="ident">Box</span>::<span class="ident">new</span>(<span class="ident">closure</span>) ))
+                    .<span class="ident">add_m</span>(<span class="ident">method_notify</span>(<span class="kw-2">&amp;</span><span class="ident">factory</span>, <span class="ident">closure</span>))
                     .<span class="ident">add_m</span>(<span class="ident">method_close_notification</span>(<span class="kw-2">&amp;</span><span class="ident">factory</span>))
                     .<span class="ident">add_m</span>(<span class="self">Self</span>::<span class="ident">stop_server</span>(<span class="ident">mytex</span>.<span class="ident">clone</span>(), <span class="kw-2">&amp;</span><span class="ident">factory</span>))
                     <span class="comment">// .add_signal(method_notification_closed(&amp;factory))</span>
@@ -333,7 +331,7 @@
 
 }
 
-<span class="kw">fn</span> <span class="ident">method_notify</span><span class="op">&lt;</span><span class="ident">F</span>: <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(<span class="ident">factory</span>: <span class="kw-2">&amp;</span><span class="ident">Factory</span><span class="op">&lt;</span><span class="ident">MTFn</span><span class="op">&gt;</span>, <span class="ident">on_notification</span>: <span class="ident">Box</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>) <span class="op">-&gt;</span> <span class="ident">tree</span>::<span class="ident">Method</span><span class="op">&lt;</span><span class="ident">MTFn</span><span class="op">&lt;</span>()<span class="op">&gt;</span>, ()<span class="op">&gt;</span>
+<span class="kw">fn</span> <span class="ident">method_notify</span><span class="op">&lt;</span><span class="ident">F</span>: <span class="lifetime">&#39;static</span><span class="op">&gt;</span>(<span class="ident">factory</span>: <span class="kw-2">&amp;</span><span class="ident">Factory</span><span class="op">&lt;</span><span class="ident">MTFn</span><span class="op">&gt;</span>, <span class="ident">on_notification</span>: <span class="ident">F</span>) <span class="op">-&gt;</span> <span class="ident">tree</span>::<span class="ident">Method</span><span class="op">&lt;</span><span class="ident">MTFn</span><span class="op">&lt;</span>()<span class="op">&gt;</span>, ()<span class="op">&gt;</span>
         <span class="kw">where</span> <span class="ident">F</span>: <span class="ident">Fn</span>(<span class="kw-2">&amp;</span><span class="ident">Notification</span>),
 {
     <span class="ident">factory</span>.<span class="ident">method</span>(<span class="string">&quot;Notify&quot;</span>, (), <span class="kw">move</span> <span class="op">|</span><span class="ident">minfo</span><span class="op">|</span> {
@@ -344,7 +342,7 @@
         <span class="kw">let</span> <span class="ident">summary</span>: <span class="ident">String</span> <span class="op">=</span> <span class="ident">i</span>.<span class="ident">read</span>()<span class="question-mark">?</span>;
         <span class="kw">let</span> <span class="ident">body</span>: <span class="ident">String</span> <span class="op">=</span> <span class="ident">i</span>.<span class="ident">read</span>()<span class="question-mark">?</span>;
         <span class="kw">let</span> <span class="ident">actions</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">String</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">i</span>.<span class="ident">read</span>()<span class="question-mark">?</span>;
-        <span class="kw">let</span> <span class="ident">hints</span>: ::<span class="ident">std</span>::<span class="ident">collections</span>::<span class="ident">HashMap</span><span class="op">&lt;</span><span class="ident">String</span>, <span class="ident">arg</span>::<span class="ident">Variant</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="ident">arg</span>::<span class="ident">RefArg</span><span class="op">&gt;&gt;</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">i</span>.<span class="ident">read</span>()<span class="question-mark">?</span>;
+        <span class="kw">let</span> <span class="ident">hints</span>: ::<span class="ident">std</span>::<span class="ident">collections</span>::<span class="ident">HashMap</span><span class="op">&lt;</span><span class="ident">String</span>, <span class="ident">arg</span>::<span class="ident">Variant</span><span class="op">&lt;</span><span class="ident">Box</span><span class="op">&lt;</span><span class="kw">dyn</span> <span class="ident">arg</span>::<span class="ident">RefArg</span><span class="op">&gt;&gt;</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">i</span>.<span class="ident">read</span>()<span class="question-mark">?</span>;
         <span class="kw">let</span> <span class="ident">timeout</span>: <span class="ident">i32</span> <span class="op">=</span> <span class="ident">i</span>.<span class="ident">read</span>()<span class="question-mark">?</span>;
         <span class="macro">println</span><span class="macro">!</span>(<span class="string">&quot;hints {:?} &quot;</span>, <span class="ident">hints</span>);
 
@@ -355,7 +353,7 @@
             <span class="ident">summary</span>,
             <span class="ident">body</span>,
             <span class="ident">actions</span>,
-            <span class="ident">hints</span>: <span class="ident">hints_from_variants</span>(<span class="ident">hints</span>),
+            <span class="ident">hints</span>: <span class="ident">hints_from_variants</span>(<span class="kw-2">&amp;</span><span class="ident">hints</span>),
             <span class="ident">timeout</span>: <span class="ident">Timeout</span>::<span class="ident">from</span>(<span class="ident">timeout</span>),
             <span class="ident">id</span>: <span class="kw">if</span> <span class="ident">replaces_id</span> <span class="op">==</span> <span class="number">0</span> { <span class="prelude-val">None</span> } <span class="kw">else</span> { <span class="prelude-val">Some</span>(<span class="ident">replaces_id</span>) },
             <span class="ident">subtitle</span>: <span class="prelude-val">None</span>,
@@ -382,7 +380,7 @@
 <span class="kw">fn</span> <span class="ident">method_close_notification</span>(<span class="ident">factory</span>: <span class="kw-2">&amp;</span><span class="ident">Factory</span><span class="op">&lt;</span><span class="ident">MTFn</span><span class="op">&gt;</span>) <span class="op">-&gt;</span> <span class="ident">tree</span>::<span class="ident">Method</span><span class="op">&lt;</span><span class="ident">MTFn</span><span class="op">&lt;</span>()<span class="op">&gt;</span>, ()<span class="op">&gt;</span> {
     <span class="ident">factory</span>.<span class="ident">method</span>(<span class="string">&quot;CloseNotification&quot;</span>, (), <span class="op">|</span><span class="ident">minfo</span><span class="op">|</span> {
         <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">i</span> <span class="op">=</span> <span class="ident">minfo</span>.<span class="ident">msg</span>.<span class="ident">iter_init</span>();
-        <span class="kw">let</span> <span class="ident">id</span>: <span class="ident">u32</span> <span class="op">=</span> <span class="macro">try</span><span class="macro">!</span>(<span class="ident">i</span>.<span class="ident">read</span>());
+        <span class="kw">let</span> <span class="ident">id</span>: <span class="ident">u32</span> <span class="op">=</span> <span class="macro">r#try</span><span class="macro">!</span>(<span class="ident">i</span>.<span class="ident">read</span>());
 
         <span class="kw">let</span> <span class="ident">rm</span> <span class="op">=</span> <span class="ident">minfo</span>.<span class="ident">msg</span>.<span class="ident">method_return</span>();
         <span class="prelude-val">Ok</span>(<span class="macro">vec</span><span class="macro">!</span>(<span class="ident">rm</span>))
@@ -417,5 +415,5 @@
     .<span class="ident">out_arg</span>((<span class="string">&quot;version&quot;</span>, <span class="string">&quot;s&quot;</span>))
     .<span class="ident">out_arg</span>((<span class="string">&quot;spec_version&quot;</span>, <span class="string">&quot;s&quot;</span>))
 }
-</pre>
-</section><section id="search" class="content hidden"></section><section class="footer"></section><aside id="help" class="hidden"><div><h1 class="hidden">Help</h1><div class="shortcuts"><h2>Keyboard Shortcuts</h2><dl><dt><kbd>?</kbd></dt><dd>Show this help dialog</dd><dt><kbd>S</kbd></dt><dd>Focus the search field</dd><dt><kbd>↑</kbd></dt><dd>Move up in search results</dd><dt><kbd>↓</kbd></dt><dd>Move down in search results</dd><dt><kbd>↹</kbd></dt><dd>Switch tab</dd><dt><kbd>&#9166;</kbd></dt><dd>Go to active search result</dd><dt><kbd>+</kbd></dt><dd>Expand all sections</dd><dt><kbd>-</kbd></dt><dd>Collapse all sections</dd></dl></div><div class="infos"><h2>Search Tricks</h2><p>Prefix searches with a type followed by a colon (e.g. <code>fn:</code>) to restrict the search to a given type.</p><p>Accepted types are: <code>fn</code>, <code>mod</code>, <code>struct</code>, <code>enum</code>, <code>trait</code>, <code>type</code>, <code>macro</code>, and <code>const</code>.</p><p>Search functions by type signature (e.g. <code>vec -> usize</code> or <code>* -> vec</code>)</p><p>Search multiple things at once by splitting your query with comma (e.g. <code>str,u8</code> or <code>String,struct:Vec,test</code>)</p></div></div></aside><script>window.rootPath = "../../";window.currentCrate = "notify_rust";</script><script src="../../aliases.js"></script><script src="../../main.js"></script><script defer src="../../search-index.js"></script></body></html>
+</pre></div>
+</section><section id="search" class="content hidden"></section><section class="footer"></section><aside id="help" class="hidden"><div><h1 class="hidden">Help</h1><div class="shortcuts"><h2>Keyboard Shortcuts</h2><dl><dt><kbd>?</kbd></dt><dd>Show this help dialog</dd><dt><kbd>S</kbd></dt><dd>Focus the search field</dd><dt><kbd>↑</kbd></dt><dd>Move up in search results</dd><dt><kbd>↓</kbd></dt><dd>Move down in search results</dd><dt><kbd>↹</kbd></dt><dd>Switch tab</dd><dt><kbd>&#9166;</kbd></dt><dd>Go to active search result</dd><dt><kbd>+</kbd></dt><dd>Expand all sections</dd><dt><kbd>-</kbd></dt><dd>Collapse all sections</dd></dl></div><div class="infos"><h2>Search Tricks</h2><p>Prefix searches with a type followed by a colon (e.g., <code>fn:</code>) to restrict the search to a given type.</p><p>Accepted types are: <code>fn</code>, <code>mod</code>, <code>struct</code>, <code>enum</code>, <code>trait</code>, <code>type</code>, <code>macro</code>, and <code>const</code>.</p><p>Search functions by type signature (e.g., <code>vec -> usize</code> or <code>* -> vec</code>)</p><p>Search multiple things at once by splitting your query with comma (e.g., <code>str,u8</code> or <code>String,struct:Vec,test</code>)</p></div></div></aside><script>window.rootPath = "../../";window.currentCrate = "notify_rust";</script><script src="../../aliases.js"></script><script src="../../main.js"></script><script src="../../source-script.js"></script><script src="../../source-files.js"></script><script defer src="../../search-index.js"></script></body></html>

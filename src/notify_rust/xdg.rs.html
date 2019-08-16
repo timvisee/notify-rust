@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `src/xdg.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>xdg.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form js-only"><div class="search-container"><input class="search-input" name="search" autocomplete="off" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `src/xdg.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>xdg.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="shortcut icon" href="../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../notify_rust/index.html'><div class='logo-container'><img src='../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form js-only"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1">  1</span>
 <span id="2">  2</span>
 <span id="3">  3</span>
 <span id="4">  4</span>
@@ -247,7 +247,7 @@
 <span id="247">247</span>
 <span id="248">248</span>
 <span id="249">249</span>
-</pre><pre class="rust ">
+</pre><div class="example-wrap"><pre class="rust ">
 <span class="doccomment">//! This module contains XDG and DBus specific code.</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! it should not be available under any platform other than `(unix, not(target_os = &quot;macos&quot;))`</span>
@@ -257,7 +257,7 @@
 
 <span class="kw">use</span> <span class="kw">super</span>::<span class="ident">Notification</span>;
 <span class="kw">use</span> <span class="ident">dbus</span>::{<span class="ident">BusType</span>, <span class="ident">Connection</span>, <span class="ident">ConnectionItem</span>, <span class="ident">Message</span>, <span class="ident">MessageItem</span>};
-<span class="kw">use</span> <span class="ident">error</span>::<span class="kw-2">*</span>;
+<span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">error</span>::<span class="kw-2">*</span>;
 
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;debug_namespace&quot;</span>))]</span> <span class="kw">pub</span> <span class="kw">static</span> <span class="ident">NOTIFICATION_NAMESPACE</span>: <span class="kw-2">&amp;</span><span class="ident">str</span> <span class="op">=</span> <span class="string">&quot;org.freedesktop.Notifications&quot;</span>;
 <span class="attribute">#[<span class="ident">cfg</span>(<span class="ident">not</span>(<span class="ident">feature</span> <span class="op">=</span> <span class="string">&quot;debug_namespace&quot;</span>))]</span> <span class="kw">pub</span> <span class="kw">static</span> <span class="ident">NOTIFICATION_OBJECTPATH</span>: <span class="kw-2">&amp;</span><span class="ident">str</span> <span class="op">=</span> <span class="string">&quot;/org/freedesktop/Notifications&quot;</span>;
@@ -281,11 +281,11 @@
     }
 
     <span class="doccomment">/// Waits for the user to act on a notification and then calls</span>
-    <span class="doccomment">/// `invokation_closure` with the name of the corresponding action.</span>
-    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">wait_for_action</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">invokation_closure</span>: <span class="ident">F</span>)
+    <span class="doccomment">/// `invocation_closure` with the name of the corresponding action.</span>
+    <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">wait_for_action</span><span class="op">&lt;</span><span class="ident">F</span><span class="op">&gt;</span>(<span class="self">self</span>, <span class="ident">invocation_closure</span>: <span class="ident">F</span>)
         <span class="kw">where</span> <span class="ident">F</span>: <span class="ident">FnOnce</span>(<span class="kw-2">&amp;</span><span class="ident">str</span>)
     {
-        <span class="ident">wait_for_action_signal</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">connection</span>, <span class="self">self</span>.<span class="ident">id</span>, <span class="ident">invokation_closure</span>);
+        <span class="ident">wait_for_action_signal</span>(<span class="kw-2">&amp;</span><span class="self">self</span>.<span class="ident">connection</span>, <span class="self">self</span>.<span class="ident">id</span>, <span class="ident">invocation_closure</span>);
     }
 
     <span class="doccomment">/// Manually close the notification</span>
@@ -333,7 +333,7 @@
     <span class="doccomment">/// notification.update();</span>
     <span class="doccomment">/// ```</span>
     <span class="doccomment">/// Watch out for different implementations of the</span>
-    <span class="doccomment">/// notification server! On plasma5 or instance, you should also change the appname, so the old</span>
+    <span class="doccomment">/// notification server! On plasma5 for instance, you should also change the appname, so the old</span>
     <span class="doccomment">/// message is really replaced and not just amended. Xfce behaves well, all others have not</span>
     <span class="doccomment">/// been tested by the developer.</span>
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">update</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) {
@@ -355,7 +355,7 @@
     }
 }
 
-<span class="doccomment">/// Allow to easily modify notification properties</span>
+<span class="doccomment">/// Allow you to easily modify notification properties</span>
 <span class="kw">impl</span> <span class="ident">DerefMut</span> <span class="kw">for</span> <span class="ident">NotificationHandle</span> {
     <span class="kw">fn</span> <span class="ident">deref_mut</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>) <span class="op">-&gt;</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">Notification</span> {
         <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="self">self</span>.<span class="ident">notification</span>
@@ -417,7 +417,7 @@
 }
 
 <span class="doccomment">/// Strictly internal.</span>
-<span class="doccomment">/// The Notificationserver implemented here exposes a &quot;Stop&quot; function.</span>
+<span class="doccomment">/// The NotificationServer implemented here exposes a &quot;Stop&quot; function.</span>
 <span class="doccomment">/// stops the notification server</span>
 <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">stop_server</span>() {
     <span class="kw">let</span> <span class="ident">message</span> <span class="op">=</span> <span class="ident">build_message</span>(<span class="string">&quot;Stop&quot;</span>);
@@ -497,5 +497,5 @@
         <span class="kw">_</span> <span class="op">=&gt;</span> <span class="string">&quot;&quot;</span>.<span class="ident">to_owned</span>()
     }
 }
-</pre>
-</section><section id="search" class="content hidden"></section><section class="footer"></section><aside id="help" class="hidden"><div><h1 class="hidden">Help</h1><div class="shortcuts"><h2>Keyboard Shortcuts</h2><dl><dt><kbd>?</kbd></dt><dd>Show this help dialog</dd><dt><kbd>S</kbd></dt><dd>Focus the search field</dd><dt><kbd>↑</kbd></dt><dd>Move up in search results</dd><dt><kbd>↓</kbd></dt><dd>Move down in search results</dd><dt><kbd>↹</kbd></dt><dd>Switch tab</dd><dt><kbd>&#9166;</kbd></dt><dd>Go to active search result</dd><dt><kbd>+</kbd></dt><dd>Expand all sections</dd><dt><kbd>-</kbd></dt><dd>Collapse all sections</dd></dl></div><div class="infos"><h2>Search Tricks</h2><p>Prefix searches with a type followed by a colon (e.g. <code>fn:</code>) to restrict the search to a given type.</p><p>Accepted types are: <code>fn</code>, <code>mod</code>, <code>struct</code>, <code>enum</code>, <code>trait</code>, <code>type</code>, <code>macro</code>, and <code>const</code>.</p><p>Search functions by type signature (e.g. <code>vec -> usize</code> or <code>* -> vec</code>)</p><p>Search multiple things at once by splitting your query with comma (e.g. <code>str,u8</code> or <code>String,struct:Vec,test</code>)</p></div></div></aside><script>window.rootPath = "../../";window.currentCrate = "notify_rust";</script><script src="../../aliases.js"></script><script src="../../main.js"></script><script defer src="../../search-index.js"></script></body></html>
+</pre></div>
+</section><section id="search" class="content hidden"></section><section class="footer"></section><aside id="help" class="hidden"><div><h1 class="hidden">Help</h1><div class="shortcuts"><h2>Keyboard Shortcuts</h2><dl><dt><kbd>?</kbd></dt><dd>Show this help dialog</dd><dt><kbd>S</kbd></dt><dd>Focus the search field</dd><dt><kbd>↑</kbd></dt><dd>Move up in search results</dd><dt><kbd>↓</kbd></dt><dd>Move down in search results</dd><dt><kbd>↹</kbd></dt><dd>Switch tab</dd><dt><kbd>&#9166;</kbd></dt><dd>Go to active search result</dd><dt><kbd>+</kbd></dt><dd>Expand all sections</dd><dt><kbd>-</kbd></dt><dd>Collapse all sections</dd></dl></div><div class="infos"><h2>Search Tricks</h2><p>Prefix searches with a type followed by a colon (e.g., <code>fn:</code>) to restrict the search to a given type.</p><p>Accepted types are: <code>fn</code>, <code>mod</code>, <code>struct</code>, <code>enum</code>, <code>trait</code>, <code>type</code>, <code>macro</code>, and <code>const</code>.</p><p>Search functions by type signature (e.g., <code>vec -> usize</code> or <code>* -> vec</code>)</p><p>Search multiple things at once by splitting your query with comma (e.g., <code>str,u8</code> or <code>String,struct:Vec,test</code>)</p></div></div></aside><script>window.rootPath = "../../";window.currentCrate = "notify_rust";</script><script src="../../aliases.js"></script><script src="../../main.js"></script><script src="../../source-script.js"></script><script src="../../source-files.js"></script><script defer src="../../search-index.js"></script></body></html>
