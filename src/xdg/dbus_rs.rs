@@ -8,8 +8,62 @@ use crate::{
     error::*,
     hints::message::HintMessage,
     notification::Notification,
-    xdg::{NotificationHandle, ServerInformation, NOTIFICATION_NAMESPACE, NOTIFICATION_OBJECTPATH},
+    xdg::{ServerInformation, NOTIFICATION_NAMESPACE, NOTIFICATION_OBJECTPATH},
 };
+
+/// A handle to a shown notification.
+///
+/// This keeps a connection alive to ensure actions work on certain desktops.
+#[derive(Debug)]
+pub struct NotificationHandle {
+    pub(crate) id: u32,
+    pub(crate) connection: Connection,
+    pub(crate) notification: Notification,
+}
+
+
+impl NotificationHandle {
+    pub(crate) fn new(id: u32, connection: Connection, notification: Notification) -> NotificationHandle {
+        NotificationHandle {
+            id,
+            connection,
+            notification,
+        }
+    }
+
+    pub fn wait_for_action<F>(self, invocation_closure: F)
+    where
+        F: FnOnce(&str),
+    {
+        wait_for_action_signal(&self.connection, self.id, invocation_closure);
+    }
+
+    pub fn close(self) {
+        let mut message = build_message("CloseNotification");
+        message.append_items(&[self.id.into()]);
+        let _ = self.connection.send(message); // If closing fails there's nothing we could do anyway
+    }
+
+    pub fn on_close<F>(self, closure: F)
+    where
+        F: FnOnce(),
+    {
+        self.wait_for_action(|action| {
+            if action == "__closed" {
+                closure();
+            }
+        });
+    }
+
+    pub fn update(&mut self) {
+        self.id = send_notificaion_via_connection(&self.notification, self.id, &self.connection).unwrap();
+    }
+
+    /// Returns the Handle's id.
+    pub fn id(&self) -> u32 {
+        self.id
+    }
+}
 
 pub fn send_notificaion_via_connection(notification: &Notification, id: u32, connection: &Connection) -> Result<u32> {
     let mut message = build_message("Notify");

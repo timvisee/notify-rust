@@ -21,6 +21,8 @@ include = [
 ]
 
 [dependencies]
+zvariant = "2.0.1"
+zbus = "1.0.0"
 
 [target.'cfg(all(unix, not(target_os = "macos")))'.dependencies]
 dbus = "0.8"

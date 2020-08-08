@@ -25,17 +25,13 @@ pub static NOTIFICATION_OBJECTPATH: &str = "/de/hoodie/Notifications";
 /// This keeps a connection alive to ensure actions work on certain desktops.
 #[derive(Debug)]
 pub struct NotificationHandle {
-    id: u32,
-    connection: DbusConnection,
-    notification: Notification,
+    inner: dbus_rs::NotificationHandle,
 }
 
 impl NotificationHandle {
     pub(crate) fn new(id: u32, connection: DbusConnection, notification: Notification) -> NotificationHandle {
         NotificationHandle {
-            id,
-            connection,
-            notification,
+            inner: dbus_rs::NotificationHandle::new(id, connection, notification),
         }
     }
 
@@ -45,7 +41,7 @@ impl NotificationHandle {
     where
         F: FnOnce(&str),
     {
-        dbus_rs::wait_for_action_signal(&self.connection, self.id, invocation_closure);
+        self.inner.wait_for_action(invocation_closure)
     }
 
     /// Manually close the notification
@@ -65,9 +61,7 @@ impl NotificationHandle {
     /// handle.close();
     /// ```
     pub fn close(self) {
-        let mut message = dbus_rs::build_message("CloseNotification");
-        message.append_items(&[self.id.into()]);
-        let _ = self.connection.send(message); // If closing fails there's nothing we could do anyway
+        self.inner.close()
     }
 
     /// Executes a closure after the notification has closed.
@@ -85,7 +79,7 @@ impl NotificationHandle {
     where
         F: FnOnce(),
     {
-        self.wait_for_action(|action| {
+        self.inner.wait_for_action(|action| {
             if action == "__closed" {
                 closure();
             }
@@ -113,12 +107,12 @@ impl NotificationHandle {
     /// message is really replaced and not just amended. Xfce behaves well, all others have not
     /// been tested by the developer.
     pub fn update(&mut self) {
-        self.id = dbus_rs::send_notificaion_via_connection(&self.notification, self.id, &self.connection).unwrap();
+        self.inner.update()
     }
 
     /// Returns the Handle's id.
     pub fn id(&self) -> u32 {
-        self.id
+        self.inner.id
     }
 }
 
@@ -127,19 +121,25 @@ impl Deref for NotificationHandle {
     type Target = Notification;
 
     fn deref(&self) -> &Notification {
-        &self.notification
+        &self.inner.notification
     }
 }
 
 /// Allow you to easily modify notification properties
 impl DerefMut for NotificationHandle {
     fn deref_mut(&mut self) -> &mut Notification {
-        &mut self.notification
+        &mut self.inner.notification
+    }
+}
+
+impl From<dbus_rs::NotificationHandle> for NotificationHandle {
+    fn from(inner: dbus_rs::NotificationHandle) -> NotificationHandle {
+        NotificationHandle { inner }
     }
 }
 
 pub(crate) fn show_notification(notification: &Notification) -> Result<NotificationHandle> {
-    dbus_rs::connect_and_send_notification(notification)
+    dbus_rs::connect_and_send_notification(notification).map(Into::into)
 }
 
 // here be public functions
