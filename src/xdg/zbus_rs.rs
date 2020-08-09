@@ -20,12 +20,12 @@ impl ZbusNotificationHandle {
         }
     }
 
-    pub fn wait_for_action<F>(self, invocation_closure: F)
+    pub fn wait_for_action<F>(mut self, invocation_closure: F)
     where
         F: FnOnce(&str),
     {
-        todo!("no action handling yet")
-        //wait_for_action_signal(&self.connection, self.id, invocation_closure);
+        // todo!("no action handling yet")
+        wait_for_action_signal(&mut self.connection, self.id, invocation_closure);
     }
 
     pub fn close(self) {
@@ -75,19 +75,33 @@ pub fn connect_and_send_notification(notification: &Notification) -> Result<Zbus
     let connection = zbus::Connection::new_session()?;
     let inner_id = notification.id.unwrap_or(0);
     let id = send_notificaion_via_connection(notification, inner_id, &connection)?;
+    println!("sent a message on connection {}", connection.server_guid());
     Ok(ZbusNotificationHandle::new(id, connection, notification.clone()))
 }
 
 pub fn get_server_information() -> Result<xdg::ServerInformation> {
     let connection = zbus::Connection::new_session()?;
-    let info: xdg::ServerInformation = connection.call_method(
+    let info: xdg::ServerInformation = connection
+        .call_method(
             Some(crate::xdg::NOTIFICATION_NAMESPACE),
             crate::xdg::NOTIFICATION_OBJECTPATH,
             Some(crate::xdg::NOTIFICATION_NAMESPACE),
             "GetServerInformation",
-            &()
-        )?.body()
+            &(),
+        )?
+        .body()
         .unwrap();
 
     Ok(info)
+}
+
+fn wait_for_action_signal<F>(connection: &mut Connection, id: u32, func: F)
+where
+    F: FnOnce(&str),
+{
+    println!("wait for action on connection {}", connection.server_guid());
+    //connection.set_default_message_handler(Box::new(|msg| Some(dbg!(msg))));
+    let msg = connection.receive_message();
+    dbg!(msg);
+    std::thread::sleep_ms(5_000);
 }
