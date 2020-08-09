@@ -193,6 +193,7 @@ lazy_static!{
         .and_then(|info| info.spec_version.parse::<miniver::Version>())
         .unwrap_or_else(|_| miniver::Version::new(1,1));
 }
+
 /// Return value of `get_server_information()`.
 #[derive(Debug)]
 pub struct ServerInformation {

@@ -1,4 +1,4 @@
-use crate::{error::*, notification::Notification};
+use crate::{error::*, notification::Notification, xdg};
 use zbus::Connection;
 
 /// A handle to a shown notification.
@@ -76,4 +76,18 @@ pub fn connect_and_send_notification(notification: &Notification) -> Result<Zbus
     let inner_id = notification.id.unwrap_or(0);
     let id = send_notificaion_via_connection(notification, inner_id, &connection)?;
     Ok(ZbusNotificationHandle::new(id, connection, notification.clone()))
+}
+
+pub fn get_server_information() -> Result<xdg::ServerInformation> {
+    let connection = zbus::Connection::new_session()?;
+    let info: xdg::ServerInformation = connection.call_method(
+            Some(crate::xdg::NOTIFICATION_NAMESPACE),
+            crate::xdg::NOTIFICATION_OBJECTPATH,
+            Some(crate::xdg::NOTIFICATION_NAMESPACE),
+            "GetServerInformation",
+            &()
+        )?.body()
+        .unwrap();
+
+    Ok(info)
 }

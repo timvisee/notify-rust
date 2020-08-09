@@ -185,7 +185,7 @@ where
 }
 
 // Listens for the `ActionInvoked(UInt32, String)` signal.
-pub fn wait_for_action_signal<F>(connection: &Connection, id: u32, func: F)
+fn wait_for_action_signal<F>(connection: &Connection, id: u32, func: F)
 where
     F: FnOnce(&str),
 {

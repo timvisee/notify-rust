@@ -215,11 +215,15 @@ pub fn get_capabilities() -> Result<Vec<String>> {
 /// running.
 /// TODO dbus stuff module!!!
 pub fn get_server_information() -> Result<ServerInformation> {
-    dbus_rs::get_server_information()
+    if std::env::var("ZBUS").is_ok() {
+        eprintln!("using zbus");
+        zbus_rs::get_server_information()
+    } else {
+        dbus_rs::get_server_information()
+    }
 }
-
 /// Return value of `get_server_information()`.
-#[derive(Debug)]
+#[derive(Debug, serde::Deserialize, zvariant_derive::Type)]
 pub struct ServerInformation {
     /// The product name of the server.
     pub name: String,
