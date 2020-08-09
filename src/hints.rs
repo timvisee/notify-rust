@@ -17,7 +17,7 @@ mod constants;
 pub(crate) mod message;
 
 #[cfg(all(feature = "images", unix, not(target_os = "macos")))]
-use crate::image::Image;
+use crate::image::{Image, image_spec, ImageMessage};
 use crate::Urgency;
 
 
@@ -147,8 +147,8 @@ impl<'a> Into<(&'a str, zvariant::Value<'a>)> for &'a Hint {
             Hint::ActionIcons(value)       => (ACTION_ICONS   , zvariant::Value::Bool(*value)), // bool
             Hint::Category(value)          => (CATEGORY       , zvariant::Value::Str(value.as_str().into())),
             Hint::DesktopEntry(value)      => (DESKTOP_ENTRY  , zvariant::Value::Str(value.as_str().into())),
-            #[cfg(feature = "images")]
-            Hint::ImageData(image)         => (image_spec(*crate::SPEC_VERSION), ImageMessage::from(image).into()),
+            #[cfg(all(feature = "images", unix, not(target_os = "macos")))]
+            Hint::ImageData(image)         => (image_spec(*crate::SPEC_VERSION).as_str(), ImageMessage::from(image).into()),
             Hint::ImagePath(value)         => (IMAGE_PATH     , zvariant::Value::Str(value.as_str().into())),
             Hint::Resident(value)          => (RESIDENT       , zvariant::Value::Bool(*value)), // bool
             Hint::SoundFile(value)         => (SOUND_FILE     , zvariant::Value::Str(value.as_str().into())),

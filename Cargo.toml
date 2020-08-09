@@ -20,14 +20,12 @@ include = [
   "tests/*.rs"
 ]
 
-[dependencies]
-zvariant = "2.0.1"
-zbus = "1.0.0"
-
 [target.'cfg(all(unix, not(target_os = "macos")))'.dependencies]
 dbus = "0.8"
 lazy_static = { version = "1.4", optional = true }
 image = { version = "0.23", optional = true }
+zvariant = { version = "2.0" }
+zbus = { version = "1.0" }
 
 [target.'cfg(target_os="macos")'.dependencies]
 mac-notification-sys = "0.3"
@@ -36,8 +34,9 @@ mac-notification-sys = "0.3"
 winrt-notification = "0.2"
 
 [features]
-default = ["images", "server"]
+default = ["server"]
 server = []
+z = []
 debug_namespace = []
 images = ["image", "lazy_static"]
 

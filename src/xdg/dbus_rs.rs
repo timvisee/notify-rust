@@ -15,16 +15,16 @@ use crate::{
 ///
 /// This keeps a connection alive to ensure actions work on certain desktops.
 #[derive(Debug)]
-pub struct NotificationHandle {
+pub struct DbusNotificationHandle {
     pub(crate) id: u32,
     pub(crate) connection: Connection,
     pub(crate) notification: Notification,
 }
 
 
-impl NotificationHandle {
-    pub(crate) fn new(id: u32, connection: Connection, notification: Notification) -> NotificationHandle {
-        NotificationHandle {
+impl DbusNotificationHandle {
+    pub(crate) fn new(id: u32, connection: Connection, notification: Notification) -> DbusNotificationHandle {
+        DbusNotificationHandle {
             id,
             connection,
             notification,
@@ -59,10 +59,6 @@ impl NotificationHandle {
         self.id = send_notificaion_via_connection(&self.notification, self.id, &self.connection).unwrap();
     }
 
-    /// Returns the Handle's id.
-    pub fn id(&self) -> u32 {
-        self.id
-    }
 }
 
 pub fn send_notificaion_via_connection(notification: &Notification, id: u32, connection: &Connection) -> Result<u32> {
@@ -87,11 +83,11 @@ pub fn send_notificaion_via_connection(notification: &Notification, id: u32, con
     }
 }
 
-pub fn connect_and_send_notification(notification: &Notification) -> Result<NotificationHandle> {
+pub fn connect_and_send_notification(notification: &Notification) -> Result<DbusNotificationHandle> {
     let connection = Connection::get_private(BusType::Session)?;
     let inner_id = notification.id.unwrap_or(0);
     let id = send_notificaion_via_connection(notification, inner_id, &connection)?;
-    Ok(NotificationHandle::new(id, connection, notification.clone()))
+    Ok(DbusNotificationHandle::new(id, connection, notification.clone()))
 }
 
 pub fn build_message(method_name: &str) -> Message {
