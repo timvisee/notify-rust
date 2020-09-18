@@ -23,7 +23,7 @@ include = [
 [dependencies]
 
 [target.'cfg(all(unix, not(target_os = "macos")))'.dependencies]
-dbus = "0.8"
+dbus = "0.9"
 lazy_static = { version = "1.4", optional = true }
 image = { version = "0.23", optional = true }
 
